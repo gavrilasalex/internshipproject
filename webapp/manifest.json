@@ -72,20 +72,18 @@
         "routes": [
             {
                 "pattern": "",
-                "name": "bookList",
-                "target": "bookList"
-
+                "name": "login",
+                "target": "login"
             }
-          
+           
         ],
         "targets": {
-            "bookList": {
-                "viewName": "BookList",
-                "viewId": "bookList",
+            "login": {
+                "viewName": "Login",
+                "viewId": "login",
                 "viewLevel": 1
-            }
-     
+          }
         }
-    }
+      }
     }
   }
