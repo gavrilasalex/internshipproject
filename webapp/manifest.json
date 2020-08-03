@@ -74,6 +74,11 @@
                 "pattern": "",
                 "name": "login",
                 "target": "login"
+            },
+            {
+              "pattern": "/main",
+              "name": "main",
+              "target": "main"
             }
            
         ],
@@ -82,8 +87,20 @@
                 "viewName": "Login",
                 "viewId": "login",
                 "viewLevel": 1
+          }, 
+          "main": {
+            "viewName": "Main",
+            "viewId": "main",
+            "viewLevel": 1
           }
         }
+      },
+      "resources": {
+        "css": [
+        {
+          "uri": "CSS/loginStyle.css"
+        }
+        ]
       }
     }
   }
