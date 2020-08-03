@@ -1,0 +1,73 @@
+<mvc:View
+    controllerName="intern2020.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+<Page title="Login Page" showHeader="true" class="w3-backGround" enableScrolling="false">
+
+    <VBox class="w3-row w3-display-middle w3-card-1">
+        <Text text="My Warehouse Manager" class="w3-xlarge animated fadeInUp" style="font-style:bold;font-family: arial, sans-serif;
+                    font-weight: 600;"/>
+    </VBox>
+
+    <VBox class="w3-container w3-border w3-round-xxlarge w3-margin-top w3-center"/>
+
+    <VBox class="w3-container w3-padding-10">
+        <Image class="w3-margin-top w3-margin-bottom" src="logo_here.png" />
+    </VBox>
+
+    <VBox class="w3-container w3-padding-10">
+
+        <Input value="John.Carter" placeholder="User name" class="w3-input w3-border-0 w3-round-large" />
+        <Input type="Password" value="abcdef" placeholder="Password" class="w3-input w3-border-0 w3-round-large" />
+        <Button class="w3-btn w3-ripple w3-border-0 w3-round-large" text="Login" press="navigatePage"/>
+
+    </VBox>
+
+   <!-- <Table id="idBooksTable"
+		items="{
+			path: '/Books',
+			sorter: {
+				path: 'Title'
+			}
+		}"
+		growing="true"
+		growingThreshold="10">
+	
+		<columns>
+			<Column>
+				<Text text="Title" />
+			</Column>
+			<Column>
+				<Text text="Author" />
+			</Column>
+			<Column>
+				<Text text="Published on" />
+			</Column>
+			<Column>
+				<Text text="Language" />
+			</Column>
+         <Column>
+				<Text text="Available books" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{Title}"
+						text="{ISBN}"/>
+					<Text text="{Author}" />
+					<Text text="{ 
+							path: 'DatePublished',
+							type: 'sap.ui.model.type.Date'
+               			}" 
+					/>
+					<Text text="{Language}" />
+					<Text text="{= parseInt(${NubmerAvailableBooks}) }" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table> -->
+</Page>
+</mvc:View>
