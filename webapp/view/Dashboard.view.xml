@@ -4,11 +4,16 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
 <Page title="Manager Dashboard" showHeader="true" class="w3-backGround" enableScrolling="false">
+	<headerContent>
+			
+			<Button text="SignOut" press=".onSignOutPress" icon="sap-icon://log"/>
+	</headerContent>
+			
 	<content>
-		<VBox>
+		<!-- <VBox>
 			<Button width="8rem" text="SignOut" type="Emphasized" press="onSignOutPress"></Button>
 		</VBox>
-		
+		 -->
 	</content>
    <!-- <Table id="idBooksTable"
 		items="{
