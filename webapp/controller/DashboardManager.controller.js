@@ -3,10 +3,10 @@ sap.ui.define([
     'sap/m/MessageToast',
 ], function (BaseController, MessageToast) {
    "use strict";
-   return BaseController.extend("intern2020.controller.Dashboard", {
+   return BaseController.extend("intern2020.controller.DashboardManager", {
     onInit : function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.getRoute("dashboard").attachMatched(this._onRouteMatched, this);
+        oRouter.getRoute("dashboardManager").attachMatched(this._onRouteMatched, this);
         
     },
 

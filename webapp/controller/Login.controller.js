@@ -14,7 +14,7 @@ sap.ui.define([
          var oModel = new sap.ui.model.json.JSONModel(username);
          this.getOwnerComponent().setModel(oModel, "username");
          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-         oRouter.navTo("dashboard")
+         oRouter.navTo("dashboardManager")
    },
 
    validateEmail :function(){

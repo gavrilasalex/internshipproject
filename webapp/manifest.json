@@ -71,7 +71,7 @@
         },
         "routes": [
             {
-                "pattern": "login",
+                "pattern": "",
                 "name": "login",
                 "target": "login"
             },
@@ -79,7 +79,13 @@
               "pattern": "dashboard",
               "name": "dashboard",
               "target": "dashboard"
+            },
+            {
+              "pattern": "dashboardManager",
+              "name": "dashboardManager",
+              "target": "dashboardManager"
             }
+           
            
         ],
         "targets": {
@@ -91,6 +97,11 @@
           "dashboard": {
             "viewName": "Dashboard",
             "viewId": "dashboard",
+            "viewLevel": 1
+          },
+          "dashboardManager": {
+            "viewName": "DashboardManager",
+            "viewId": "dashboardManager",
             "viewLevel": 1
           }
         }
