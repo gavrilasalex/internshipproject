@@ -17,5 +17,23 @@ sap.ui.define([
          oRouter.navTo("dashboard")
    },
 
+   validateEmail :function(){
+
+      var email = this.getView().byId("emailInput").getValue();
+
+      var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
+
+      if (!mailregex.test(email)) {
+         MessageToast.show(email + " is not a valid email address!", {
+            duration: 10000,
+            autoClose: false
+         });
+
+      this.getView().byId("emailInput").setValueState(sap.ui.core.ValueState.Error);
+
+   }
+
+}
+
  });
  });
