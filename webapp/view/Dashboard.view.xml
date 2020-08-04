@@ -1,22 +1,14 @@
 <mvc:View
-    controllerName="intern2020.controller.Login"
+    controllerName="intern2020.controller.Dashboard"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
-<Page title="Login Page" showHeader="true" class="w3-backGround" enableScrolling="false">
+<Page title="Manager Dashboard" showHeader="true" class="w3-backGround" enableScrolling="false">
 	<content>
-
-		<VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
-
-
-			<VBox class="w3-container w3-padding-10">
-
-				<Input placeholder="E-Mail address" class="w3-input w3-border-0 w3-round-large" />
-				<Input type="Password" placeholder="Password" class="w3-input w3-border-0 w3-round-large" />
-				<Button width="12rem" text="Login" type="Emphasized" press="onLoginPress"></Button>
-			</VBox>
-
+		<VBox>
+			<Button width="8rem" text="SignOut" type="Emphasized" press="onSignOutPress"></Button>
 		</VBox>
+		
 	</content>
    <!-- <Table id="idBooksTable"
 		items="{

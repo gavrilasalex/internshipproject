@@ -76,9 +76,9 @@
                 "target": "login"
             },
             {
-              "pattern": "/main",
-              "name": "main",
-              "target": "main"
+              "pattern": "/dashboard",
+              "name": "dashboard",
+              "target": "dashboard"
             }
            
         ],
@@ -88,9 +88,9 @@
                 "viewId": "login",
                 "viewLevel": 1
           }, 
-          "main": {
-            "viewName": "Main",
-            "viewId": "main",
+          "managerDashboard": {
+            "viewName": "Dashboard",
+            "viewId": "dashboard",
             "viewLevel": 1
           }
         }
