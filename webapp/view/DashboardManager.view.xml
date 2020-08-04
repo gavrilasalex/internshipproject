@@ -32,6 +32,26 @@
                      </tileContent>
                  </GenericTile>
 
+                 <GenericTile
+                     class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     header="{i18n>isApproved}">
+                     <tileContent>
+                         <TileContent>
+                             <content>
+                                 <NumericContent
+                                     value="{
+                                         path: 'reviews>/UserReviews',
+                                         formatter: '.getEntityCount'
+                                     }"	
+									 	 icon="sap-icon://accept" 
+                                         indicator="None"
+                                         valueColor="Good" />
+								
+                             </content>
+                         </TileContent>
+                     </tileContent>
+                 </GenericTile>
+
 				 <GenericTile
                      class="sapUiTinyMarginBegin sapUiTinyMarginTop"
                      header="{i18n>isDenied}">

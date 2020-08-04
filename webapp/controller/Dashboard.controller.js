@@ -13,8 +13,7 @@ sap.ui.define([
     _onRouteMatched: function(oEvent) {
         var oModel = this.getView().getModel("username");
         MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
-            duration: 10000,
-            autoClose: false
+            duration: 10000
          })
     },
 
