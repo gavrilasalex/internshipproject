@@ -24,6 +24,7 @@
 
 		</VBox>
 	</content>
+	
    <!-- <Table id="idBooksTable"
 		items="{
 			path: '/Books',
