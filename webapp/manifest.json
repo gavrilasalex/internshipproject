@@ -71,12 +71,12 @@
         },
         "routes": [
             {
-                "pattern": "",
+                "pattern": "login",
                 "name": "login",
                 "target": "login"
             },
             {
-              "pattern": "/dashboard",
+              "pattern": "dashboard",
               "name": "dashboard",
               "target": "dashboard"
             }
@@ -88,7 +88,7 @@
                 "viewId": "login",
                 "viewLevel": 1
           }, 
-          "managerDashboard": {
+          "dashboard": {
             "viewName": "Dashboard",
             "viewId": "dashboard",
             "viewLevel": 1

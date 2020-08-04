@@ -17,7 +17,7 @@
 
 			<VBox>
 
-				<Input placeholder="E-Mail address" id="emailInput"  />
+				<Input placeholder="E-Mail address" id="emailInput" type="Email" change="validateEmail"/>
 				<Input type="Password" id="passwordInput" placeholder="Password"  />
 				<Button width="12rem" text="Login" type="Emphasized" press="onLoginPress"></Button>
 			</VBox>
