@@ -5,21 +5,22 @@ sap.ui.define([
    "use strict";
    return BaseController.extend("intern2020.controller.Dashboard", {
     onInit : function () {
-        MessageToast.show("Hello!")
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.getRoute("dashboard").attachMatched(this._onRouteMatched, this);
+        
     },
+
+    _onRouteMatched: function(oEvent) {
+        var oModel = this.getView().getModel("username");
+        MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
+            duration: 10000,
+            autoClose: false
+         })
+    },
+
     onSignOutPress : function (oEvent) {
      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
      oRouter.navTo("login");
-
-    //  var oHistory = History.getInstance();
-    // var sPreviousHash = oHistory.getPreviousHash();
- 
-    // if (sPreviousHash !== undefined) {
-    //     window.history.go(-1);
-    // } else {
-    //     var oRouter = UIComponent.getRouterFor(this);
-    //     oRouter.navTo("login", {}, true);
-    // }
     },
    });
 });

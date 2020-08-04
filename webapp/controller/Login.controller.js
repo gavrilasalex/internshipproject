@@ -7,15 +7,14 @@ sap.ui.define([
       onLoginPress : function (oEvent) {
          this.email=this.byId('emailInput').getValue();
          this.password=this.byId('passwordInput').getValue();
-      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.navTo("dashboard", {
-         success: function() {
-            MessageToast.show("Hello!", {
-               duration: 10000,
-               autoClose: false
-            });
-         }
-     })
+      
+         var username = {
+            "Username" : this.email
+         };
+         var oModel = new sap.ui.model.json.JSONModel(username);
+         this.getOwnerComponent().setModel(oModel, "username");
+         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+         oRouter.navTo("dashboard")
    },
 
  });
