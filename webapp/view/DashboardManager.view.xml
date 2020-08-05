@@ -6,7 +6,7 @@
 	xmlns:layout="sap.ui.layout">
 <Page title="Manager Dashboard" showHeader="true" class="w3-backGround" enableScrolling="false">
 	<headerContent>
-			
+    
 			<Button text="SignOut" press=".onSignOutPress" icon="sap-icon://log"/>
 	</headerContent>
 			

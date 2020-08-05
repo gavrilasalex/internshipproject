@@ -10,25 +10,6 @@
 	</headerContent>
 			
 	<layout:HorizontalLayout allowWrapping="true">
-                <GenericTile
-                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="{i18n>isNew}">
-                    <tileContent>
-                        <TileContent>
-                            <content>
-								<NumericContent
-                                     value="{
-                                         path: 'reviews>/UserReviews',
-                                         formatter: '.getEntityCount'
-                                     }"	
-									 	 icon="sap-icon://add" 
-                                         indicator="None"
-                                         valueColor="Neutral" />
-							</content>
-                        </TileContent>
-                    </tileContent>
-                </GenericTile>
-
 				<GenericTile
                      class="sapUiTinyMarginBegin sapUiTinyMarginTop"
                      header="{i18n>isApproved}">
@@ -43,7 +24,6 @@
 									 	 icon="sap-icon://accept" 
                                          indicator="None"
                                          valueColor="Good" />
-								
                              </content>
                          </TileContent>
                      </tileContent>
