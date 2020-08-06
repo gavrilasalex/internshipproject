@@ -17,7 +17,8 @@
 	<layout:HorizontalLayout allowWrapping="true">
 		<GenericTile
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-                header="{i18n>toBeApproved}">
+                header="{i18n>toBeApproved}"
+                press="_onPress">
                 <tileContent>
                     <TileContent>
                         <content>
@@ -36,7 +37,8 @@
 
         <GenericTile
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-                header="{i18n>isApproved}">
+                header="{i18n>isApproved}"
+                press="_onPress">
                 <tileContent>
                     <TileContent>
                         <content>
@@ -55,7 +57,8 @@
 
 		<GenericTile
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-                header="{i18n>isDenied}">
+                header="{i18n>isDenied}"
+                press="_onPress">
                 <tileContent>
                     <TileContent>
                         <content>

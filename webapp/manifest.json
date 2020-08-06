@@ -84,9 +84,18 @@
               "pattern": "dashboardManager",
               "name": "dashboardManager",
               "target": "dashboardManager"
+            },
+            {
+              "pattern": "userApproved",
+              "name": "userApproved",
+              "target": "userApproved"
+            },
+            {
+              "pattern": "userDenied",
+              "name": "userDenied",
+              "target": "userDenied"
             }
-           
-           
+            
         ],
         "targets": {
             "login": {
@@ -102,6 +111,16 @@
           "dashboardManager": {
             "viewName": "DashboardManager",
             "viewId": "dashboardManager",
+            "viewLevel": 1
+          },
+          "userApproved": {
+            "viewName": "UserApproved",
+            "viewId": "userApproved",
+            "viewLevel": 1
+          },
+          "userDenied": {
+            "viewName": "UserDenied",
+            "viewId": "userDenied",
             "viewLevel": 1
           }
         }

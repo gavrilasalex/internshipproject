@@ -6,7 +6,7 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.DashboardManager", {
 
-        onInit : function () {
+        onInit : function() {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("dashboardManager").attachMatched(this._onRouteMatched, this); 
@@ -24,7 +24,7 @@ sap.ui.define([
                 bActive = false;
             }
             if(!bActive){
-                this.onSignOutPress();
+                this._onSignOutPress();
             }
             else {
                 MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
@@ -33,7 +33,7 @@ sap.ui.define([
             }
         },
 
-        _onSignOutPress : function () {
+        _onSignOutPress : function() {
 
             var oModel = this.getView().getModel("sUsername");
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
