@@ -4,41 +4,43 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout">
-<Page title="Manager Dashboard" showHeader="true" class="w3-backGround" enableScrolling="false">
+
+<Page title="{i18n>managerDashboard}" showHeader="true" class="w3-backGround" enableScrolling="false">
 	<headerContent>
-    
-			<Button text="SignOut" press=".onSignOutPress" icon="sap-icon://log"/>
+			<Button 
+                text="SignOut" 
+                press="_onSignOutPress" 
+                icon="sap-icon://log">
+            </Button>
 	</headerContent>
 			
 	<layout:HorizontalLayout allowWrapping="true">
-
-				<GenericTile
-                     class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-                     header="{i18n>toBeApproved}">
-                     <tileContent>
-                         <TileContent>
-                             <content>
-                                 <NumericContent
-                                     value="{
-                                         path: 'reviews>/UserReviews',
-                                         formatter: '.getEntityCount'
+		<GenericTile
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                header="{i18n>toBeApproved}">
+                <tileContent>
+                    <TileContent>
+                        <content>
+                            <NumericContent
+                                    value="{
+                                        path: 'reviews>/UserReviews',
+                                        formatter: '.getEntityCount'
                                      }"	
-									 	 icon="sap-icon://pending" 
-                                         indicator="None"
-                                         valueColor="Neutral" />
-								
-                             </content>
-                         </TileContent>
-                     </tileContent>
-                 </GenericTile>
+									 	icon="sap-icon://pending" 
+                                        indicator="None"
+                                        valueColor="Neutral" />
+                        </content>
+                    </TileContent>
+                </tileContent>
+        </GenericTile>
 
-                 <GenericTile
-                     class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-                     header="{i18n>isApproved}">
-                     <tileContent>
-                         <TileContent>
-                             <content>
-                                 <NumericContent
+        <GenericTile
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                header="{i18n>isApproved}">
+                <tileContent>
+                    <TileContent>
+                        <content>
+                            <NumericContent
                                      value="{
                                          path: 'reviews>/UserReviews',
                                          formatter: '.getEntityCount'
@@ -46,30 +48,29 @@
 									 	 icon="sap-icon://accept" 
                                          indicator="None"
                                          valueColor="Good" />
-								
-                             </content>
-                         </TileContent>
-                     </tileContent>
-                 </GenericTile>
+                        </content>
+                    </TileContent>
+                </tileContent>
+        </GenericTile>
 
-				 <GenericTile
-                     class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-                     header="{i18n>isDenied}">
-                     <tileContent>
-                         <TileContent>
-                             <content>
-                                 <NumericContent
-                                     value="{
+		<GenericTile
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                header="{i18n>isDenied}">
+                <tileContent>
+                    <TileContent>
+                        <content>
+                            <NumericContent
+                                    value="{
                                          path: 'reviews>/UserReviews',
                                          formatter: '.getEntityCount'
                                      }"	
 									 	 icon="sap-icon://cancel" 
                                          indicator="None"
                                          valueColor="Error" />
-                             </content>
-                         </TileContent>
-                     </tileContent>
-                 </GenericTile>
-            </layout:HorizontalLayout>
+                        </content>
+                    </TileContent>
+                </tileContent>
+        </GenericTile>
+    </layout:HorizontalLayout>
 </Page>
 </mvc:View>

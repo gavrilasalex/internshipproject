@@ -3,9 +3,9 @@
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
-<Page title="Login Page" showHeader="true" enableScrolling="false">
-	<content >
 
+<Page title="{i18n>loginTitle}" showHeader="true" enableScrolling="false">
+	<content>
 		<VBox class="containerLogin" justifyContent="Center" alignItems="Center" alignContent="Center">
 
 			<VBox>
@@ -16,14 +16,16 @@
 			</VBox>
 
 			<VBox>
-
-				<Input placeholder="E-Mail address" id="emailInput" type="Email" change="validateEmail"/>
-				<Input type="Password" id="passwordInput" placeholder="Password"  />
-				<Button width="12rem" text="Login" type="Emphasized" press=".onLoginPress"></Button>
+				<Input placeholder="E-Mail address" id="emailInput" type="Email" change="_validateEmail"/>
+				<Input placeholder="Password" id="passwordInput" type="Password"/>
+				<Button 
+					width="12rem" 
+					text="Login" 
+					type="Emphasized" 
+					press="_onLoginPress">
+				</Button>
 			</VBox>
-
 		</VBox>
 	</content>
-
 </Page>
 </mvc:View>
