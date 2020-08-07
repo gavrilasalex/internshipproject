@@ -1,23 +1,23 @@
 <mvc:View
-    controllerName="intern2020.controller.UserDenied"
+    controllerName="intern2020.controller.UserApproved"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout">
 
-<Page   title="{i18n>userDenied}" 
+<Page   title="{i18n>userApproved}" 
         showHeader="true" 
         class="w3-backGround" 
         enableScrolling="false" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
     <Table
-        id="deniedUserTable"
+        id="approvedUserTable"
         headerText="{i18n>businessTrips}"
         class="sapUiResponsiveMargin"
         width="auto">
 
-      <columns>
+ 		<columns>
 			<Column 
 				width="30em">
 				<Text text="{i18n>employee}"/>
@@ -35,6 +35,20 @@
 				<Text text="{i18n>location}"/>
 			</Column>
 		</columns>
+
+		<items>
+			<ColumnListItem
+				type="Navigation"
+				press="_onPress">
+				<cells>
+					<ObjectIdentifier id="employeeName" title="{invoice>name}"/>
+					<Text text="{invoice>description}"/>
+					<Text text="{invoice>rating}"/>
+					<Text text="{invoice>categorie}"/>
+					<Text text="{invoice>studio}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
 	</Table>
 </Page>
 </mvc:View>

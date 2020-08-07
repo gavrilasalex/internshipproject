@@ -30,6 +30,7 @@ sap.ui.define([
                 MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
                     duration: 10000
                 });
+                $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
             }
         },
 

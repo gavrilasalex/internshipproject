@@ -47,6 +47,7 @@ sap.ui.define([
                         duration: 4000,
                         autoClose: false
                      });
+                     $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger " );
                }
             },
             
@@ -66,12 +67,14 @@ sap.ui.define([
                duration: 4000,
                autoClose: false
             });
+            $( ".sapMMessageToast" ).addClass( "sapMMessageToastWarning " );
          }
          else if (!mailregex.test(sEmail)) {
             MessageToast.show(sEmail + " is not a valid email address!", {
                duration: 4000,
                autoClose: false
             });
+            $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger " );
          }
       },
    });

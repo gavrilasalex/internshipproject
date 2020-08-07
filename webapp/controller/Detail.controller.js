@@ -6,16 +6,16 @@ sap.ui.define([
 ], function (BaseController, MessageToast, History, UIComponent) {
    "use strict";
 
-    return BaseController.extend("intern2020.controller.UserDenied", {
+    return BaseController.extend("intern2020.controller.Detail", {
 
         onInit : function() {
-		},
-		
-		_onPress: function (oEvent) {
-			var oItem = oEvent.getSource();
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        },
 
-			oRouter.navTo("detail");
+        onObjectItemPress: function (oEvent) {
+			var oItem = oEvent.getSource();
+			var oCtx = oItem.getBindingContext();
+			var path = oCtx.getPath();
+			this.getView().byId("projectlistid").bindElement(path);
 		},
 
         _onNavBack : function () {

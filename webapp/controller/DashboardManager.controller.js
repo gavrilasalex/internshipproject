@@ -30,8 +30,30 @@ sap.ui.define([
                 MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
                     duration: 10000
                 });
+                $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
             }
         },
+
+        _onPressToBeApproved : function (oEvent) {
+
+			var oItem = oEvent.getSource();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("managerToBeApproved");
+        },
+    
+        _onPressApproved : function (oEvent) {
+
+			var oItem = oEvent.getSource();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("managerApproved");
+        },
+        
+        _onPressDenied : function (oEvent) {
+
+			var oItem = oEvent.getSource();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("managerDenied");
+		},
 
         _onSignOutPress : function() {
 

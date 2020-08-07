@@ -9,8 +9,15 @@ sap.ui.define([
     return BaseController.extend("intern2020.controller.UserApproved", {
 
         onInit : function() {
-        },
+		},
 
+		_onPress: function (oEvent) {
+			var oItem = oEvent.getSource();
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+
+			oRouter.navTo("detail");
+		},
+		
         _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

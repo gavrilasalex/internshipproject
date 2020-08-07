@@ -18,7 +18,7 @@
 		<GenericTile
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop"
                 header="{i18n>toBeApproved}"
-                press="_onPress">
+                press="_onPressToBeApproved">
                 <tileContent>
                     <TileContent>
                         <content>
@@ -38,7 +38,7 @@
         <GenericTile
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop"
                 header="{i18n>isApproved}"
-                press="_onPress">
+                press="_onPressApproved">
                 <tileContent>
                     <TileContent>
                         <content>
@@ -58,7 +58,7 @@
 		<GenericTile
                 class="sapUiTinyMarginBegin sapUiTinyMarginTop"
                 header="{i18n>isDenied}"
-                press="_onPress">
+                press="_onPressDenied">
                 <tileContent>
                     <TileContent>
                         <content>

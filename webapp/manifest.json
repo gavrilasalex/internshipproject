@@ -44,11 +44,14 @@
         "i18n": {
           "type": "sap.ui.model.resource.ResourceModel",
           "settings": {
-            "bundleName": "intern2020.i18n.i18n"
+            "bundleName": "intern2020.i18n.i18n",
+            "supportedLocales": [""],
+            "fallbackLocale": ""
           }
         },
         "": {
             "dataSource": "booksService",
+            "preload": true,
             "settings": {
               "metadataUrlParams": {
                 "sap-documentation": "heading"
@@ -94,6 +97,26 @@
               "pattern": "userDenied",
               "name": "userDenied",
               "target": "userDenied"
+            },
+            {
+              "pattern": "managerDenied",
+              "name": "managerDenied",
+              "target": "managerDenied"
+            },
+            {
+              "pattern": "managerApproved",
+              "name": "managerApproved",
+              "target": "managerApproved"
+            },
+            {
+              "pattern": "managerToBeApproved",
+              "name": "managerToBeApproved",
+              "target": "managerToBeApproved"
+            },
+            {
+              "pattern": "detail",
+              "name": "detail",
+              "target": "detail"
             }
             
         ],
@@ -121,6 +144,26 @@
           "userDenied": {
             "viewName": "UserDenied",
             "viewId": "userDenied",
+            "viewLevel": 1
+          },
+          "managerApproved": {
+            "viewName": "ManagerApproved",
+            "viewId": "managerApproved",
+            "viewLevel": 1
+          },
+          "managerDenied": {
+            "viewName": "ManagerDenied",
+            "viewId": "managerDenied",
+            "viewLevel": 1
+          },
+          "managerToBeApproved": {
+            "viewName": "managerToBeApproved",
+            "viewId": "managerToBeApproved",
+            "viewLevel": 1
+          },
+          "detail": {
+            "viewName": "Detail",
+            "viewId": "detail",
             "viewLevel": 1
           }
         }
