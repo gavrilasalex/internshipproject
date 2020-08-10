@@ -15,7 +15,7 @@ sap.ui.define([
 			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
-			oRouter.navTo("detail");
+			oRouter.navTo("detailDenied");
 		},
 
         _onNavBack : function () {

@@ -6,17 +6,10 @@ sap.ui.define([
 ], function (BaseController, MessageToast, History, UIComponent) {
    "use strict";
 
-    return BaseController.extend("intern2020.controller.Detail", {
+    return BaseController.extend("intern2020.controller.DetailDenied", {
 
         onInit : function() {
         },
-
-        onObjectItemPress: function (oEvent) {
-			var oItem = oEvent.getSource();
-			var oCtx = oItem.getBindingContext();
-			var path = oCtx.getPath();
-			this.getView().byId("projectlistid").bindElement(path);
-		},
 
         _onNavBack : function () {
 			var oHistory = History.getInstance();
@@ -24,9 +17,6 @@ sap.ui.define([
 
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
-			} else {
-				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("dashboard", {}, true);
 			}
 		}
     });

@@ -6,16 +6,9 @@ sap.ui.define([
 ], function (BaseController, MessageToast, History, UIComponent) {
    "use strict";
 
-    return BaseController.extend("intern2020.controller.UserApproved", {
+    return BaseController.extend("intern2020.controller.DetailApproved", {
 
         onInit : function() {
-		},
-
-		_onPress: function (oEvent) {
-			var oItem = oEvent.getSource();
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-
-			oRouter.navTo("detailApproved");
 		},
 		
         _onNavBack : function () {
@@ -24,9 +17,6 @@ sap.ui.define([
 
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
-			} else {
-				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("dashboard", {}, true);
 			}
 		}
     });

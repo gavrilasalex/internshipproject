@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="rejectDialog"
+      title="Reason for rejection">
+      <content>
+         <VBox justifyContent="Center" alignItems="Center" alignContent="Center">
+            <core:Icon
+                src="sap-icon://employee-rejections"
+                size="3rem"
+                class="sapUiSmallMargin"/>
+            
+            <Input placeholder="Enter a reason..."/> 
+         </VBox>
+      </content>
+
+      <beginButton>
+            <Button
+                text="Submit"
+                press="_onSubmitDialog"/>
+      </beginButton>
+   </Dialog>
+</core:FragmentDefinition>

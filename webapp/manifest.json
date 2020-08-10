@@ -114,9 +114,19 @@
               "target": "managerToBeApproved"
             },
             {
-              "pattern": "detail",
-              "name": "detail",
-              "target": "detail"
+              "pattern": "detailApproved",
+              "name": "detailApproved",
+              "target": "detailApproved"
+            },
+            {
+              "pattern": "detailToBeApproved",
+              "name": "detailToBeApproved",
+              "target": "detailToBeApproved"
+            },
+            {
+              "pattern": "detailDenied",
+              "name": "detailDenied",
+              "target": "detailDenied"
             }
             
         ],
@@ -161,9 +171,19 @@
             "viewId": "managerToBeApproved",
             "viewLevel": 1
           },
-          "detail": {
-            "viewName": "Detail",
-            "viewId": "detail",
+          "detailApproved": {
+            "viewName": "DetailApproved",
+            "viewId": "detailApproved",
+            "viewLevel": 1
+          },
+          "detailToBeApproved": {
+            "viewName": "DetailToBeApproved",
+            "viewId": "detailToBeApproved",
+            "viewLevel": 1
+          },
+          "detailDenied": {
+            "viewName": "DetailDenied",
+            "viewId": "detailDenied",
             "viewLevel": 1
           }
         }
