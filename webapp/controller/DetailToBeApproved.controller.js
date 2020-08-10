@@ -1,3 +1,5 @@
+//CONTROLLER FOR THE TO BE APPROVED FORM
+
 sap.ui.define([
 	"intern2020/controller/BaseController",
 	"sap/ui/core/Fragment",
@@ -11,7 +13,8 @@ sap.ui.define([
 
         onInit : function() {
         },
-
+		
+		//Function for the Reject Button in To be approved form
 		_onRejectPress : function () {
 			var oView = this.getView();
 
@@ -32,6 +35,11 @@ sap.ui.define([
 			}
 		},
 
+		/*
+		*Function for the Submit Button in Dialog
+		*
+		*On press: the dialog closes and a rejection message appears on screen.
+		*/
 		_onSubmitDialog : function () {
 			this.byId("rejectDialog").close();
 
@@ -40,7 +48,12 @@ sap.ui.define([
 			});
 			$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
 		},
-		  
+		
+		/*
+		*Function for the Approve Button in To be approved form
+		*
+		*On press: the dialog closes and a rejection message appears on screen.
+		*/
 		_onApprovedPress : function (){
 			MessageToast.show("Business trip approved!", {
 				duration: 10000
@@ -48,6 +61,9 @@ sap.ui.define([
 			$( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
 		},
 		
+		/*
+        * When you press the navigation button -> navTo previous page/managerToBeApproved
+        */
         _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

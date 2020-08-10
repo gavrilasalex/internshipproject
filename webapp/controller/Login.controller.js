@@ -1,3 +1,5 @@
+// CONTROLLER FOR LOGIN PAGE
+
 sap.ui.define([
      "intern2020/controller/BaseController",
      'sap/m/MessageToast',
@@ -6,6 +8,22 @@ sap.ui.define([
 
    return BaseController.extend("intern2020.controller.Login", {
 
+
+      /*
+      * Function for the login button
+      *
+      * @param {String} [sEmail] email value from the Email Input
+      * @param {String} [sPassword] password value from the Password Input
+      * @param {String} [sUsername] email value to be sent to the next page for validation
+      * 
+      * 
+      * /Login: oData function thet gets the email and password as parameters
+      * 
+      * @param {String} [sPosition] the position for the email: MANAGER/USER/""
+      * SUCCES -> validation for sPosition and navigation to the coresponding dashboard
+      *        -> for position "", a message of error will appear
+      * ERROR -> Alert
+      */
       _onLoginPress : function (oEvent) {
 
          var oView = this.getView();
@@ -56,6 +74,18 @@ sap.ui.define([
             } 
          }); 
       }, 
+
+
+      /*
+      * Function for email validation
+      *
+      * @param {String} [sEmail] email value from the Email Input
+      * @param {String} [mailregex] regex for email validation -> eg: mail@adress.com
+      * 
+      * IF the email input field is empty -> warning message 
+      * ELSE IF the email input value is not valid -> error message
+      * 
+      */
             
       _validateEmail : function(){
 

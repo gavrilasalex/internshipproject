@@ -1,3 +1,5 @@
+//CONTROLLER FOR USER DASHBOARD
+
 sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
@@ -6,12 +8,25 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.Dashboard", {
 
+        // Recives the Username from the login page
         onInit : function() {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("dashboard").attachMatched(this._onRouteMatched, this)
         },
 
+        /*
+        * Matches the route for Username 
+        * 
+        * @param {Boolean} [bActive] when login is succesfull and the dashboard loads the variable is set to /true/
+        * 
+        * IF the oModel is undefined bActive is set to /false/
+        * ELSE IF the /Username is empty (the login part is skipped) bActive is set to /false/
+        * 
+        * IF bActiv is false -> call _onSignOutPress to exit
+        * ELSE IF bActive is true -> Welcome message shows up on the screen, customized with the username
+        * 
+        */
         _onRouteMatched : function(oEvent) {
 
             var bActive = true;
@@ -23,6 +38,7 @@ sap.ui.define([
             else if(oModel.getProperty("/Username") === ""){
                 bActive = false;
             }
+
             if(!bActive){
                 this._onSignOutPress();
             }
@@ -34,6 +50,9 @@ sap.ui.define([
             }
         },
 
+        /*
+        * When you press the Approved Tile -> navTo userApproved page
+        */
         _onPressApproved : function (oEvent) {
 
 			var oItem = oEvent.getSource();
@@ -41,6 +60,9 @@ sap.ui.define([
 			oRouter.navTo("userApproved");
         },
         
+        /*
+        * When you press the Denied Tile -> navTo userDenied page
+        */
         _onPressDenied : function (oEvent) {
 
 			var oItem = oEvent.getSource();
@@ -48,6 +70,11 @@ sap.ui.define([
 			oRouter.navTo("userDenied");
 		},
 
+        /*
+        * When you press the sign out button -> navTo login page
+        *
+        * Set /Username to "" -> bActive is set to /false/
+        */
         _onSignOutPress : function(oEvent) {
 
             var oModel = this.getView().getModel("sUsername");

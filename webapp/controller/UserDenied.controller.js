@@ -1,3 +1,5 @@
+//CONTROLLER FOR THE DENIED TABLE FROM USER
+
 sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
@@ -11,6 +13,9 @@ sap.ui.define([
         onInit : function() {
 		},
 		
+		/*
+        * When you press the table tile -> navTo detailDenied page
+        */
 		_onPress: function (oEvent) {
 			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -18,6 +23,9 @@ sap.ui.define([
 			oRouter.navTo("detailDenied");
 		},
 
+		/*
+        * When you press the navigation button -> navTo previous page/dashboard
+        */
         _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

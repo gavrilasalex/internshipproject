@@ -1,3 +1,5 @@
+//CONTROLLER FOT THE REJECTION DIALOG FROM MANAGER DENIED
+
 sap.ui.define([
 	"sap/ui/base/ManagedObject",
 	"sap/ui/core/Fragment"

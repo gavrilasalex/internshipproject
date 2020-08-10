@@ -1,3 +1,31 @@
+<!-- 
+	
+Details for denied business trips 
+
+Navigation Button -> _onNavBack
+Content 1: General Information
+								-Name Label + Input
+								-Email Label + Input
+								-Supervisor Label + Input
+								-Phone Number Label + Input
+
+Content 2: Information About Travel Country
+								-Reason For Travel Label + Input
+								-Requestor Label + Input
+								-Country Label + Input
+								-City Label + Input
+
+Content 3: Business Trip Request
+								-Total Costs Label + Input
+								-Start Business Trip Label + Input
+								-End Business Trip Label + Input
+								-Advance Payment Needed Label + Input 
+							
+Content 4: Reason For Rejection 
+								-Explanation Label + Input
+								
+-->
+
 <mvc:View
     controllerName="intern2020.controller.DetailDenied"
     xmlns:mvc="sap.ui.core.mvc"

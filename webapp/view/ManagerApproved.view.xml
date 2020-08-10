@@ -1,3 +1,13 @@
+<!-- 
+	
+Manager Approved View
+
+Navigation Button -> _onNavBack
+Table: Employee, Date, Price, Location
+Items (type navigation) -> _onPress 
+
+-->
+
 <mvc:View
     controllerName="intern2020.controller.ManagerApproved"
     xmlns:mvc="sap.ui.core.mvc"
@@ -13,13 +23,14 @@
 		navButtonPress="_onNavBack">
     <Table
         id="approvedManagerTable"
+		items="{path : '/TripSet'}"
         headerText="{i18n>businessTrips}"
         class="sapUiResponsiveMargin"
         width="auto">
 
  		<columns>
 			<Column 
-				width="30em">
+				width="15em">
 				<Text text="{i18n>employee}"/>
 			</Column>
 			<Column
@@ -41,11 +52,16 @@
 				type="Navigation"
 				press="_onPress">
 				<cells>
-					<ObjectIdentifier id="employeeName" title="{invoice>name}"/>
-					<Text text="{invoice>description}"/>
-					<Text text="{invoice>rating}"/>
-					<Text text="{invoice>categorie}"/>
-					<Text text="{invoice>studio}"/>
+					<ObjectIdentifier id="employeeName" title="{FirstName} {LastName}"/>
+					<Text text="{
+							path: '{StartTrip}',
+							type: 'sap.ui.model.type.DateTime',
+							formatOptions: {
+								style: 'medium'
+							}
+					}" />
+					<Text text="{TotalSum}"/>
+					<Text text="{TravelCountry}"/>
 				</cells>
 			</ColumnListItem>
 		</items>

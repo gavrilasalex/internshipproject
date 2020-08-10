@@ -1,3 +1,5 @@
+//CONTROLLER FOR THE DENIED FORM
+
 sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
@@ -11,6 +13,9 @@ sap.ui.define([
         onInit : function() {
         },
 
+        /*
+        * When you press the navigation button -> navTo previous page
+        */
         _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

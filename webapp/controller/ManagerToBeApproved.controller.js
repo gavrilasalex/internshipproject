@@ -1,3 +1,5 @@
+//CONTROLLER FOR THE TO BE APPROVED TABLE FROM MANAGER
+
 sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
@@ -11,13 +13,19 @@ sap.ui.define([
         onInit : function() {
 		},
 
+		/*
+        * When you press the table tile -> navTo detailToBeApproved page
+        */
 		_onPress: function (oEvent) {
 			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
 			oRouter.navTo("detailToBeApproved");
 		},
-		
+
+		/*
+        * When you press the navigation button -> navTo previous page/dashboardManager
+        */
         _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

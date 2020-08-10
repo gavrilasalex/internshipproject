@@ -1,3 +1,13 @@
+<!-- 
+	
+User Approved View
+
+Navigation Button -> _onNavBack
+Table: Employee, Date, Price, Location
+Items (type navigation) -> _onPress 
+
+-->
+
 <mvc:View
     controllerName="intern2020.controller.UserApproved"
     xmlns:mvc="sap.ui.core.mvc"

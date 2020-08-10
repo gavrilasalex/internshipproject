@@ -114,7 +114,7 @@
               "target": "managerToBeApproved"
             },
             {
-              "pattern": "detailApproved",
+              "pattern": "detailApproved/{employeeName}",
               "name": "detailApproved",
               "target": "detailApproved"
             },

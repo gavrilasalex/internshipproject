@@ -1,3 +1,14 @@
+<!-- 
+    
+Manager Dashboard View
+
+Sign out Button -> _onSignOutPress
+To Be Approved Tile: icon, number -> _onPressToBeApproved
+Approved Tile: icon, number -> _onPressApproved
+Denied Tile: icon, number -> _onPressDenied 
+
+-->
+
 <mvc:View
     controllerName="intern2020.controller.DashboardManager"
     xmlns:mvc="sap.ui.core.mvc"
