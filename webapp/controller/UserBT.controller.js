@@ -30,6 +30,13 @@ sap.ui.define([
         */
 		_onRouteMatched : function(oEvent) {
 
+            var oArgs = oEvent.getParameter("arguments");
+			var oView = this.getView();
+
+            oView.bindElement({
+				path : "/TripSet(EmailAddress='" + oArgs.employeeEmail + "')"
+            });
+
             var bActive = true;
             var oModel = this.getView().getModel("sUsername");
 
@@ -55,10 +62,13 @@ sap.ui.define([
         * When you press the table tile -> navTo detailApproved page
         */
 		_onPress: function (oEvent) {
+            
 			var oItem = oEvent.getSource();
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-
-			oRouter.navTo("detailDenied");
+			var oCtx = oItem.getBindingContext();
+			this.getRouter().navTo("detailDenied",{
+                employeeId : oCtx.getProperty("Id"),
+				employeeEmail : oCtx.getProperty("EmailAddress")
+			});
 		},
 		
 		/*

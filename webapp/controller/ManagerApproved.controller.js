@@ -5,12 +5,14 @@ sap.ui.define([
     'sap/m/MessageToast',
     "sap/ui/core/routing/History",
 	"sap/ui/core/UIComponent",
-], function (BaseController, MessageToast, History, UIComponent) {
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function (BaseController, MessageToast, History, UIComponent, Filter, FilterOperator) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerApproved", {
 
-        onInit : function() {
+        onInit : function(oEvent) {
 		},
 
 		/*
@@ -18,9 +20,11 @@ sap.ui.define([
         */
 		_onPress: function (oEvent) {
 			var oItem = oEvent.getSource();
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-
-			oRouter.navTo("detailApproved");
+			var oCtx = oItem.getBindingContext();
+			this.getRouter().navTo("detailApproved",{
+                employeeId : oCtx.getProperty("Id"),
+				employeeEmail : oCtx.getProperty("EmailAddress")
+			});
 		},
 		
 		/*

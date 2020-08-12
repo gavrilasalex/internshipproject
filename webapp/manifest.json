@@ -84,7 +84,7 @@
               "target": "dashboardManager"
             },
             {
-              "pattern": "userBT",
+              "pattern": "userBT/{employeeEmail}",
               "name": "userBT",
               "target": "userBT"
             },
@@ -104,17 +104,17 @@
               "target": "managerToBeApproved"
             },
             {
-              "pattern": "detailApproved",
+              "pattern": "detailApproved/{employeeId},{employeeEmail}",
               "name": "detailApproved",
               "target": "detailApproved"
             },
             {
-              "pattern": "detailToBeApproved",
+              "pattern": "detailToBeApproved/{employeeId},{employeeEmail}",
               "name": "detailToBeApproved",
               "target": "detailToBeApproved"
             },
             {
-              "pattern": "detailDenied",
+              "pattern": "detailDenied/{employeeId},{employeeEmail}",
               "name": "detailDenied",
               "target": "detailDenied"
             }
@@ -163,8 +163,7 @@
           },
           "detailDenied": {
             "viewName": "DetailDenied",
-            "viewId": "detailDenied",
-            "viewLevel": 1
+            "viewId": "detailDenied"
           }
         }
       },

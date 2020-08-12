@@ -75,22 +75,22 @@ Footer: Accept Button -> _onApprovedPress
 						<f:formElements>
 							<f:FormElement label="{i18n>formName}">
 								<f:fields>
-									<Input id="nameInput" type="Text" enabled="true" editable="false"/>
+									<Input id="nameInput" type="Text" enabled="true" editable="false" value="{LastName} {FirstName}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formEmail}">
 								<f:fields>
-									<Input id="emailInput" type="Email" enabled="true" editable="false"/>
+									<Input id="emailInput" type="Email" enabled="true" editable="false" value="{EmailAddress}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formSupervisor}">
 								<f:fields>
-									<Input id="supervisorInput" type="Text" enabled="true" editable="false"/>
+									<Input id="supervisorInput" type="Text" enabled="true" editable="false" value="{SupervisorName}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formPhoneNumber}">
 								<f:fields>
-									<Input id="phoneInput" type="Tel" enabled="true" editable="false"/>
+									<Input id="phoneInput" type="Tel" enabled="true" editable="false" value="{Phonenumber}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -132,22 +132,22 @@ Footer: Accept Button -> _onApprovedPress
 						<f:formElements>
 							<f:FormElement label="{i18n>formReason}">
 								<f:fields>
-									<Input id="reasonInput" type="Text" enabled="true" editable="false"/>
+									<Input id="reasonInput" type="Text" enabled="true" editable="false" value="{Reason}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formRequestor}">
 								<f:fields>
-									<Input id="requestorInput" type="Text" enabled="true" editable="false"/>
+									<Input id="requestorInput" type="Text" enabled="true" editable="false" value="{Requester}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formCountry}" >
 								<f:fields>
-									<Input id="countryInput" type="Text" enabled="true" editable="false"/>
+									<Input id="countryInput" type="Text" enabled="true" editable="false" value="{TravelCountry}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formCity}">
 								<f:fields>
-									<Input id="cityInput" type="Text" enabled="true" editable="false"/>
+									<Input id="cityInput" type="Text" enabled="true" editable="false" value="{TravelCity}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -189,22 +189,22 @@ Footer: Accept Button -> _onApprovedPress
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
-									<Input id="costsInput" type="Text" enabled="true" editable="false"/>
+									<Input id="costsInput" type="Text" enabled="true" editable="false" value="{TotalSum}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formStartBT}">
 								<f:fields>
-									<Input id="startInput" type="Text" enabled="true" editable="false"/>
+									<Input id="startInput" type="Text" enabled="true" editable="false" value="{StartTrip}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formEndBT}">
 								<f:fields>
-									<Input id="endInput" type="Text" enabled="true" editable="false"/>
+									<Input id="endInput" type="Text" enabled="true" editable="false" value="{EndTrip}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formAdvancePay}">
 								<f:fields>
-									<Select width="100%" id="payInput" enabled="true" editable="false">
+									<Select width="100%" id="payInput" enabled="true" editable="false" value="{AdvancePayment}">
 									<items>
 										<core:Item text=""/>
 										<core:Item text="Yes" key="yesPay"/>

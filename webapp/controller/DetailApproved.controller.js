@@ -11,6 +11,19 @@ sap.ui.define([
     return BaseController.extend("intern2020.controller.DetailApproved", {
 
         onInit : function() {
+
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("detailApproved").attachMatched(this._onRouteMatched, this);
+        },
+
+        _onRouteMatched : function(oEvent) {
+            
+            var oArgs = oEvent.getParameter("arguments");
+			var oView = this.getView();
+
+            oView.bindElement({
+				path : "/TripDetailsSet(Id='" + oArgs.employeeId + "',EmailAddress='" + oArgs.employeeEmail + "')",
+            });
         },
         
         /*

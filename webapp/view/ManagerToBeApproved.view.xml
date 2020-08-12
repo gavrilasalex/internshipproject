@@ -23,7 +23,10 @@ Items (type navigation) -> _onPress
 		navButtonPress="_onNavBack">
     <Table
         id="toBeApprovedManagerTable"
-		items="{path : '/TripSet'}"
+		items="{
+            path: '/TripSet',
+			filters: [{path: 'Status', operator: 'EQ', value1: 'TOBEAPPROVED'}]
+        }"
         headerText="{i18n>businessTrips}"
         class="sapUiResponsiveMargin"
         width="auto">

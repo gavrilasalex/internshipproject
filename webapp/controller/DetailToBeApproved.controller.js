@@ -12,6 +12,18 @@ sap.ui.define([
     return BaseController.extend("intern2020.controller.DetailToBeApproved", {
 
         onInit : function() {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("detailToBeApproved").attachMatched(this._onRouteMatched, this);
+		},
+		
+		_onRouteMatched : function(oEvent) {
+            
+            var oArgs = oEvent.getParameter("arguments");
+			var oView = this.getView();
+
+            oView.bindElement({
+				path : "/TripDetailsSet(Id='" + oArgs.employeeId + "',EmailAddress='" + oArgs.employeeEmail + "')",
+            });
         },
 		
 		//Function for the Reject Button in To be approved form
@@ -55,6 +67,7 @@ sap.ui.define([
 		*On press: the dialog closes and a rejection message appears on screen.
 		*/
 		_onApprovedPress : function (){
+			 
 			MessageToast.show("Business trip approved!", {
 				duration: 10000
 			});

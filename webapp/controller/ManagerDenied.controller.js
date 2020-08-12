@@ -19,9 +19,11 @@ sap.ui.define([
         */
         _onPress: function (oEvent) {
 			var oItem = oEvent.getSource();
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-
-			oRouter.navTo("detailDenied");
+			var oCtx = oItem.getBindingContext();
+			this.getRouter().navTo("detailDenied",{
+                employeeId : oCtx.getProperty("Id"),
+				employeeEmail : oCtx.getProperty("EmailAddress")
+			});
 		},
 
 		/*
