@@ -9,27 +9,35 @@ Items (type navigation) -> _onPress
 -->
 
 <mvc:View
-    controllerName="intern2020.controller.UserApproved"
+    controllerName="intern2020.controller.UserBT"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout">
 
-<Page   title="{i18n>userApproved}" 
+<Page   title="My {i18n>businessTrips}" 
         showHeader="true" 
         class="w3-backGround" 
-        enableScrolling="false" 
-        showNavButton="true"
-		navButtonPress="_onNavBack">
+        enableScrolling="false">
+	
+	<headerContent>
+			<Button 
+                text="SignOut" 
+				class="headerColor"
+                press="_onSignOutPress" 
+                icon="sap-icon://log">
+            </Button>
+	</headerContent>
+
     <Table
-        id="approvedUserTable"
-        headerText="{i18n>businessTrips}"
+        id="UserTable"
+        headerText="My Requests"
         class="sapUiResponsiveMargin"
         width="auto">
 
  		<columns>
 			<Column 
-				width="30em">
+				width="20em">
 				<Text text="{i18n>employee}"/>
 			</Column>
 			<Column
@@ -43,6 +51,11 @@ Items (type navigation) -> _onPress
 			<Column
 				demandPopin="false">
 				<Text text="{i18n>location}"/>
+			</Column>
+			<Column
+				width="20em"
+				demandPopin="false">
+				<Text text="{i18n>reason}"/>
 			</Column>
 		</columns>
 

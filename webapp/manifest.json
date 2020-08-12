@@ -79,24 +79,14 @@
                 "target": "login"
             },
             {
-              "pattern": "dashboard",
-              "name": "dashboard",
-              "target": "dashboard"
-            },
-            {
               "pattern": "dashboardManager",
               "name": "dashboardManager",
               "target": "dashboardManager"
             },
             {
-              "pattern": "userApproved",
-              "name": "userApproved",
-              "target": "userApproved"
-            },
-            {
-              "pattern": "userDenied",
-              "name": "userDenied",
-              "target": "userDenied"
+              "pattern": "userBT",
+              "name": "userBT",
+              "target": "userBT"
             },
             {
               "pattern": "managerDenied",
@@ -114,7 +104,7 @@
               "target": "managerToBeApproved"
             },
             {
-              "pattern": "detailApproved/{employeeName}",
+              "pattern": "detailApproved",
               "name": "detailApproved",
               "target": "detailApproved"
             },
@@ -136,24 +126,14 @@
                 "viewId": "login",
                 "viewLevel": 1
           }, 
-          "dashboard": {
-            "viewName": "Dashboard",
-            "viewId": "dashboard",
-            "viewLevel": 1
-          },
           "dashboardManager": {
             "viewName": "DashboardManager",
             "viewId": "dashboardManager",
             "viewLevel": 1
           },
-          "userApproved": {
-            "viewName": "UserApproved",
-            "viewId": "userApproved",
-            "viewLevel": 1
-          },
-          "userDenied": {
-            "viewName": "UserDenied",
-            "viewId": "userDenied",
+          "userBT": {
+            "viewName": "UserBT",
+            "viewId": "userBT",
             "viewLevel": 1
           },
           "managerApproved": {

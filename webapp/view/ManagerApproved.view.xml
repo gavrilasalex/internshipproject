@@ -54,12 +54,12 @@ Items (type navigation) -> _onPress
 				<cells>
 					<ObjectIdentifier id="employeeName" title="{FirstName} {LastName}"/>
 					<Text text="{
-							path: '{StartTrip}',
-							type: 'sap.ui.model.type.DateTime',
-							formatOptions: {
-								style: 'medium'
-							}
-					}" />
+   								path: 'TripSet>/StartTrip',
+								type: 'sap.ui.model.type.DateTime',
+								formatOptions: { 
+									style: 'short' 
+									} 
+								}"/>
 					<Text text="{TotalSum}"/>
 					<Text text="{TravelCountry}"/>
 				</cells>

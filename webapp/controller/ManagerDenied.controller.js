@@ -35,7 +35,7 @@ sap.ui.define([
 				window.history.go(-1);
 			} else {
 				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("dashboard", {}, true);
+				oRouter.navTo("dashboardManager", {}, true);
 			}
 		}
     });

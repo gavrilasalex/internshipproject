@@ -58,7 +58,7 @@ sap.ui.define([
                }
                else if(sPosition == "USER"){
                      var oRouter = sap.ui.core.UIComponent.getRouterFor(page);
-                     oRouter.navTo("dashboard");
+                     oRouter.navTo("userBT");
                }
                else if(sPosition == ""){
                      MessageToast.show("Email or password is incorrect. Try again.", {

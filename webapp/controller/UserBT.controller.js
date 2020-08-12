@@ -1,19 +1,20 @@
-//CONTROLLER FOR USER DASHBOARD
+//CONTROLLER FOR THE APPROVED TABLE FROM USER
 
 sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
-], function (BaseController, MessageToast) {
+    "sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+], function (BaseController, MessageToast, History, UIComponent) {
    "use strict";
 
-    return BaseController.extend("intern2020.controller.Dashboard", {
+    return BaseController.extend("intern2020.controller.UserBT", {
 
-        // Recives the Username from the login page
         onInit : function() {
 
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("dashboard").attachMatched(this._onRouteMatched, this)
-        },
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("userBT").attachMatched(this._onRouteMatched, this)
+		},
 
         /*
         * Matches the route for Username 
@@ -27,7 +28,7 @@ sap.ui.define([
         * ELSE IF bActive is true -> Welcome message shows up on the screen, customized with the username
         * 
         */
-        _onRouteMatched : function(oEvent) {
+		_onRouteMatched : function(oEvent) {
 
             var bActive = true;
             var oModel = this.getView().getModel("sUsername");
@@ -50,40 +51,30 @@ sap.ui.define([
             }
         },
 
-        /*
-        * When you press the Approved Tile -> navTo userApproved page
+		/*
+        * When you press the table tile -> navTo detailApproved page
         */
-        _onPressApproved : function (oEvent) {
-
+		_onPress: function (oEvent) {
 			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("userApproved");
-        },
-        
-        /*
-        * When you press the Denied Tile -> navTo userDenied page
-        */
-        _onPressDenied : function (oEvent) {
 
-			var oItem = oEvent.getSource();
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("userDenied");
+			oRouter.navTo("detailDenied");
 		},
-
-        /*
+		
+		/*
         * When you press the sign out button -> navTo login page
         *
         * Set /Username to "" -> bActive is set to /false/
         */
-        _onSignOutPress : function(oEvent) {
+	   _onSignOutPress : function(oEvent) {
 
-            var oModel = this.getView().getModel("sUsername");
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			var oModel = this.getView().getModel("sUsername");
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
-            if(!(oModel === undefined)){
-                oModel.setProperty("/Username", "");
-            }
-            oRouter.navTo("login");
-        }
+			if(!(oModel === undefined)){
+				oModel.setProperty("/Username", "");
+			}
+			oRouter.navTo("login");
+		}
     });
 });
