@@ -40,6 +40,16 @@
           "sap.m": {}
         }
       },
+      "config": {
+        "sample": {
+          "stretch": true,
+          "files": [
+            "intern2020.view.DetailToBeApproved.view.xml",
+            "intern2020.controller.DetailToBeApproved.controller.js",
+            "manifest.json"
+          ]
+        }
+      },
       "models": {
         "i18n": {
           "type": "sap.ui.model.resource.ResourceModel",
@@ -56,7 +66,9 @@
               "metadataUrlParams": {
                 "sap-documentation": "heading"
               },
-              "defaultBindingMode": "TwoWay"
+              "defaultBindingMode": "TwoWay",
+              "json": true,
+              "useBatch": false
             }
           }
       },

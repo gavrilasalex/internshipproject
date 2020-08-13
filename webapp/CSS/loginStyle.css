@@ -7,9 +7,25 @@
     position: relative;
 }
 
-.headerColor{
-    background-color: #2f3c48;
+html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
+    background-color: #eff4f9;
+    border-top: 1px solid #475b6d;
 }
+
+.sapContrast span.sapMBtnInner.sapMBtnAccept {
+    background-image: none;
+    background-color: #359435;
+    border-color: #eff4f9;
+    color: #eff4f9;
+}
+
+.sapContrast span.sapMBtnInner.sapMBtnReject {
+    background-image: none;
+    background-color: rgb(175, 43, 43);
+    border-color: #eff4f9;
+    color: #eff4f9;
+}
+
 
 .sapMMessageToastDanger {
     color: #D8000C !important;

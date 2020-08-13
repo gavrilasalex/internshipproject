@@ -27,17 +27,15 @@ Denied Tile: icon, number -> _onPressDenied
 			
 	<layout:HorizontalLayout allowWrapping="true">
 		<GenericTile
-                class="sapUiSmallMarginBegin sapUiTinyMarginTop"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
                 header="{i18n>toBeApproved}"
                 press="_onPressToBeApproved">
                 <tileContent>
                     <TileContent>
                         <content>
-                            <NumericContent
-                                    value="{
-                                        path: 'reviews>/UserReviews',
-                                        formatter: '.getEntityCount'
-                                     }"	
+                            <NumericContent 
+                                        id="numericValueTBA"
+                                        value=""
 									 	icon="sap-icon://pending" 
                                         indicator="None"
                                         valueColor="Neutral" />
@@ -47,40 +45,36 @@ Denied Tile: icon, number -> _onPressDenied
         </GenericTile>
 
         <GenericTile
-                class="sapUiLargeMarginBegin sapUiTinyMarginTop"
+                class="sapUiLargeMarginBegin sapUiSmallMarginTop"
                 header="{i18n>isApproved}"
                 press="_onPressApproved">
                 <tileContent>
                     <TileContent>
                         <content>
                             <NumericContent
-                                     value="{
-                                         path: 'reviews>/UserReviews',
-                                         formatter: '.getEntityCount'
-                                     }"	
-									 	 icon="sap-icon://accept" 
-                                         indicator="None"
-                                         valueColor="Good" />
+                                        id="numericValueA"
+                                        value=""
+									 	icon="sap-icon://accept" 
+                                        indicator="None"
+                                        valueColor="Good" />
                         </content>
                     </TileContent>
                 </tileContent>
         </GenericTile>
 
 		<GenericTile
-                class="sapUiLargeMarginBegin sapUiTinyMarginTop"
+                class="sapUiLargeMarginBegin sapUiSmallMarginTop"
                 header="{i18n>isDenied}"
                 press="_onPressDenied">
                 <tileContent>
                     <TileContent>
                         <content>
                             <NumericContent
-                                    value="{
-                                         path: 'reviews>/UserReviews',
-                                         formatter: '.getEntityCount'
-                                     }"	
-									 	 icon="sap-icon://cancel" 
-                                         indicator="None"
-                                         valueColor="Error" />
+                                        id="numericValueD"
+                                        value=""
+									 	icon="sap-icon://decline" 
+                                        indicator="None"
+                                        valueColor="Error" />
                         </content>
                     </TileContent>
                 </tileContent>

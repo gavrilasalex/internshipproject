@@ -44,7 +44,7 @@ Content 4: Reason For Rejection
 	<content>
 		<VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar"
-					editable="true"
+					editable="false"
 					ariaLabelledBy="Title1">
 
 				<f:toolbar>
@@ -56,41 +56,41 @@ Content 4: Reason For Rejection
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="4"
+						labelSpanXL="3"
 						labelSpanL="3"
-						labelSpanM="4"
+						labelSpanM="3"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="0"
+						emptySpanXL="4"
 						emptySpanL="4"
-						emptySpanM="0"
+						emptySpanM="4"
 						emptySpanS="0"
-						columnsXL="2"
+						columnsXL="1"
 						columnsL="1"
 						columnsM="1"
-						singleContainerFullSize="false" />
+						singleContainerFullSize="false"   />
 				</f:layout>
 				<f:formContainers>
 					<f:FormContainer ariaLabelledBy="Title2" >
 						<f:formElements>
 							<f:FormElement label="{i18n>formName}">
 								<f:fields>
-									<Input id="nameInput" type="Text" enabled="true" editable="false" value="{LastName} {FirstName}"/>
+									<Text id="nameInput" text="{LastName} {FirstName}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formEmail}">
 								<f:fields>
-									<Input id="emailInput" type="Email" enabled="true" editable="false" value="{EmailAddress}"/>
+									<Text id="emailInput" text="{EmailAddress}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formSupervisor}">
 								<f:fields>
-									<Input id="supervisorInput" type="Text" enabled="true" editable="false" value="{SupervisorName}"/>
+									<Text id="supervisorInput" text="{SupervisorName}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formPhoneNumber}">
 								<f:fields>
-									<Input id="phoneInput" type="Tel" enabled="true" editable="false" value="{Phonenumber}"/>
+									<Text id="phoneInput" text="{Phonenumber}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -101,7 +101,7 @@ Content 4: Reason For Rejection
 
 		<VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar2"
-					editable="true"
+					editable="false"
 					ariaLabelledBy="Title3">
 
 				<f:toolbar>
@@ -113,16 +113,16 @@ Content 4: Reason For Rejection
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="4"
+						labelSpanXL="3"
 						labelSpanL="3"
-						labelSpanM="4"
+						labelSpanM="3"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="0"
+						emptySpanXL="4"
 						emptySpanL="4"
-						emptySpanM="0"
+						emptySpanM="4"
 						emptySpanS="0"
-						columnsXL="2"
+						columnsXL="1"
 						columnsL="1"
 						columnsM="1"
 						singleContainerFullSize="false" />
@@ -132,22 +132,22 @@ Content 4: Reason For Rejection
 						<f:formElements>
 							<f:FormElement label="{i18n>formReason}">
 								<f:fields>
-									<Input id="reasonInput" type="Text" enabled="true" editable="false" value="{Reason}"/>
+									<Text id="reasonInput" text="{Reason}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formRequestor}">
 								<f:fields>
-									<Input id="requestorInput" type="Text" enabled="true" editable="false" value="{Requester}"/>
+									<Text id="requestorInput" text="{Requester}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formCountry}" >
 								<f:fields>
-									<Input id="countryInput" type="Text" enabled="true" editable="false" value="{TravelCountry}"/>
+									<Text id="countryInput" text="{TravelCountry}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formCity}">
 								<f:fields>
-									<Input id="cityInput" type="Text" enabled="true" editable="false" value="{TravelCity}"/>
+									<Text id="cityInput" text="{TravelCity}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -158,7 +158,7 @@ Content 4: Reason For Rejection
 
 		<VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar3"
-					editable="true"
+					editable="false"
 					ariaLabelledBy="Title5">
 
 				<f:toolbar>
@@ -170,16 +170,16 @@ Content 4: Reason For Rejection
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="4"
+						labelSpanXL="3"
 						labelSpanL="3"
-						labelSpanM="4"
+						labelSpanM="3"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="0"
+						emptySpanXL="4"
 						emptySpanL="4"
-						emptySpanM="0"
+						emptySpanM="4"
 						emptySpanS="0"
-						columnsXL="2"
+						columnsXL="1"
 						columnsL="1"
 						columnsM="1"
 						singleContainerFullSize="false" />
@@ -189,28 +189,34 @@ Content 4: Reason For Rejection
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
-									<Input id="costsInput" type="Text" enabled="true" editable="false" value="{TotalSum}"/>
+									<Text id="costsInput" text="{TotalSum} EUR"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formStartBT}">
 								<f:fields>
-									<Input id="startInput" type="Text" enabled="true" editable="false" value="{StartTrip}"/>
+									<Text id="startInput" text="{
+   																path: 'StartTrip',
+																type: 'sap.ui.model.type.DateTime',
+																formatOptions: { 
+																			style: 'long' 
+																} 
+															}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formEndBT}">
 								<f:fields>
-									<Input id="endInput" type="Text" enabled="true" editable="false" value="{EndTrip}"/>
+									<Text id="endInput" text="{
+   																path: 'EndTrip',
+																type: 'sap.ui.model.type.DateTime',
+																formatOptions: { 
+																			style: 'long' 
+																} 
+															}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formAdvancePay}">
 								<f:fields>
-									<Select width="100%" id="payInput" enabled="true" editable="false" value="{AdvancePayment}">
-									<items>
-										<core:Item text=""/>
-										<core:Item text="Yes" key="yesPay"/>
-										<core:Item text="No" key="noPay"/>
-									</items>
-									</Select>
+									<Text id="payInput"  text="{AdvancePayment}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -222,7 +228,7 @@ Content 4: Reason For Rejection
 
 		<VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar4"
-					editable="true"
+					editable="false"
 					ariaLabelledBy="Title7">
 
 				<f:toolbar>
@@ -234,26 +240,26 @@ Content 4: Reason For Rejection
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="4"
+						labelSpanXL="3"
 						labelSpanL="3"
-						labelSpanM="4"
+						labelSpanM="3"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="0"
+						emptySpanXL="4"
 						emptySpanL="4"
-						emptySpanM="0"
+						emptySpanM="4"
 						emptySpanS="0"
-						columnsXL="2"
+						columnsXL="1"
 						columnsL="1"
 						columnsM="1"
-						singleContainerFullSize="false" />
+						singleContainerFullSize="false"/>
 				</f:layout>
 				<f:formContainers>
 					<f:FormContainer ariaLabelledBy="Title8">
 						<f:formElements>
 							<f:FormElement label="{i18n>formReasonRejection}">
 								<f:fields>
-									<Input id="denialInput" type="Text" enabled="true" editable="false" value="{Observations}"/>
+									<Text id="denialInput" text="{Observations}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>

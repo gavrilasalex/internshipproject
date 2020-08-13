@@ -28,7 +28,7 @@ sap.ui.define([
 
          var oView = this.getView();
          var oModel = oView.getModel();
-         var page = this;
+         var that = this;
 
          var sEmail = oView.byId("emailInput").getValue();
          var sPassword = oView.byId("passwordInput").getValue();
@@ -53,12 +53,12 @@ sap.ui.define([
                var sPosition = myData.Fare.UserPosition;
 
                if(sPosition == "MANAGER"){
-                     var oRouter = sap.ui.core.UIComponent.getRouterFor(page);
+                     var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                      oRouter.navTo("dashboardManager");
                }
                else if(sPosition == "USER"){
                   
-                  page.getRouter().navTo("userBT",{
+                  that.getRouter().navTo("userBT",{
                      employeeEmail : sEmail
                   });
                }

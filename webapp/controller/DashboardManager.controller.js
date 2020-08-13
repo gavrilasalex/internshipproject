@@ -3,7 +3,8 @@
 sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
-], function (BaseController, MessageToast) {
+    "sap/ui/model/Filter",
+], function (BaseController, MessageToast, Filter) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.DashboardManager", {
@@ -47,6 +48,62 @@ sap.ui.define([
                 });
                 $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
             }
+
+            this.getTileValue();
+        },
+
+        getTileValue: function () {
+            var oTileValueTBA = this.getView().byId("numericValueTBA");
+            var oTileValueA = this.getView().byId("numericValueA");
+            var oTileValueD = this.getView().byId("numericValueD");
+            var oFilterTBA,oFilterA,oFilterD;
+
+            oFilterTBA = new Filter({
+                path: 'Status',
+                operator: 'EQ',
+                value1: 'IN PROGRESS'
+            });
+
+            oFilterA = new Filter({
+                path: 'Status',
+                operator: 'EQ',
+                value1: 'APPROVED'
+            });
+
+            oFilterD = new Filter({
+                path: 'Status',
+                operator: 'EQ',
+                value1: 'DENIED'
+            });
+
+            this.getView().getModel().read("/TripSet/$count", {
+                filters: [oFilterTBA],
+
+                success: function(oData, oResponse){
+                    var count = Number(oResponse.body);
+                    oTileValueTBA.setValue(count);   
+                }
+            });
+
+            this.getView().getModel().read("/TripSet/$count", {
+                filters: [oFilterA],
+
+                success: function(oData, oResponse){
+                    var count2 = Number(oResponse.body);
+                    oTileValueA.setValue(count2);   
+                }
+            });
+
+            this.getView().getModel().read("/TripSet/$count", {
+                filters: [oFilterD],
+
+                success: function(oData, oResponse){
+                    var count3 = Number(oResponse.body);
+                    oTileValueD.setValue(count3);   
+                }
+            });
+
+
         },
 
         /*

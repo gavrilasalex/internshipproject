@@ -9,6 +9,7 @@ Submit Button -> _onSubmitDialog
 -->
 
 <core:FragmentDefinition
+   controllerName="intern2020.controller.DetailToBeApproved"
    xmlns="sap.m"
    xmlns:core="sap.ui.core" >
    <Dialog
@@ -21,7 +22,7 @@ Submit Button -> _onSubmitDialog
                 size="3rem"
                 class="sapUiSmallMargin"/>
             
-            <Input placeholder="Enter a reason..."/> 
+            <Input id="motiveReject" placeholder="Enter a reason..."/> 
          </VBox>
       </content>
 
