@@ -4,13 +4,16 @@ sap.ui.define([
     "intern2020/controller/BaseController",
     'sap/m/MessageToast',
     "sap/ui/core/routing/History",
-	"sap/ui/core/UIComponent",
-], function (BaseController, MessageToast, History, UIComponent) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/FilterType"
+], function (BaseController, MessageToast, History, UIComponent, Filter, FilterOperator, FilterType) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.UserBT", {
 
-        onInit : function() {
+        onInit : function(oEvent) {
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("userBT").attachMatched(this._onRouteMatched, this)
@@ -29,13 +32,6 @@ sap.ui.define([
         * 
         */
 		_onRouteMatched : function(oEvent) {
-
-            var oArgs = oEvent.getParameter("arguments");
-			var oView = this.getView();
-
-            oView.bindElement({
-				path : "/TripSet(EmailAddress='" + oArgs.employeeEmail + "')"
-            });
 
             var bActive = true;
             var oModel = this.getView().getModel("sUsername");
@@ -56,9 +52,42 @@ sap.ui.define([
                 });
                 $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
             }
+            
+            var oArgs = oEvent.getParameter("arguments");
+            this._onFilterUser(oArgs.employeeEmail);
         },
 
-		/*
+        _onFilterUser : function (email) {
+
+			var aFilter = [];
+			aFilter.push(new Filter("EmailAddress", FilterOperator.EQ, email));
+
+			// filter binding
+			var oList = this.getView().byId("userTable");
+			var oBinding = oList.getBinding("items");
+			oBinding.filter(aFilter);
+        },
+        
+        _onFilterSelect : function (oEvent) {
+
+            var oModel = this.getView().getModel("sUsername");
+            var sEmail = oModel.getProperty("/Username");
+            // var oArgs = oEvent.getParameter("arguments");
+            // var sEmail = oArgs.employeeEmail;
+            var sStatus = oEvent.getParameter("query");
+
+            var oList = this.getView().byId("userTable");
+            var oBinding = oList.getBinding("items");
+
+            if(sStatus){
+                    var aFilter = [
+                        new Filter("Status", FilterOperator.EQ, sStatus.toUpperCase())];
+            }
+
+            oBinding.filter(aFilter, FilterType.Application);
+        },
+
+        /*
         * When you press the table tile -> navTo detailApproved page
         */
 		_onPress: function (oEvent) {
@@ -69,8 +98,8 @@ sap.ui.define([
                 employeeId : oCtx.getProperty("Id"),
 				employeeEmail : oCtx.getProperty("EmailAddress")
 			});
-		},
-		
+        },
+        
 		/*
         * When you press the sign out button -> navTo login page
         *

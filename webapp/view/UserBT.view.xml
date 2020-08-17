@@ -29,10 +29,21 @@ Items (type navigation) -> _onPress
 	</headerContent>
 
     <Table
-        id="UserTable"
-        headerText="My Requests"
+        id="userTable"
         class="sapUiResponsiveMargin"
-        width="auto">
+        width="auto" 
+		items="{path: '/TripSet'}">
+
+		<headerToolbar>
+         <Toolbar>
+		 	<Title text="My Requests"/>
+            <ToolbarSpacer/>
+            <Toolbar>
+            	<ToolbarSpacer/>
+            	<SearchField width="100%" search="_onFilterSelect" selectOnFocus="false"/>
+         </Toolbar>
+         </Toolbar>
+      	</headerToolbar>
 
  		<columns>
 			<Column 
@@ -60,6 +71,7 @@ Items (type navigation) -> _onPress
 
 		<items>
 			<ColumnListItem
+				id="listUser"
 				type="Navigation"
 				press="_onPress">
 				<cells>

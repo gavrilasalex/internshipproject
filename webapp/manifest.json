@@ -129,6 +129,11 @@
               "pattern": "detailDenied/{employeeId},{employeeEmail}",
               "name": "detailDenied",
               "target": "detailDenied"
+            },
+            {
+              "pattern": "splitAppDemo",
+              "name": "splitAppDemo",
+              "target": "splitAppDemo"
             }
             
         ],
@@ -176,6 +181,10 @@
           "detailDenied": {
             "viewName": "DetailDenied",
             "viewId": "detailDenied"
+          },
+          "splitAppDemo":{
+            "viewName": "SplitAppDemo",
+            "viewId": "splitAppDemo"
           }
         }
       },
