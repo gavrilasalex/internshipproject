@@ -12,6 +12,8 @@ sap.ui.define([
 
         onInit : function() {
 
+            this.getView().setBusy(true);
+            
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("detailDenied").attachMatched(this._onRouteMatched, this);
 		},
@@ -36,6 +38,8 @@ sap.ui.define([
             oView.bindElement({
 				path : "/TripDetailsSet(Id='" + oArgs.employeeId + "',EmailAddress='" + oArgs.employeeEmail + "')",
             });
+
+            this.getView().setBusy(false);
         },
 
         /*

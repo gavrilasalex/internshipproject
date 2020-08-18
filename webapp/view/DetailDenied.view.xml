@@ -47,31 +47,24 @@ Content 4: Reason For Rejection
 					editable="false"
 					ariaLabelledBy="Title1">
 
-				<f:toolbar>
-					<Toolbar id="TB1">
-						<Title id="Title1" text="{i18n>generalInfo}"/>
-						<ToolbarSpacer />
-					</Toolbar>
-				</f:toolbar>
-
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="3"
-						labelSpanL="3"
-						labelSpanM="3"
+						labelSpanXL="4"
+						labelSpanL="4"
+						labelSpanM="12"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="4"
-						emptySpanL="4"
-						emptySpanM="4"
+						emptySpanXL="0"
+						emptySpanL="0"
+						emptySpanM="0"
 						emptySpanS="0"
-						columnsXL="1"
-						columnsL="1"
+						columnsXL="2"
+						columnsL="2"
 						columnsM="1"
 						singleContainerFullSize="false"   />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title2" >
+					<f:FormContainer title="{i18n>generalInfo}" >
 						<f:formElements>
 							<f:FormElement label="{i18n>formName}">
 								<f:fields>
@@ -94,12 +87,37 @@ Content 4: Reason For Rejection
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
-					</f:FormContainer>				
+					</f:FormContainer>	
+
+					<f:FormContainer title="{i18n>infoCountry}">
+						<f:formElements>
+							<f:FormElement label="{i18n>formReason}">
+								<f:fields>
+									<Text id="reasonInput" text="{Reason}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>formRequestor}">
+								<f:fields>
+									<Text id="requestorInput" text="{Requester}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>formCountry}" >
+								<f:fields>
+									<Text id="countryInput" text="{TravelCountry}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>formCity}">
+								<f:fields>
+									<Text id="cityInput" text="{TravelCity}"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
 				</f:formContainers>
 			</f:Form>
 		</VBox>
 
-		<VBox class="sapUiSmallMargin">
+		<!-- <VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar2"
 					editable="false"
 					ariaLabelledBy="Title3">
@@ -154,7 +172,7 @@ Content 4: Reason For Rejection
 					</f:FormContainer>				
 				</f:formContainers>
 			</f:Form>
-		</VBox>
+		</VBox> -->
 
 		<VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar3"
@@ -162,30 +180,29 @@ Content 4: Reason For Rejection
 					ariaLabelledBy="Title5">
 
 				<f:toolbar>
-					<Toolbar id="TB3">
-						<Title id="Title5" text="{i18n>tripRequest}"/>
+					<Toolbar id="TB2">
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="3"
-						labelSpanL="3"
-						labelSpanM="3"
+						labelSpanXL="4"
+						labelSpanL="4"
+						labelSpanM="12"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="4"
-						emptySpanL="4"
-						emptySpanM="4"
+						emptySpanXL="0"
+						emptySpanL="0"
+						emptySpanM="0"
 						emptySpanS="0"
-						columnsXL="1"
-						columnsL="1"
+						columnsXL="2"
+						columnsL="2"
 						columnsM="1"
 						singleContainerFullSize="false" />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title6">
+					<f:FormContainer title="{i18n>tripRequest}">
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
@@ -196,7 +213,7 @@ Content 4: Reason For Rejection
 								<f:fields>
 									<Text id="startInput" text="{
    																path: 'StartTrip',
-																type: 'sap.ui.model.type.DateTime',
+																type: 'sap.ui.model.type.Date',
 																formatOptions: { 
 																			style: 'long' 
 																} 
@@ -207,7 +224,7 @@ Content 4: Reason For Rejection
 								<f:fields>
 									<Text id="endInput" text="{
    																path: 'EndTrip',
-																type: 'sap.ui.model.type.DateTime',
+																type: 'sap.ui.model.type.Date',
 																formatOptions: { 
 																			style: 'long' 
 																} 
@@ -220,23 +237,26 @@ Content 4: Reason For Rejection
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
+					</f:FormContainer>
+
+					<f:FormContainer title="{i18n>reason}">
+						<f:formElements>
+							<f:FormElement label="{i18n>formReasonRejection}">
+								<f:fields>
+									<Text id="denialInput" text="{Observations}"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
 					</f:FormContainer>				
 				</f:formContainers>
 			</f:Form>
 		</VBox>
 
 
-		<VBox class="sapUiSmallMargin">
+		<!-- <VBox class="sapUiSmallMargin">
 			<f:Form id="FormToolbar4"
 					editable="false"
 					ariaLabelledBy="Title7">
-
-				<f:toolbar>
-					<Toolbar id="TB4">
-						<Title id="Title7" text="{i18n>reasonForRejection}"/>
-						<ToolbarSpacer />
-					</Toolbar>
-				</f:toolbar>
 
 				<f:layout>
 					<f:ResponsiveGridLayout
@@ -255,7 +275,7 @@ Content 4: Reason For Rejection
 						singleContainerFullSize="false"/>
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title8">
+					<f:FormContainer title="{i18n>reason}">
 						<f:formElements>
 							<f:FormElement label="{i18n>formReasonRejection}">
 								<f:fields>
@@ -266,7 +286,7 @@ Content 4: Reason For Rejection
 					</f:FormContainer>				
 				</f:formContainers>
 			</f:Form>
-		</VBox>
+		</VBox> -->
 	</content>
 </Page>
 </mvc:View>

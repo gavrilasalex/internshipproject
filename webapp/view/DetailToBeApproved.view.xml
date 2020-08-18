@@ -197,7 +197,7 @@ Footer: Accept Button -> _onApprovedPress
 								<f:fields>
 									<Text id="startInput" text="{
    																path: 'StartTrip',
-																type: 'sap.ui.model.type.DateTime',
+																type: 'sap.ui.model.type.Date',
 																formatOptions: { 
 																			style: 'long' 
 																} 
@@ -208,7 +208,7 @@ Footer: Accept Button -> _onApprovedPress
 								<f:fields>
 									<Text id="endInput" text="{
    																path: 'EndTrip',
-																type: 'sap.ui.model.type.DateTime',
+																type: 'sap.ui.model.type.Date',
 																formatOptions: { 
 																			style: 'long' 
 																} 

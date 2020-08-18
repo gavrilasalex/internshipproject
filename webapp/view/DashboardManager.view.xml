@@ -19,7 +19,6 @@ Denied Tile: icon, number -> _onPressDenied
 <Page title="{i18n>managerDashboard}" showHeader="true" class="w3-backGround" enableScrolling="false">
 	<headerContent>
 			<Button 
-                text="SignOut" 
                 press="_onSignOutPress" 
                 icon="sap-icon://log">
             </Button>

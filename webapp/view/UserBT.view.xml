@@ -9,11 +9,13 @@ Items (type navigation) -> _onPress
 -->
 
 <mvc:View
-    controllerName="intern2020.controller.UserBT"
-    xmlns:mvc="sap.ui.core.mvc"
+	height="100%"
+	controllerName="intern2020.controller.UserBT"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout" 	
 	xmlns:core="sap.ui.core"
-	xmlns="sap.m"
-	xmlns:layout="sap.ui.layout">
+	xmlns="sap.m">
 
 <Page   title="My {i18n>businessTrips}" 
         showHeader="true" 
@@ -22,7 +24,7 @@ Items (type navigation) -> _onPress
 	
 	<headerContent>
 			<Button 
-                text="SignOut" 
+                ariaLabelledBy="Sign out" 
                 press="_onSignOutPress" 
                 icon="sap-icon://log">
             </Button>
@@ -37,11 +39,15 @@ Items (type navigation) -> _onPress
 		<headerToolbar>
          <Toolbar>
 		 	<Title text="My Requests"/>
+			<NumericContent	id="numericValue"
+                            value=""/>
             <ToolbarSpacer/>
-            <Toolbar>
-            	<ToolbarSpacer/>
-            	<SearchField width="100%" search="_onFilterSelect" selectOnFocus="false"/>
-         </Toolbar>
+			<Text text="Business Trip Status: "/>
+			<Select autoAdjustWidth="false" width="15em" forceSelection="false" change="_onFilterSelect">
+				<core:Item key="IN PROGRESS" text="In progress" />
+				<core:Item key="APPROVED" text="Approved" />
+				<core:Item key="DENIED" text="Denied" />
+			</Select>
          </Toolbar>
       	</headerToolbar>
 
@@ -63,8 +69,8 @@ Items (type navigation) -> _onPress
 				<Text text="{i18n>location}"/>
 			</Column>
 			<Column
-				width="20em"
-				demandPopin="false">
+				demandPopin="false"
+				width="20em">
 				<Text text="{i18n>reason}"/>
 			</Column>
 		</columns>

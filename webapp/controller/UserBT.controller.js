@@ -15,6 +15,7 @@ sap.ui.define([
 
         onInit : function(oEvent) {
 
+            this.getView().setBusy(true);
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("userBT").attachMatched(this._onRouteMatched, this)
 		},
@@ -53,6 +54,7 @@ sap.ui.define([
                 $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
             }
             
+            this.getView().setBusy(false);
             var oArgs = oEvent.getParameter("arguments");
             this._onFilterUser(oArgs.employeeEmail);
         },
@@ -60,30 +62,33 @@ sap.ui.define([
         _onFilterUser : function (email) {
 
 			var aFilter = [];
-			aFilter.push(new Filter("EmailAddress", FilterOperator.EQ, email));
+            aFilter.push(new Filter("EmailAddress", FilterOperator.EQ, email));
+            var oTileValueTBA = this.getView().byId("numericValue");
 
-			// filter binding
 			var oList = this.getView().byId("userTable");
 			var oBinding = oList.getBinding("items");
-			oBinding.filter(aFilter);
+            oBinding.filter(aFilter);
+            
+            this.getView().getModel().read("/TripSet/$count", {
+                filters: [aFilter],
+
+                success: function(oData, oResponse){
+                    var count = Number(oResponse.body);
+                    oTileValueTBA.setValue(count);   
+                }
+            });
         },
         
         _onFilterSelect : function (oEvent) {
 
-            var oModel = this.getView().getModel("sUsername");
-            var sEmail = oModel.getProperty("/Username");
-            // var oArgs = oEvent.getParameter("arguments");
-            // var sEmail = oArgs.employeeEmail;
-            var sStatus = oEvent.getParameter("query");
+            var sStatus = oEvent.getParameter("selectedItem").getKey("key");
+
+            if(sStatus){
+                var aFilter = [new Filter("Status", FilterOperator.EQ, sStatus.toUpperCase())];
+            }
 
             var oList = this.getView().byId("userTable");
             var oBinding = oList.getBinding("items");
-
-            if(sStatus){
-                    var aFilter = [
-                        new Filter("Status", FilterOperator.EQ, sStatus.toUpperCase())];
-            }
-
             oBinding.filter(aFilter, FilterType.Application);
         },
 
