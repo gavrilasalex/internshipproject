@@ -22,14 +22,18 @@ Submit Button -> _onSubmitDialog
                 size="3rem"
                 class="sapUiSmallMargin"/>
             
-            <Input id="motiveReject" placeholder="Enter a reason..."/> 
+            <TextArea   id="motiveReject"
+			               value=""/>
          </VBox>
       </content>
 
-      <beginButton>
+      <buttons>
             <Button
-                text="Submit"
-                press="_onSubmitDialog"/>
-      </beginButton>
+               text="Cancel"
+               press="_onCancelDialog"/>
+            <Button
+               text="Submit"
+               press="_onSubmitDialog"/>
+      </buttons>
    </Dialog>
 </core:FragmentDefinition>

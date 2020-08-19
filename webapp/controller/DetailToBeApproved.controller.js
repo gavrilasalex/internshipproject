@@ -42,7 +42,6 @@ sap.ui.define([
 		_onRejectPress : function (oEvent) {
 			var oView = this.getView();
 			var oView = this.getView();
-         	var oModel = oView.getModel();
 
 			// create dialog lazily
 			if (!this.byId("rejectDialog")) {
@@ -60,7 +59,6 @@ sap.ui.define([
 				this.byId("rejectDialog").open();
 			}
 		},
-
 		/*
 		*Function for the Submit Button in Dialog
 		*
@@ -98,6 +96,11 @@ sap.ui.define([
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
 				}
 			});
+
+		},
+
+		_onCancelDialog : function(oEvent){
+			this.byId("rejectDialog").close();
 		},
 		
 		/*

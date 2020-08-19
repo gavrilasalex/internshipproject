@@ -1,13 +1,25 @@
 .containerLogin{
     padding-bottom: 40px;
-    background-color: #eff4f9;
     width: 100%;
     height: 100%;
     position: relative;
 }
 
+.myBackgroundStyle{
+    background-image: url('https://www.mhp.com/fileadmin/www.mhp.com/assets/og/mhp_opengraph.jpg') !important;
+}
+
 .inputLogin{
     width: 25%;
+}
+
+.sapContrast .sapMBtnInner {
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #1f415e;
+    border: .0625rem solid #a0b2c1;
+    color: #204c72;
+    text-shadow: 0 0 0.125rem #000;
 }
 
 html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {

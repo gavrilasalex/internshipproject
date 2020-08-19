@@ -16,6 +16,7 @@ Items (type navigation) -> _onPress
 	xmlns:layout="sap.ui.layout">
 
 <Page   title="{i18n>userDenied}" 
+		backgroundDesign="Solid"
         showHeader="true" 
         class="w3-backGround" 
         enableScrolling="false" 

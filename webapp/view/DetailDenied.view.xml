@@ -34,37 +34,49 @@ Content 4: Reason For Rejection
 	xmlns:layout="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form">
 
-<Page   title="{FirstName} {LastName}"
+<Page   title="{FirstName} {LastName}'s Business Trip ({	path: 'StartTrip',
+															type: 'sap.ui.model.type.Date',
+															formatOptions: { 
+																		style: 'long' 
+															} 
+														})"
         showHeader="true" 
+		backgroundDesign="Solid"
         class="w3-backGround" 
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar"
-					editable="false"
-					ariaLabelledBy="Title1">
+					editable="false">
+
+				<f:toolbar>
+					<Toolbar id="TB1">
+						<Title id="Title1" text="{i18n>generalInfo}"/>
+						<ToolbarSpacer />
+					</Toolbar>
+				</f:toolbar>
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="4"
-						labelSpanL="4"
-						labelSpanM="12"
+						labelSpanXL="3"
+						labelSpanL="3"
+						labelSpanM="3"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="0"
-						emptySpanL="0"
-						emptySpanM="0"
+						emptySpanXL="4"
+						emptySpanL="4"
+						emptySpanM="4"
 						emptySpanS="0"
-						columnsXL="2"
-						columnsL="2"
+						columnsXL="1"
+						columnsL="1"
 						columnsM="1"
-						singleContainerFullSize="false"   />
+						singleContainerFullSize="false"  />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer title="{i18n>generalInfo}" >
+					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formName}">
 								<f:fields>
@@ -88,43 +100,17 @@ Content 4: Reason For Rejection
 							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>	
-
-					<f:FormContainer title="{i18n>infoCountry}">
-						<f:formElements>
-							<f:FormElement label="{i18n>formReason}">
-								<f:fields>
-									<Text id="reasonInput" text="{Reason}"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>formRequestor}">
-								<f:fields>
-									<Text id="requestorInput" text="{Requester}"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>formCountry}" >
-								<f:fields>
-									<Text id="countryInput" text="{TravelCountry}"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>formCity}">
-								<f:fields>
-									<Text id="cityInput" text="{TravelCity}"/>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
 				</f:formContainers>
 			</f:Form>
 		</VBox>
 
-		<!-- <VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar2"
-					editable="false"
-					ariaLabelledBy="Title3">
+					editable="false">
 
 				<f:toolbar>
 					<Toolbar id="TB2">
-						<Title id="Title3" text="{i18n>infoCountry}"/>
+						<Title id="Title2" text="{i18n>infoCountry}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
@@ -146,7 +132,7 @@ Content 4: Reason For Rejection
 						singleContainerFullSize="false" />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title4">
+					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formReason}">
 								<f:fields>
@@ -172,37 +158,37 @@ Content 4: Reason For Rejection
 					</f:FormContainer>				
 				</f:formContainers>
 			</f:Form>
-		</VBox> -->
+		</VBox>
 
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar3"
-					editable="false"
-					ariaLabelledBy="Title5">
+					editable="false">
 
 				<f:toolbar>
-					<Toolbar id="TB2">
+					<Toolbar id="TB3">
+						<Title id="Title3" text="{i18n>tripRequest}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="4"
-						labelSpanL="4"
-						labelSpanM="12"
+						labelSpanXL="3"
+						labelSpanL="3"
+						labelSpanM="3"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="0"
-						emptySpanL="0"
-						emptySpanM="0"
+						emptySpanXL="4"
+						emptySpanL="4"
+						emptySpanM="4"
 						emptySpanS="0"
-						columnsXL="2"
-						columnsL="2"
+						columnsXL="1"
+						columnsL="1"
 						columnsM="1"
 						singleContainerFullSize="false" />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer title="{i18n>tripRequest}">
+					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
@@ -237,26 +223,22 @@ Content 4: Reason For Rejection
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
-					</f:FormContainer>
-
-					<f:FormContainer title="{i18n>reason}">
-						<f:formElements>
-							<f:FormElement label="{i18n>formReasonRejection}">
-								<f:fields>
-									<Text id="denialInput" text="{Observations}"/>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>				
+					</f:FormContainer>			
 				</f:formContainers>
 			</f:Form>
 		</VBox>
 
 
-		<!-- <VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar4"
-					editable="false"
-					ariaLabelledBy="Title7">
+					editable="false">
+				
+				<f:toolbar>
+					<Toolbar id="TB4">
+						<Title id="Title4" text="{i18n>reason}"/>
+						<ToolbarSpacer />
+					</Toolbar>
+				</f:toolbar>
 
 				<f:layout>
 					<f:ResponsiveGridLayout
@@ -275,7 +257,7 @@ Content 4: Reason For Rejection
 						singleContainerFullSize="false"/>
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer title="{i18n>reason}">
+					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formReasonRejection}">
 								<f:fields>
@@ -286,7 +268,7 @@ Content 4: Reason For Rejection
 					</f:FormContainer>				
 				</f:formContainers>
 			</f:Form>
-		</VBox> -->
+		</VBox>
 	</content>
 </Page>
 </mvc:View>

@@ -4,7 +4,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true">
 
-<Shell>
-	<App id="appControl"/>
+<Shell backgroundOpacity="1">
+	<App id="appControl" backgroundImage="MHP16_00689_powerpoint.jpg" backgroundOpacity="1"/>
 </Shell>
 </mvc:View>

@@ -13,12 +13,13 @@ Login Button -> _onLoginPress
     controllerName="intern2020.controller.Login"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
 	xmlns="sap.m">
 
-<Page showHeader="false" enableScrolling="false">
+<Page id="page_login" backgroundDesign="Transparent" showHeader="false" enableScrolling="false">
 	<content>
 		<VBox class="containerLogin" justifyContent="Center" alignItems="Center" alignContent="Center">
-
+			
 			<VBox>
 				<core:Icon
 					src="sap-icon://customer"

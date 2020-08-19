@@ -131,10 +131,12 @@
               "target": "detailDenied"
             },
             {
-              "pattern": "splitAppDemo",
-              "name": "splitAppDemo",
-              "target": "splitAppDemo"
+              "pattern": "newTrip",
+              "name": "newTrip",
+              "target": "newTrip"
             }
+            
+
             
         ],
         "targets": {
@@ -182,9 +184,9 @@
             "viewName": "DetailDenied",
             "viewId": "detailDenied"
           },
-          "splitAppDemo":{
-            "viewName": "SplitAppDemo",
-            "viewId": "splitAppDemo"
+          "newTrip": {
+            "viewName": "NewTrip",
+            "viewId": "newTrip"
           }
         }
       },

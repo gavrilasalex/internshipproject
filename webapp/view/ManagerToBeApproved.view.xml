@@ -17,6 +17,7 @@ Items (type navigation) -> _onPress
 
 <Page   title="{i18n>usertoBeApproved}" 
         showHeader="true" 
+		backgroundDesign="Solid"
         class="w3-backGround" 
         enableScrolling="false" 
         showNavButton="true"

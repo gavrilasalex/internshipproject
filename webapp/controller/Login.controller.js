@@ -3,11 +3,16 @@
 sap.ui.define([
      "intern2020/controller/BaseController",
      'sap/m/MessageToast',
- ], function (BaseController, MessageToast) {
+     'sap/m/Page'
+ ], function (BaseController, MessageToast, Page) {
     "use strict";
 
    return BaseController.extend("intern2020.controller.Login", {
 
+      onInit: function(){
+         // var oPage = this.getView().byId("page_login");
+         // oPage.addStyleClass("myBackgroundStyle");
+      },
 
       /*
       * Function for the login button
@@ -25,7 +30,6 @@ sap.ui.define([
       * ERROR -> Alert
       */
       _onLoginPress : function (oEvent) {
-
          var oView = this.getView();
          var oModel = oView.getModel();
          var that = this;

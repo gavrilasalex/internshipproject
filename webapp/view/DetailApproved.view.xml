@@ -32,18 +32,23 @@ Content 3: Business Trip Request
 	xmlns:layout="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form">
 
-<Page   title="{LastName} {FirstName}" 
+<Page   title="{FirstName} {LastName}'s Business Trip ({	path: 'StartTrip',
+															type: 'sap.ui.model.type.Date',
+															formatOptions: { 
+																		style: 'long' 
+															} 
+														})" 
         showHeader="true" 
+		backgroundDesign="Solid"
         class="w3-backGround" 
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar"
-					editable="false"
-					ariaLabelledBy="Title1">
+					editable="false">
 
 				<f:toolbar>
 					<Toolbar id="TB1">
@@ -69,7 +74,7 @@ Content 3: Business Trip Request
 						singleContainerFullSize="false"  />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title2" >
+					<f:FormContainer >
 						<f:formElements>
 							<f:FormElement label="{i18n>formName}">
 								<f:fields>
@@ -97,14 +102,13 @@ Content 3: Business Trip Request
 			</f:Form>
 		</VBox>
 
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar2"
-					editable="false"
-					ariaLabelledBy="Title3">
+					editable="false">
 
 				<f:toolbar>
 					<Toolbar id="TB2">
-						<Title id="Title3" text="{i18n>infoCountry}"/>
+						<Title id="Title2" text="{i18n>infoCountry}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
@@ -126,7 +130,7 @@ Content 3: Business Trip Request
 						singleContainerFullSize="false"/>
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title4">
+					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formReason}">
 								<f:fields>
@@ -154,14 +158,13 @@ Content 3: Business Trip Request
 			</f:Form>
 		</VBox>
 
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMargin">
 			<f:Form id="FormToolbar3"
-					editable="false"
-					ariaLabelledBy="Title5">
+					editable="false">
 
 				<f:toolbar>
 					<Toolbar id="TB3">
-						<Title id="Title5" text="{i18n>tripRequest}"/>
+						<Title id="Title3" text="{i18n>tripRequest}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
@@ -183,7 +186,7 @@ Content 3: Business Trip Request
 						singleContainerFullSize="false" />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer ariaLabelledBy="Title6">
+					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>

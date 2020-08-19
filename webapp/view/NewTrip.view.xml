@@ -1,0 +1,183 @@
+
+<mvc:View
+    controllerName="intern2020.controller.NewTrip"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+
+<Page   id="page_newTrip"
+		title="New Trip"
+        showHeader="true" 
+        backgroundDesign="Solid"
+        class="w3-backGround" 
+        enableScrolling="true" 
+        showNavButton="true"
+		navButtonPress="_onNavBack">
+    
+	<content>
+		<VBox class="sapUiLargeMargin" >
+			<f:Form id="FormToolbar"
+					editable="false">
+
+				<f:layout>
+					<f:ResponsiveGridLayout
+						labelSpanXL="5"
+						labelSpanL="5"
+						labelSpanM="5"
+						labelSpanS="12"
+						adjustLabelSpan="false"
+						emptySpanXL="4"
+						emptySpanL="4"
+						emptySpanM="4"
+						emptySpanS="0"
+						columnsXL="1"
+						columnsL="1"
+						columnsM="1"
+						singleContainerFullSize="false"  />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input id="emailInput" placeholder="{i18n>formEmail}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input id="startInput" placeholder="Start Date"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input id="endInput" placeholder="End Date"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input id="noDaysInput" placeholder="Number of days"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="jobInput" placeholder="Job Number"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="clientInput" placeholder="Client"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="reasonInput" placeholder="Reason for travel"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="countryInput" placeholder="Travel Country"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="cityInput" placeholder="Travel City"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="requesterInput" placeholder="Requester"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="rateInput" placeholder="PerDiemRate"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="mealsInput" placeholder="Business Meals"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="foodInput" placeholder="Food Beverages"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="rentalInput" placeholder="Rental Car"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="gasInput" placeholder="Need gas"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="allowanceInput" placeholder="PerDiemAllowance"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="trainInput" placeholder="Train ticket"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="bankInput" placeholder="Bank Charges"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="itInput" placeholder="IT Supplies"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="airfareInput" placeholder="Air Fare"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="officeInput" placeholder="Office Supplies"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="hotelInput" placeholder="Hotel Costs"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="apaymentInput" placeholder="Advance Payment"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="currencyInput" placeholder="Currency"/>
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement>
+								<f:fields>
+									<Input id="exchangeInput" placeholder="Exchange Rate"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>	
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+	</content>
+
+	<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Cancel" press="_onCancelPress"/>
+				<Button type="Accept" text="Save" press="_onSavePress"/>
+			</OverflowToolbar>
+	</footer>
+</Page>
+</mvc:View>

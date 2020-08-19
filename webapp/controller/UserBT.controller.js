@@ -16,6 +16,10 @@ sap.ui.define([
         onInit : function(oEvent) {
 
             this.getView().setBusy(true);
+
+            this._Page = this.byId("page_user");
+            this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
+            
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("userBT").attachMatched(this._onRouteMatched, this)
 		},
@@ -63,7 +67,7 @@ sap.ui.define([
 
 			var aFilter = [];
             aFilter.push(new Filter("EmailAddress", FilterOperator.EQ, email));
-            var oTileValueTBA = this.getView().byId("numericValue");
+            var oTileValueTBA = this.getView().byId("titleUser");
 
 			var oList = this.getView().byId("userTable");
 			var oBinding = oList.getBinding("items");
@@ -74,7 +78,7 @@ sap.ui.define([
 
                 success: function(oData, oResponse){
                     var count = Number(oResponse.body);
-                    oTileValueTBA.setValue(count);   
+                    oTileValueTBA.setText("My request (" + count + ")");   
                 }
             });
         },
@@ -83,14 +87,27 @@ sap.ui.define([
 
             var sStatus = oEvent.getParameter("selectedItem").getKey("key");
 
-            if(sStatus){
-                var aFilter = [new Filter("Status", FilterOperator.EQ, sStatus.toUpperCase())];
+            if(sStatus === "ALL"){
+                var oList = this.getView().byId("userTable");
+                var oBinding = oList.getBinding("items");
+                oBinding.filter(aFilter, FilterType.Application);
             }
-
-            var oList = this.getView().byId("userTable");
-            var oBinding = oList.getBinding("items");
-            oBinding.filter(aFilter, FilterType.Application);
+            else
+            {
+                var aFilter = [new Filter("Status", FilterOperator.EQ, sStatus.toUpperCase())];
+                var oList = this.getView().byId("userTable");
+                var oBinding = oList.getBinding("items");
+                oBinding.filter(aFilter, FilterType.Application);
+            }
         },
+
+        toggleVisibility: function () {
+            this._Page.setShowFooter(!this._Page.getShowFooter());
+		}, 
+		
+        toggleFooter: function () {
+			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
+		},
 
         /*
         * When you press the table tile -> navTo detailApproved page
@@ -103,6 +120,13 @@ sap.ui.define([
                 employeeId : oCtx.getProperty("Id"),
 				employeeEmail : oCtx.getProperty("EmailAddress")
 			});
+        },
+
+        _onAddTripPress: function (oEvent) {
+            
+			var oItem = oEvent.getSource();
+			var oCtx = oItem.getBindingContext();
+			this.getRouter().navTo("newTrip");
         },
         
 		/*

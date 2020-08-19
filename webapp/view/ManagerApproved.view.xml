@@ -16,6 +16,7 @@ Items (type navigation) -> _onPress
 	xmlns:layout="sap.ui.layout">
 
 <Page   title="{i18n>userApproved}" 
+		backgroundDesign="Solid"
         showHeader="true" 
         class="w3-backGround" 
         enableScrolling="false" 
@@ -33,7 +34,7 @@ Items (type navigation) -> _onPress
 
  		<columns>
 			<Column 
-				width="15em">
+				width="30em">
 				<Text text="{i18n>employee}"/>
 			</Column>
 			<Column

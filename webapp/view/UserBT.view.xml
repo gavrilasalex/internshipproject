@@ -17,8 +17,10 @@ Items (type navigation) -> _onPress
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
 
-<Page   title="My {i18n>businessTrips}" 
-        showHeader="true" 
+<Page   id="page_user"
+		title="My {i18n>businessTrips}" 
+        showHeader="true"
+		backgroundDesign="Solid" 
         class="w3-backGround" 
         enableScrolling="false">
 	
@@ -38,12 +40,11 @@ Items (type navigation) -> _onPress
 
 		<headerToolbar>
          <Toolbar>
-		 	<Title text="My Requests"/>
-			<NumericContent	id="numericValue"
-                            value=""/>
-            <ToolbarSpacer/>
+		 	<Title id="titleUser" text=""/>
+			<ToolbarSpacer/>
 			<Text text="Business Trip Status: "/>
-			<Select autoAdjustWidth="false" width="15em" forceSelection="false" change="_onFilterSelect">
+			<Select autoAdjustWidth="false" width="15em" forceSelection="false" change="_onFilterSelect" resetOnMissingKey="true">
+				<core:Item key="ALL" text="See all" />
 				<core:Item key="IN PROGRESS" text="In progress" />
 				<core:Item key="APPROVED" text="Approved" />
 				<core:Item key="DENIED" text="Denied" />
@@ -96,5 +97,13 @@ Items (type navigation) -> _onPress
 			</ColumnListItem>
 		</items>
 	</Table>
+
+	<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Add new trip" press="_onAddTripPress"/>
+			</OverflowToolbar>
+	</footer>
+
 </Page>
 </mvc:View>
