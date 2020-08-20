@@ -62,3 +62,50 @@ html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     border: 1px solid #9F6000 !important;
     border-left: 7px solid #9F6000 !important;
 }
+
+.sapMInput {
+    height: 30px !important;
+    font-size: 0.5rem !important;
+}
+
+.sapMSlt {
+    height: 30px;
+}
+
+.sapMSlt>.sapMSltLabel {
+    width: 100%;
+    line-height: 2rem;
+}
+
+.sapMSltArrow {
+    line-height: 2rem;
+}
+
+input {
+    height: 100% !important;
+    font-size: 1rem !important;
+}
+
+input[type="Password"] {
+    height: 100% !important;
+    font-size: 1rem !important;
+}
+
+input[type="Email"] {
+    height: 100% !important;
+    font-size: 1rem !important;
+}
+
+.sapUiSearchField {
+    height: 35px;
+    font-size: 2.5rem !important;
+}
+
+.sapUiTfCombo:hover {
+    height: 2rem;
+    font-size: 2.5rem !important;
+}
+
+.sapMInputBaseInner::placeholder {
+    font-size: 1rem !important;
+}

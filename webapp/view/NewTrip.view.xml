@@ -4,11 +4,11 @@
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
-	xmlns:layout="sap.ui.layout"
+	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form">
 
 <Page   id="page_newTrip"
-		title="New Trip"
+		title="Add New Trip"
         showHeader="true" 
         backgroundDesign="Solid"
         class="w3-backGround" 
@@ -17,152 +17,214 @@
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiLargeMargin" >
+		<VBox class="sapUiMediumMargin" >
 			<f:Form id="FormToolbar"
-					editable="false">
+					editable="true">
 
 				<f:layout>
 					<f:ResponsiveGridLayout
-						labelSpanXL="5"
-						labelSpanL="5"
-						labelSpanM="5"
+						labelSpanXL="4"
+						labelSpanL="4"
+						labelSpanM="4"
 						labelSpanS="12"
 						adjustLabelSpan="false"
-						emptySpanXL="4"
-						emptySpanL="4"
-						emptySpanM="4"
+						emptySpanXL="0"
+						emptySpanL="0"
+						emptySpanM="0"
 						emptySpanS="0"
-						columnsXL="1"
-						columnsL="1"
-						columnsM="1"
+						columnsXL="3"
+						columnsL="2"
+						columnsM="2"
 						singleContainerFullSize="false"  />
 				</f:layout>
+
 				<f:formContainers>
-					<f:FormContainer>
+					<f:FormContainer title="Requester Information">
 						<f:formElements>
-							<f:FormElement>
+							<f:FormElement label="Email Address">
 								<f:fields>
-									<Input id="emailInput" placeholder="{i18n>formEmail}"/>
+									<Input type="Email" id="emailInput" required="true"/>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement>
+							<f:FormElement label="Job Number">
 								<f:fields>
-									<Input id="startInput" placeholder="Start Date"/>
+									<Input type="Number" id="jobInput" required="true"/>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement>
+							<f:FormElement label="Requster Name">
 								<f:fields>
-									<Input id="endInput" placeholder="End Date"/>
+									<Input  id="requesterInput" required="true"/>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+
+					<f:FormContainer title="Trip Information">
+						<f:formElements>
+							<f:FormElement label="Client name">
 								<f:fields>
-									<Input id="noDaysInput" placeholder="Number of days"/>
+									<Input id="clientInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Travel reason">
 								<f:fields>
-									<Input id="jobInput" placeholder="Job Number"/>
+									<Input id="reasonInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Start Trip/End Trip">
 								<f:fields>
-									<Input id="clientInput" placeholder="Client"/>
+									<DateTimePicker
+										id="startInput"
+										placeholder="Start"
+										required="true"
+										valueFormat="yyyy-MM-ddTHH:mm:ss" 
+										displayFormat="long"
+										change="handleChange">
+										<layoutData>
+											<l:GridData span="XL2 L4 M2 S4" />
+										</layoutData>
+									</DateTimePicker>
+									<DateTimePicker
+										id="endInput"
+										required="true"
+										placeholder="End"
+										valueFormat="yyyy-MM-ddTHH:mm:ss" 
+										change="handleChange">
+										<layoutData>
+											<l:GridData span="XL2 L4 M2 S4" />
+										</layoutData>
+									</DateTimePicker>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Number of days">
 								<f:fields>
-									<Input id="reasonInput" placeholder="Reason for travel"/>
+									<Input type="Number" id="noDaysInput" required="true"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Country/City">
 								<f:fields>
-									<Input id="countryInput" placeholder="Travel Country"/>
+									<Input id="countryInput">
+										<layoutData>
+											<l:GridData span="XL2 L4 M2 S4" />
+										</layoutData>
+									</Input>
+									<Input id="cityInput">
+										<layoutData>
+											<l:GridData span="XL2 L4 M2 S4" />
+										</layoutData>
+									</Input>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+
+					<f:FormContainer title="Travel Costs">
+						<f:formElements>
+							<f:FormElement label="Air fare">
 								<f:fields>
-									<Input id="cityInput" placeholder="Travel City"/>
+									<Input type="Number" id="airfareInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Train ticket">
 								<f:fields>
-									<Input id="requesterInput" placeholder="Requester"/>
+									<Input type="Number" id="trainInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+                            <f:FormElement label="Car rental">
 								<f:fields>
-									<Input id="rateInput" placeholder="PerDiemRate"/>
+									<Input type="Number" id="rentalInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+                            <f:FormElement label="Gas">
 								<f:fields>
-									<Input id="mealsInput" placeholder="Business Meals"/>
+									<Input type="Number" id="gasInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Hotel costs">
 								<f:fields>
-									<Input id="foodInput" placeholder="Food Beverages"/>
+									<Input type="Number" id="hotelInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+                            <f:FormElement label="Bank charges">
 								<f:fields>
-									<Input id="rentalInput" placeholder="Rental Car"/>
+									<Input type="Number" id="bankInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+
+
+					<f:FormContainer title="Additional Costs">
+						<f:formElements>
+                            <f:FormElement label="Business meals">
 								<f:fields>
-									<Input id="gasInput" placeholder="Need gas"/>
+									<Input type="Number" id="mealsInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+                            <f:FormElement label="Food beverages">
 								<f:fields>
-									<Input id="allowanceInput" placeholder="PerDiemAllowance"/>
+									<Input type="Number" id="foodInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="IT supplies">
 								<f:fields>
-									<Input id="trainInput" placeholder="Train ticket"/>
+									<Input type="Number" id="itInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+                            <f:FormElement label="Office supplies">
 								<f:fields>
-									<Input id="bankInput" placeholder="Bank Charges"/>
+									<Input type="Number" id="officeInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+
+					<f:FormContainer title="Payment Details">
+						<f:formElements>
+							<f:FormElement label="PerDiemRate">
 								<f:fields>
-									<Input id="itInput" placeholder="IT Supplies"/>
+									<Input type="Number" id="rateInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="PerDiemAllowance">
 								<f:fields>
-									<Input id="airfareInput" placeholder="Air Fare"/>
+									<Input type="Number" id="allowanceInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Advance payment needed">
 								<f:fields>
-									<Input id="officeInput" placeholder="Office Supplies"/>
+									<Select id="apaymentInput">
+											<items>
+												<core:Item text="YES" key="YES"/>
+												<core:Item text="NO" key="NO"/>
+											</items>
+									</Select>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+							<f:FormElement label="Advance sum">
 								<f:fields>
-									<Input id="hotelInput" placeholder="Hotel Costs"/>
+									<Input type="Number" id="asumInput"/>
 								</f:fields>
 							</f:FormElement>
-                            <f:FormElement>
+                            <f:FormElement label="Currency/Exchange Rate">
 								<f:fields>
-									<Input id="apaymentInput" placeholder="Advance Payment"/>
-								</f:fields>
-							</f:FormElement>
-                            <f:FormElement>
-								<f:fields>
-									<Input id="currencyInput" placeholder="Currency"/>
-								</f:fields>
-							</f:FormElement>
-                            <f:FormElement>
-								<f:fields>
-									<Input id="exchangeInput" placeholder="Exchange Rate"/>
+									<Select id="currencyInput">
+										<items>
+											<core:Item text="EUR" key="EUR"/>
+											<core:Item text="RON" key="RON"/>
+											<core:Item text="HUF" key="HUF"/>
+											<core:Item text="USD" key="USD"/>
+											<core:Item text="GBP" key="GBP"/>
+										</items>
+										<layoutData>
+											<l:GridData span="XL2 L4 M2 S4" />
+										</layoutData>
+									</Select>
+									<Input type="Number" id="exchangeInput">
+										<layoutData>
+											<l:GridData span="XL2 L4 M2 S4" />
+										</layoutData>
+									</Input>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -175,7 +237,7 @@
 	<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button type="Accept" text="Cancel" press="_onCancelPress"/>
+				<Button type="Reject" text="Cancel" press="_onCancelPress"/>
 				<Button type="Accept" text="Save" press="_onSavePress"/>
 			</OverflowToolbar>
 	</footer>
