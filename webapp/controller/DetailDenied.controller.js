@@ -41,7 +41,6 @@ sap.ui.define([
 
             this.getView().setBusy(false);
         },
-        
 
         /*
         * When you press the navigation button -> navTo previous page

@@ -9,6 +9,7 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.DashboardManager", {
 
+        bInitialLogin: true,
         // Recives the Username from the login page
         onInit : function() {
 
@@ -43,10 +44,13 @@ sap.ui.define([
                 this._onSignOutPress();
             }
             else {
-                MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
-                    duration: 10000
-                });
-                $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+                if(this.bInitialLogin){
+                    MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
+                        duration: 3000
+                    });
+                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+                    this.bInitialLogin = false;
+                }
             }
 
             this.getTileValue();
@@ -150,6 +154,8 @@ sap.ui.define([
                 oModel.setProperty("/Username", "");
             }
             oRouter.navTo("login");
+
+            this.bInitialLogin = true;
         }
     });
 });

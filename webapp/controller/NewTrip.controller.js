@@ -15,7 +15,7 @@ sap.ui.define([
 
 			this._Page = this.byId("page_newTrip");
 			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
-
+			 
 			this.byId("startInput").setMinDate(new Date());
 			this.byId("endInput").setMinDate(new Date());
 		},
@@ -86,7 +86,7 @@ sap.ui.define([
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
             },
                 error : function(oData){
-					MessageToast.show(oData.message);
+					MessageToast.show("Failed to add trip.");
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
             }
             });

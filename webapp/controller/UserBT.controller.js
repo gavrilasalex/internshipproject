@@ -7,11 +7,13 @@ sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/FilterType"
+    "sap/ui/model/FilterType",
 ], function (BaseController, MessageToast, History, UIComponent, Filter, FilterOperator, FilterType) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.UserBT", {
+
+        bInitialLogin: true,
 
         onInit : function(oEvent) {
 
@@ -52,10 +54,13 @@ sap.ui.define([
                 this._onSignOutPress();
             }
             else {
-                MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
-                    duration: 10000
-                });
-                $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+                if(this.bInitialLogin){
+                    MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
+                        duration: 3000
+                    });
+                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+                    this.bInitialLogin = false;
+                }
             }
             
             this.getView().setBusy(false);
@@ -78,7 +83,7 @@ sap.ui.define([
 
                 success: function(oData, oResponse){
                     var count = Number(oResponse.body);
-                    oTileValueTBA.setText("My request (" + count + ")");   
+                    oTileValueTBA.setText("My request (" + count + ")"); 
                 }
             });
         },
@@ -107,7 +112,8 @@ sap.ui.define([
 		
         toggleFooter: function () {
 			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
-		},
+        },
+        
 
         /*
         * When you press the table tile -> navTo detailApproved page
@@ -142,7 +148,9 @@ sap.ui.define([
 			if(!(oModel === undefined)){
 				oModel.setProperty("/Username", "");
 			}
-			oRouter.navTo("login");
+            oRouter.navTo("login");
+            
+            this.bInitialLogin = true;
 		}
     });
 });

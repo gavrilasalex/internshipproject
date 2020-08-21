@@ -18,6 +18,7 @@ Login Button -> _onLoginPress
 
 <Page id="page_login" backgroundDesign="Transparent" showHeader="false" enableScrolling="false">
 	<content>
+		<HBox>
 		<VBox class="containerLogin" justifyContent="Center" alignItems="Center" alignContent="Center">
 			
 			<VBox>
@@ -28,7 +29,7 @@ Login Button -> _onLoginPress
 			</VBox>
 
 			<VBox class="inputLogin">
-				<Input placeholder="E-Mail address" id="emailInput" type="Email" change="_validateEmail"/>
+				<Input placeholder="E-Mail Address" id="emailInput" type="Email" change="_validateEmail"/>
 				<Input placeholder="Password" id="passwordInput" type="Password"/>
 				<Button 
 					width="20rem" 
@@ -38,6 +39,9 @@ Login Button -> _onLoginPress
 				</Button>
 			</VBox>
 		</VBox>
+		
+		<Image src="MHP19_00012.png"/>
+		</HBox>
 	</content>
 </Page>
 </mvc:View>

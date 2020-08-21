@@ -28,9 +28,14 @@ Items (type navigation) -> _onPress
             path: '/TripSet',
 			filters: [{path: 'Status', operator: 'EQ', value1: 'IN PROGRESS'}]
         }"
-        headerText="{i18n>businessTrips}"
         class="sapUiResponsiveMargin"
         width="auto">
+
+		<headerToolbar>
+         <Toolbar>
+		 	<Title id="managerTBA_table" text=""/>
+         </Toolbar>
+      	</headerToolbar>
 
  		<columns>
 			<Column 

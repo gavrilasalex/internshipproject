@@ -12,8 +12,10 @@ Items (type navigation) -> _onPress
 	height="100%"
 	controllerName="intern2020.controller.UserBT"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:t="sap.ui.table"
 	xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:l="sap.ui.layout" 	
+	xmlns:unified="sap.ui.unified"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
 
@@ -43,8 +45,8 @@ Items (type navigation) -> _onPress
 		 	<Title id="titleUser" text=""/>
 			<ToolbarSpacer/>
 			<Text text="Business Trip Status: "/>
-			<Select autoAdjustWidth="false" width="15em" forceSelection="false" change="_onFilterSelect" resetOnMissingKey="true">
-				<core:Item key="ALL" text="See all" />
+			<Select autoAdjustWidth="false" width="15em" forceSelection="true" change="_onFilterSelect">
+				<core:Item key="ALL" text="All Business Trips" />
 				<core:Item key="IN PROGRESS" text="In progress" />
 				<core:Item key="APPROVED" text="Approved" />
 				<core:Item key="DENIED" text="Denied" />
@@ -101,7 +103,7 @@ Items (type navigation) -> _onPress
 	<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button type="Accept" text="Add new trip" press="_onAddTripPress"/>
+				<Button text="Add new trip" press="_onAddTripPress"/>
 			</OverflowToolbar>
 	</footer>
 

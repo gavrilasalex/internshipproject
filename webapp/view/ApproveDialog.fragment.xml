@@ -13,25 +13,21 @@ Submit Button -> _onSubmitDialog
    xmlns="sap.m"
    xmlns:core="sap.ui.core" >
    <Dialog
-      id="rejectDialog"
-      title="REJECT">
+      id="approveDialog"
+      title="APPROVE">
       <content>
          <VBox>  
-            <Text class="dialogText" text="Why are you rejecting this business trip?"/>       
-            <TextArea   
-               rows="4"
-               id="motiveReject"
-			      value=""/>
+            <Text class="dialogText" text="Are you sure you want to approve?"/>       
          </VBox>
       </content>
 
       <buttons>
             <Button
                text="Cancel"
-               press="_onCancelReject"/>
+               press="_onCancelApprove"/>
             <Button
-               text="Reject"
-               press="_onSubmitReject"/>
+               text="Approve"
+               press="_onSubmitApprove"/>
       </buttons>
    </Dialog>
 </core:FragmentDefinition>

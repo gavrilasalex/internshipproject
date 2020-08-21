@@ -6,14 +6,44 @@ sap.ui.define([
     'sap/m/MessageToast',
     "sap/ui/core/routing/History",
 	"sap/ui/core/UIComponent",
-], function (BaseController, MessageToast, History, UIComponent) {
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
+	"sap/ui/model/FilterType",
+], function (BaseController, MessageToast, History, UIComponent, Filter, FilterOperator, FilterType) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerDenied", {
 
         onInit : function() {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("managerDenied").attachMatched(this._onRouteMatched, this);
+		},
+
+		_onRouteMatched : function(oEvent) {
+        
+            this._onFilterUser();
         },
 
+		_onFilterUser : function () {
+
+			var aFilter = new Filter({
+                path: 'Status',
+                operator: 'EQ',
+                value1: 'DENIED'
+			});
+			
+			var oTileValueTBA = this.getView().byId("managerDenied_table");
+				
+			this.getView().getModel().read("/TripSet/$count", {
+				filters: [aFilter],
+	
+				success: function(oData, oResponse){
+					var count = Number(oResponse.body);
+					oTileValueTBA.setText("Business Trips (" + count + ")"); 
+				}
+			});
+        },
+		
 		/*
         * When you press the table tile -> navTo detailDenied page
         */

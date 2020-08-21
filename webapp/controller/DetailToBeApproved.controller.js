@@ -3,10 +3,11 @@
 sap.ui.define([
 	"intern2020/controller/BaseController",
 	"sap/ui/core/Fragment",
+	"sap/m/MessageBox",
     'sap/m/MessageToast',
     "sap/ui/core/routing/History",
 	"sap/ui/core/UIComponent"
-], function (BaseController, Fragment, MessageToast, History, UIComponent) {
+], function (BaseController, Fragment, MessageBox, MessageToast, History, UIComponent) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.DetailToBeApproved", {
@@ -59,12 +60,13 @@ sap.ui.define([
 				this.byId("rejectDialog").open();
 			}
 		},
+
 		/*
 		*Function for the Submit Button in Dialog
 		*
 		*On press: the dialog closes and a rejection message appears on screen.
 		*/
-		_onSubmitDialog : function (oEvent) {
+		_onSubmitReject : function (oEvent) {
 			var oView = this.getView();
 			var oModel = oView.getModel();
 			var that = this;
@@ -99,20 +101,40 @@ sap.ui.define([
 
 		},
 
-		_onCancelDialog : function(oEvent){
+		_onCancelReject : function(oEvent){
 			this.byId("rejectDialog").close();
 		},
-		
+
+		_onApprovedPress : function (oEvent) {
+			var oView = this.getView();
+
+			// create dialog lazily
+			if (!this.byId("approveDialog")) {
+				// load asynchronous XML fragment
+				Fragment.load({
+					id: oView.getId(),
+          			name: "intern2020.view.ApproveDialog",
+          			controller: this
+				}).then(function (oDialog) {
+					// connect dialog to the root view of this component (models, lifecycle)
+					oView.addDependent(oDialog);
+					oDialog.open();
+				});
+			} else {
+				this.byId("approveDialog").open();
+			}
+		},
+
 		/*
 		*Function for the Approve Button in To be approved form
 		*
 		*On press: the dialog closes and a rejection message appears on screen.
 		*/
-		_onApprovedPress : function (oEvent){
+		_onSubmitApprove : function (oEvent){
 			var oView = this.getView();
 			var oModel = oView.getModel();
-			var page = this;
 			var sId = oEvent.getSource().getBindingContext().getObject().Id;
+			var that = this;
 			
 			oModel.callFunction("/Approve", {
 											method: "POST",
@@ -120,6 +142,8 @@ sap.ui.define([
 												Id: sId
 											},
 				success : function(oData,response){
+					that.byId("approveDialog").close();
+
 					MessageToast.show("Business trip approved!", {
 						duration: 10000
 					});
@@ -127,6 +151,8 @@ sap.ui.define([
 				},
 
 				error : function(oError){
+					that.byId("approveDialog").close();
+					
 					MessageToast.show("Something went wrong...", {
 						duration: 10000
 					});
@@ -135,8 +161,10 @@ sap.ui.define([
 			});
 		},
 
-			
-		
+		_onCancelApprove : function(oEvent){
+			this.byId("approveDialog").close();
+		},
+
 		/*
         * When you press the navigation button -> navTo previous page/managerToBeApproved
         */

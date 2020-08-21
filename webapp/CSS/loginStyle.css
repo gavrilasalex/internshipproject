@@ -1,5 +1,7 @@
 .containerLogin{
+    padding-top: 150px;
     padding-bottom: 40px;
+    padding-left: 150px;
     width: 100%;
     height: 100%;
     position: relative;
@@ -10,17 +12,39 @@
 }
 
 .inputLogin{
-    width: 25%;
+    width: 20rem;
 }
 
-.sapContrast .sapMBtnInner {
+.dialogText{
+    padding: 10px;
+}
+
+.sapMInputBase.sapMTextArea .sapMTextAreaInner {
+    line-height: 1.4;
+    width: 400px !important;
+    padding: .625rem .75rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sapMImg{
+    width: 170px;
+    text-align: right !important;
+}
+
+html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
+    background-color: #1f415e !important;
+    border-top: 1px solid #475b6d;
+    width: 99.5%;
+}
+
+/* .sapContrast .sapMBtnInner {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background-color: #1f415e;
+    background-color: #1f415e !important;
     border: .0625rem solid #a0b2c1;
-    color: #204c72;
+    color: #f5f8fa;
     text-shadow: 0 0 0.125rem #000;
-}
+} */
 
 html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     background-color: #eff4f9;
@@ -74,11 +98,11 @@ html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
 
 .sapMSlt>.sapMSltLabel {
     width: 100%;
-    line-height: 2rem;
+    line-height: 1.7rem;
 }
 
 .sapMSltArrow {
-    line-height: 2rem;
+    line-height: 1.7rem;
 }
 
 input {

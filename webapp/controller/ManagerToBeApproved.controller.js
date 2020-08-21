@@ -5,13 +5,41 @@ sap.ui.define([
     'sap/m/MessageToast',
     "sap/ui/core/routing/History",
 	"sap/ui/core/UIComponent",
-], function (BaseController, MessageToast, History, UIComponent) {
+	"sap/ui/model/Filter",
+], function (BaseController, MessageToast, History, UIComponent, Filter) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerToBeApproved", {
 
-        onInit : function() {
+		onInit : function() {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("managerToBeApproved").attachMatched(this._onRouteMatched, this);
 		},
+
+		_onRouteMatched : function(oEvent) {
+        
+            this._onFilterUser();
+        },
+
+		_onFilterUser : function () {
+
+			var aFilter = new Filter({
+                path: 'Status',
+                operator: 'EQ',
+                value1: 'IN PROGRESS'
+			});
+			
+			var oTileValueTBA = this.getView().byId("managerTBA_table");
+				
+			this.getView().getModel().read("/TripSet/$count", {
+				filters: [aFilter],
+	
+				success: function(oData, oResponse){
+					var count = Number(oResponse.body);
+					oTileValueTBA.setText("Business Trips (" + count + ")"); 
+				}
+			});
+        },
 
 		/*
         * When you press the table tile -> navTo detailToBeApproved page

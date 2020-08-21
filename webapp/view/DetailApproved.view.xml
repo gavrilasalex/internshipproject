@@ -35,13 +35,18 @@ Content 3: Business Trip Request
 <Page   title="{FirstName} {LastName}'s Business Trip ({	path: 'StartTrip',
 															type: 'sap.ui.model.type.Date',
 															formatOptions: { 
-																		style: 'long' 
+																		style: 'short' 
+															} 
+														} - {	path: 'EndTrip',
+															type: 'sap.ui.model.type.Date',
+															formatOptions: { 
+																		style: 'short' 
 															} 
 														})" 
         showHeader="true" 
 		backgroundDesign="Solid"
         class="w3-backGround" 
-        enableScrolling="true" 
+        enableScrolling="false" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
     

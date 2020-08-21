@@ -120,6 +120,11 @@
 
 					<f:FormContainer title="Travel Costs">
 						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Label text="(Please enter the sum of money needed.)"/>
+								</f:fields>
+							</f:FormElement>
 							<f:FormElement label="Air fare">
 								<f:fields>
 									<Input type="Number" id="airfareInput"/>
@@ -156,6 +161,11 @@
 
 					<f:FormContainer title="Additional Costs">
 						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Label text="(Please enter the sum of money needed.)"/>
+								</f:fields>
+							</f:FormElement>
                             <f:FormElement label="Business meals">
 								<f:fields>
 									<Input type="Number" id="mealsInput"/>
@@ -234,7 +244,7 @@
 		</VBox>
 	</content>
 
-	<footer>
+	<footer class="footerNew">
 			<OverflowToolbar>
 				<ToolbarSpacer/>
 				<Button type="Reject" text="Cancel" press="_onCancelPress"/>

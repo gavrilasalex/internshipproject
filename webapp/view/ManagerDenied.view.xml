@@ -28,11 +28,16 @@ Items (type navigation) -> _onPress
             path: '/TripSet',
 			filters: [{path: 'Status', operator: 'EQ', value1: 'DENIED'}]
         }"
-        headerText="{i18n>businessTrips}"
         class="sapUiResponsiveMargin"
         width="auto">
 
-      <columns>
+		<headerToolbar>
+         <Toolbar>
+		 	<Title id="managerDenied_table" text=""/>
+         </Toolbar>
+      	</headerToolbar>
+
+      	<columns>
 			<Column 
 				width="20em">
 				<Text text="{i18n>employee}"/>

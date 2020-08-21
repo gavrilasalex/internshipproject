@@ -12,8 +12,35 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.ManagerApproved", {
 
-        onInit : function(oEvent) {
+		onInit : function() {
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("managerApproved").attachMatched(this._onRouteMatched, this);
 		},
+
+		_onRouteMatched : function(oEvent) {
+        
+            this._onFilterUser();
+		},
+		
+		_onFilterUser : function () {
+
+			var aFilter = new Filter({
+                path: 'Status',
+                operator: 'EQ',
+                value1: 'APPROVED'
+			});
+			
+			var oTileValueTBA = this.getView().byId("managerApproved_table");
+				
+			this.getView().getModel().read("/TripSet/$count", {
+				filters: [aFilter],
+	
+				success: function(oData, oResponse){
+					var count = Number(oResponse.body);
+					oTileValueTBA.setText("Business Trips (" + count + ")"); 
+				}
+			});
+        },
 
 		/*
         * When you press the table tile -> navTo detailApproved page

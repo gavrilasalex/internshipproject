@@ -1,7 +1,7 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/model/json/JSONModel",
-    "./controller/RejectionDialog"
+    "./controller/RejectionDialog",
  ], function (UIComponent, JSONModel, RejectionDialog) {
     "use strict";
     return UIComponent.extend("intern2020.Component", {
@@ -15,17 +15,17 @@ sap.ui.define([
           this.getRouter().initialize();
 
           // set dialog
-			this._rejectDialog = new RejectionDialog(this.getRootControl());
-          
+         this._rejectDialog = new RejectionDialog(this.getRootControl());
        },
 
-       exit : function() {
+         exit : function() {
 			this._rejectDialog.destroy();
 			delete this._rejectDialog;
 		   },
 
-		openRejectionDialog : function () {
-			this._rejectDialog.open();
-		}
+		   openRejectionDialog : function () {
+         this._rejectDialog.open();
+         },
+      
     });
  });
