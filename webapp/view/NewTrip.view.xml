@@ -1,3 +1,13 @@
+<!-- 
+	
+NEW TRIP VIEW 
+*the user can add a new trip to the data base using form and input fields
+
+Navigation Button -> _onNavBack (navigation to the User Dashboard)
+Footer Button -> _onSavePress (the trip is added to the data base)
+Footer Button -> _onCancelPress (navigation to the User Dashboard)
+
+-->
 
 <mvc:View
     controllerName="intern2020.controller.NewTrip"

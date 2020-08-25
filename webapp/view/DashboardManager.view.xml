@@ -1,11 +1,12 @@
 <!-- 
     
-Manager Dashboard View
+MANAGER DASHBOARD
+*the manger can select which business trips to see based on the status
 
-Sign out Button -> _onSignOutPress
-To Be Approved Tile: icon, number -> _onPressToBeApproved
-Approved Tile: icon, number -> _onPressApproved
-Denied Tile: icon, number -> _onPressDenied 
+Sign out Button -> _onSignOutPress (navigation to the Login View, kills this session)
+To Be Approved Tile -> _onPressToBeApproved (navigation to Detail to be approved View)
+Approved Tile -> _onPressApproved (navigation to Detail approved View)
+Denied Tile -> _onPressDenied (navigation to Detail denied View)
 
 -->
 

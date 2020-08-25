@@ -1,17 +1,20 @@
 <!-- 
    
-Reject Dialog 
+REJECT DIALOG
+*the manager can enter a reason for why is he rejecting the business trip
 
-Icon 
-Input for rejection reason
-Submit Button -> _onSubmitDialog 
+
+TextArea to enter a rejection reason
+Submit Button -> _onSubmitDialog (the trip changes it's status to DENIED)
+Cancel Button -> _onCancelReject (close dialog)
 
 -->
 
 <core:FragmentDefinition
    controllerName="intern2020.controller.DetailToBeApproved"
    xmlns="sap.m"
-   xmlns:core="sap.ui.core" >
+   xmlns:core="sap.ui.core">
+
    <Dialog
       id="dialog_reject"
       title="Reject">

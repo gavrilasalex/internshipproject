@@ -61,6 +61,7 @@ sap.ui.define([
             return this.getView().getModel(sText);
         },
 
+        //Function for navigation to the previous page
         _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
@@ -70,6 +71,7 @@ sap.ui.define([
 			}
         },
 
+        //Function for navigation to the login page, killing the current session
         _onSignOutPress : function() {
 
             var oModel = this.getView().getModel("oUsername");
@@ -83,6 +85,7 @@ sap.ui.define([
             this.bInitialLogin = true;
         },
 
+        //Visibility for the floating footer
         toggleVisibility: function () {
             this._Page.setShowFooter(!this._Page.getShowFooter());
 		}, 

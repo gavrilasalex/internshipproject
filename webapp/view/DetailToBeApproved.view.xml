@@ -1,8 +1,9 @@
 <!-- 
 	
-Details for to be approved business trips 
+DETAIL TO BE APPROVED VIEW
+*the manager can see the detail about the selected business trip from the form
 
-Navigation Button -> _onNavBack
+Navigation Button -> _onNavBack (navigation to the Manager To Be Approved View)
 Content 1: General Information
 								-Name Label + Input
 								-Email Label + Input
@@ -21,8 +22,8 @@ Content 3: Business Trip Request
 								-End Business Trip Label + Input
 								-Advance Payment Needed Label + Input 
 
-Footer: Accept Button -> _onApprovedPress
-		Reject Button -> _onRejectPress
+Footer: Accept Button -> _onApprovedPress (navTo approve dialog to confirm)
+		Reject Button -> _onRejectPress (navTo reject dialog to enter a rejection reason)
 								
 -->
 
@@ -201,7 +202,7 @@ Footer: Accept Button -> _onApprovedPress
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
-									<Text id="input_costs" text="{TotalSum} {Currency}"/>
+									<Text id="input_costs" text="{TotallSum} RON"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formStartBT}">

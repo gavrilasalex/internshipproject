@@ -1,4 +1,8 @@
-//CONTROLLER FOR THE TO BE APPROVED TABLE FROM MANAGER
+/*
+*MANAGER TO BE APPROVED 
+*the manager can see ALL the to be approved business trips from the data base and he 
+*can see the details about a selected business trip 
+*/
 
 sap.ui.define([
     "intern2020/controller/BaseController",
@@ -22,6 +26,15 @@ sap.ui.define([
             this._onFilterUser();
         },
 
+		/*
+        * Filters the business trips from the data base after status 
+        * 
+        * @param {Object} [oFilter] building a filter for 'equals status'
+        * @param {Object} [oTileValueTBA] the value (empty) for the page title
+        * 
+        * After the binding we count the rows so the manager can see how many BTs appear for the status 
+        * [oTileValueTBA] is set to "Business Trips" and the number of entries
+        */
 		_onFilterUser : function () {
 
 			var oFilter = new Filter({
@@ -43,7 +56,8 @@ sap.ui.define([
         },
 
 		/*
-        * When you press the table tile -> navTo detailToBeApproved page
+        * When you press the table row -> navTo detailToBeApproved page
+        * The navigation is made based on the email (from login) and id of the user
         */
 		_onPress: function (oEvent) {
 

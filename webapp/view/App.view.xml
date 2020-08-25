@@ -7,4 +7,5 @@
 <Shell backgroundColor="#1f415e" backgroundOpacity="0">
 	<App id="appControl" backgroundImage="MHP16_00689_powerpoint.jpg" backgroundOpacity="0.7"/>
 </Shell>
+
 </mvc:View>

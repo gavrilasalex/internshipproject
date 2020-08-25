@@ -1,4 +1,7 @@
-//CONTROLLER FOR THE DENIED FORM
+/*
+*DETAIL DENIED
+*the manager can see the detail about the selected business trip from the form
+*/
 
 sap.ui.define([
     "intern2020/controller/BaseController",
@@ -10,6 +13,9 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.DetailDenied", {
 
+        /* 
+        *  Matching the route from the login page based on email and id
+        */
         onInit : function() {
 
             this.getView().setBusy(true);
@@ -19,17 +25,8 @@ sap.ui.define([
 		},
 
         /*
-        * Matches the route for Username 
-        * 
-        * @param {Boolean} [bActive] when login is succesfull and the dashboard loads the variable is set to /true/
-        * 
-        * IF the oModel is undefined bActive is set to /false/
-        * ELSE IF the /Username is empty (the login part is skipped) bActive is set to /false/
-        * 
-        * IF bActiv is false -> call _onSignOutPress to exit
-        * ELSE IF bActive is true -> Welcome message shows up on the screen, customized with the username
-        * 
-        */
+		* Populating the form with the data from oData
+		*/
 		_onRouteMatched : function(oEvent) {
             
             var oArgs = oEvent.getParameter("arguments");

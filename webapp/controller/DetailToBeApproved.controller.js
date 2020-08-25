@@ -1,4 +1,7 @@
-//CONTROLLER FOR THE TO BE APPROVED FORM
+/*
+*DETAIL TO BE APPROVED 
+*the manager can see the detail about the selected business trip from the form
+*/
 
 sap.ui.define([
 	"intern2020/controller/BaseController",
@@ -12,6 +15,10 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.DetailToBeApproved", {
 
+		/* 
+        *  Setting the floating footer 
+        *  Matching the route from the login page based on email and id
+        */
         onInit : function() {
 
 			this._Page = this.byId("page_toBeApproved");
@@ -21,6 +28,9 @@ sap.ui.define([
             oRouter.getRoute("detailToBeApproved").attachMatched(this._onRouteMatched, this);
 		},
 		
+		/*
+		* Populating the form with the data from oData
+		*/
 		_onRouteMatched : function(oEvent) {
             
             var oArgs = oEvent.getParameter("arguments");
@@ -31,7 +41,9 @@ sap.ui.define([
             });
 		},
 		
-		//Function for the Reject Button in To be approved form
+		/*
+		* Opens the Reject Dialog to enter a reason
+		*/
 		_onRejectPress : function (oEvent) {
 			var oView = this.getView();
 
@@ -55,6 +67,7 @@ sap.ui.define([
 		*Function for the Submit Button in Dialog
 		*
 		*On press: the dialog closes and a rejection message appears on screen.
+		*The status is changed to 'DENIED'
 		*/
 		_onSubmitReject : function (oEvent) {
 
@@ -92,10 +105,17 @@ sap.ui.define([
 
 		},
 
+		/*
+		*Function for the Cancel Button in Dialog
+		*On press: the dialog closes 
+		*/
 		_onCancelReject : function(oEvent){
 			this.byId("dialog_reject").close();
 		},
-
+		
+		/*
+		* Opens the Reject Dialog to enter a reason
+		*/
 		_onApprovedPress : function (oEvent) {
 
 			var oView = this.getView();
@@ -118,9 +138,10 @@ sap.ui.define([
 		},
 
 		/*
-		*Function for the Approve Button in To be approved form
+		*Function for the Submit Button in Dialog
 		*
 		*On press: the dialog closes and a rejection message appears on screen.
+		*The status is changed to 'APPROVED'
 		*/
 		_onSubmitApprove : function (oEvent){
 
@@ -153,7 +174,11 @@ sap.ui.define([
 				},
 			});
 		},
-
+		
+		/*
+		*Function for the Cancel Button in Dialog
+		*On press: the dialog closes 
+		*/
 		_onCancelApprove : function(oEvent){
 			this.byId("dialog_approved").close();
 		}

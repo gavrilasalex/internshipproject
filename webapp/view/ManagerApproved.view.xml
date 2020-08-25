@@ -1,10 +1,14 @@
 <!-- 
 	
-Manager Approved View
+MANAGER APPROVED VIEW
+*the manager can see ALL the approved business trips from the data base and he 
+*can see the details about a selected business trip 
 
-Navigation Button -> _onNavBack
-Table: Employee, Date, Price, Location
-Items (type navigation) -> _onPress 
+
+Navigation Button -> _onNavBack (navigation to the Manager Dashboard)
+Table: Employee, Date, Price, Location  
+	*the business trips are filtered after status == "APPROVED"
+Items (type navigation) -> _onPress (selecting a business trip will show you the details about said BT)
 
 -->
 

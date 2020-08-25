@@ -1,4 +1,7 @@
-//CONTROLLER FOR THE TO BE APPROVED FORM
+/*
+*ADD NEW TRIP 
+*the user can add a new trip to the data base using form and input fields
+*/
 
 sap.ui.define([
 	"intern2020/controller/BaseController",
@@ -11,6 +14,10 @@ sap.ui.define([
 
     return BaseController.extend("intern2020.controller.NewTrip", {
 
+		/* 
+        *  Setting the floating footer 
+        *  Setting the startDate and endDate so the user can't select a date earlier than the current day
+        */
         onInit : function() {
 
 			this._Page = this.byId("page_newTrip");
@@ -20,6 +27,12 @@ sap.ui.define([
 			this.byId("input_endDate").setMinDate(new Date());
 		},
 
+		/*
+		*  Funtion used to create a new entry in the data base from the UI
+		*  All the parameters are taken from input fields entered by the user
+		*  Then we're sending the data to oData to create a new BT
+		*  A message will show based on the succes/error message sent from oData
+		*/
 		_onSavePress : function(oEvent){
             var oView = this.getView();
             var oModel = oView.getModel();
@@ -94,6 +107,9 @@ sap.ui.define([
             });
 		},
 
+		/*
+		*  Cancel add new trip -> navTo userBT
+		*/
 		_onCancelPress : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

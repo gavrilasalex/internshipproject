@@ -1,7 +1,6 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "sap/ui/model/json/JSONModel",
-    "./controller/RejectionDialog",
+    "sap/ui/model/json/JSONModel"
  ], function (UIComponent, JSONModel, RejectionDialog) {
    "use strict";
 
@@ -16,8 +15,6 @@ sap.ui.define([
 
          this.getRouter().initialize();
 
-         // set dialog
-         this._rejectDialog = new RejectionDialog(this.getRootControl());
       },
 
       exit : function() {

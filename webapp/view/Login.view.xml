@@ -1,11 +1,11 @@
 <!-- 
 
-Login View 
+LOGIN VIEW 
+*the user or manager can login using an email and a password
 
-Icon
-E-mail Input -> _validateEmail
+E-mail Input -> _validateEmail (the email will be validated to respect the 'name@email.com' format)
 Password Input 
-Login Button -> _onLoginPress 
+Login Button -> _onLoginPress (navigation to the user/manager dashoard based on the position from the data base)
 
 -->
 

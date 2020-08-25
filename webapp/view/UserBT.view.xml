@@ -1,10 +1,16 @@
 <!-- 
 	
-User Approved View
+USER DASHBOARD 
+*the user can see ONLY his business trips, can filter after status, 
+*can see the details about a selected business trip and can add a new trip
 
-Navigation Button -> _onNavBack
-Table: Employee, Date, Price, Location
-Items (type navigation) -> _onPress 
+
+Sign out Button -> _onSignOutPress (navigation to the Login View, kills this session)
+Table: Employee, Date, Price, Location, Reason for Rejection
+Select: All Business Trips/Denied/In progress/Approved
+Items (type navigation) -> _onPress (selecting a business trip will show you the details about said BT)
+Highlight formatter: Status
+Footer Button -> _onAddNewTrip (navigation to the New Trip View)
 
 -->
 
@@ -84,7 +90,7 @@ Items (type navigation) -> _onPress
 				type="Navigation"
 				press="_onPress"
 				highlight="{path:'Status', 
-							formatter:'._formatRowHighlight'}">
+						   formatter:'._formatRowHighlight'}">
 				<cells>
 					<ObjectListItem id="listItem_name" title="{FirstName} {LastName}"/>
 					<Text text="{

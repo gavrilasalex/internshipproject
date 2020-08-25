@@ -1,8 +1,9 @@
 <!-- 
 	
-Details for denied business trips 
+DETAIL DENIED VIEW
+*the manager can see the detail about the selected business trip from the form
 
-Navigation Button -> _onNavBack
+Navigation Button -> _onNavBack (navigation to the Manager Denied View)
 Content 1: General Information
 								-Name Label + Input
 								-Email Label + Input
@@ -200,7 +201,7 @@ Content 4: Reason For Rejection
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
-									<Text id="input_costs" text="{TotalSum} {Currency}"/>
+									<Text id="input_costs" text="{TotallSum} RON"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formStartBT}">

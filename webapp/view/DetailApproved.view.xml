@@ -1,8 +1,9 @@
 <!-- 
 	
-Details for approved business trips 
+DETAIL APPROVED VIEW
+*the manager can see the detail about the selected business trip from the form
 
-Navigation Button -> _onNavBack
+Navigation Button -> _onNavBack (navigation to the Manager Approved View)
 Content 1: General Information
 								-Name Label + Input
 								-Email Label + Input
@@ -198,7 +199,7 @@ Content 3: Business Trip Request
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
-									<Text id="input_costs" text="{TotalSum} {Currency}"/>
+									<Text id="input_costs" text="{TotalSum} RON"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formStartBT}">

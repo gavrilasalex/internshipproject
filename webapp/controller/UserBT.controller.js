@@ -1,4 +1,8 @@
-//CONTROLLER FOR THE APPROVED TABLE FROM USER
+/*
+*USER DASHBOARD 
+*the user can see ONLY his business trips, can filter after status, 
+*can see the details about a selected business trip and can add a new trip
+*/
 
 sap.ui.define([
     "intern2020/controller/BaseController",
@@ -6,15 +10,17 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/FilterType",
-    "../model/formatter"
-], function (BaseController, MessageToast, Filter, FilterOperator, FilterType, formatter) {
+], function (BaseController, MessageToast, Filter, FilterOperator, FilterType) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.UserBT", {
 
-        formatter: formatter,
         bInitialLogin: true,
 
+        /* 
+        *  Setting the floating footer 
+        *  Matching the route from the login page based on email
+        */
         onInit : function(oEvent) {
 
             this.getView().setBusy(true);
@@ -27,21 +33,23 @@ sap.ui.define([
 		},
 
         /*
-        * Matches the route for Username 
+        * Matches the route for the email (and Username)
         * 
-        * @param {Boolean} [bActive] when login is succesfull and the dashboard loads the variable is set to /true/
+        * @param {Object} [oModel] gets the value sent from the login page for Username
+        * @param {Boolean} [bActive] the variable is set to /true/
         * 
-        * IF the oModel is undefined bActive is set to /false/
-        * ELSE IF the /Username is empty (the login part is skipped) bActive is set to /false/
+        * IF the Username is undefined or empty (the login was not done right/nothing is sent from the login page)
+        * [bActive] the variable is set to /false/
         * 
-        * IF bActiv is false -> call _onSignOutPress to exit
-        * ELSE IF bActive is true -> Welcome message shows up on the screen, customized with the username
+        * IF [bActive] is false -> the login was not succesfull so the user can't see the page -> _onSignOutPress
+        * ELSE IF bActive is true -> the login was succesfull
+        *                         -> Welcome message shows up on the screen, customized with the Username (if it's the initial login)
         * 
         */
 		_onRouteMatched : function(oEvent) {
 
-            var bActive = true;
             var oModel = this.getView().getModel("oUsername");
+            var bActive = true;
 
             if(oModel === undefined){
                 bActive = false;
@@ -69,6 +77,17 @@ sap.ui.define([
             this._onFilterUser(oArgs.employeeEmail);
         },
 
+        /*
+        * Filters the business trips from the data base after email so the user can see ONLY his BT
+        * 
+        * @param {Array} [aFilter] building a filter for 'equals email'
+        * @param {Object} [oValue] the value (empty) for the page title
+        * @param {Object} [oList] the list (empty) of values from the table which needs to be populated
+        * @param {Object} [oBinding] we're binding the BTs from the items path to [oList] and filter them after email
+        * 
+        * After the binding we count the rows so the user can see how many BTs he has
+        * [oValue] is set to "My request" and the number of entries
+        */
         _onFilterUser : function (sEmail) {
 
 			var aFilter = [];
@@ -89,6 +108,20 @@ sap.ui.define([
             });
         },
         
+        /*
+        * Filters the business trips from the data base after status so the user can see only approved/in progress/denied BTs
+        * 
+        * @param {String} [sStatus] the selected status from the 'select' option 
+        * 
+        * IF the user want to see all his BTs: th table is populated using only the email filter, no status
+        * @param {Object} [oList] the list (empty) of values from the table which needs to be populated
+        * @param {Object} [oBinding] we're binding the BTs from the items path to [oList] and filter them after email
+        * 
+        * IF the user wants to see only approved/in progress/denied BTs: 
+        * @param {Array} [aFilter] building a filter for 'equals status'
+        * @param {Object} [oList] the list of values from the table which needs to be filtered
+        * @param {Object} [oBinding] we're binding the BTs from the items path to [oList] and filter them after status
+        */
         _onFilterSelect : function (oEvent) {
 
             var sStatus = oEvent.getParameter("selectedItem").getKey("key");
@@ -109,7 +142,8 @@ sap.ui.define([
         },
 
         /*
-        * When you press the table tile -> navTo detailApproved page
+        * When you press the table row -> navTo detailDenied page
+        * The navigation is made based on the email (from login) and id of the user
         */
 		_onPress: function (oEvent) {
             
@@ -123,23 +157,27 @@ sap.ui.define([
 			});
         },
 
+        /*
+        * When you press the table row -> navTo newTrip page
+        */
         _onAddTripPress: function () {
             
             this.getRouter().navTo("newTrip");
         },
 
+        /*
+        * Formatter with RowHighlight option filtered after status
+        */
         _formatRowHighlight: function (oValue) {
-
-			if (oValue === "DENIED") {
-				return "Error";
-            } 
-            else if (oValue === "IN PROGRESS") {
-				return "Information";
-            } 
-            else if (oValue === "APPROVED") {
-				return "Success";
-			}
-			return "None";
+        // Your logic for rowHighlight goes here
+            if (oValue === "DENIED") {
+                return "Error";
+            } else if (oValue === "IN PROGRESS") {
+                return "Information";
+            } else if (oValue === "APPROVED") {
+                return "Success";
+            }
+            return "None";
         }
     });
 });

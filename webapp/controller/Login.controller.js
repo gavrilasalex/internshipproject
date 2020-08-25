@@ -14,7 +14,7 @@ sap.ui.define([
       *
       * @param {String} [sEmail] email value from the Email Input
       * @param {String} [sPassword] password value from the Password Input
-      * @param {String} [sUsername] email value to be sent to the next page for validation
+      * @param {Object} [oUsername] email value to be sent to the next page for validation
       * 
       * 
       * /Login: oData function thet gets the email and password as parameters

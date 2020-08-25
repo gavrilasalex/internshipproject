@@ -1,10 +1,10 @@
 <!-- 
    
-Reject Dialog 
+APPROVE DIALOG
+*the manager needs to confirm that he wants to approve a business trip
 
-Icon 
-Input for rejection reason
-Submit Button -> _onSubmitDialog 
+Submit Button -> _onSubmitDialog (the trip changes it's status to APPROVED)
+Cancel Button -> _onCancelReject (close dialog)
 
 -->
 

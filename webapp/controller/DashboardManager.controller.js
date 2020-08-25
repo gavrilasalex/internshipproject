@@ -1,4 +1,7 @@
-//CONTROLLER FOR MANAGER DASHBOARD
+/*
+*MANAGER DASHBOARD
+*the manger can select which business trips to see based on the status
+*/
 
 sap.ui.define([
     "intern2020/controller/BaseController",
@@ -11,6 +14,9 @@ sap.ui.define([
 
         bInitialLogin: true,
         
+        /* 
+        *  Matching the route from the login page based on email
+        */
         onInit : function() {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -18,15 +24,17 @@ sap.ui.define([
         },
         
         /*
-        * Matches the route for Username 
+        * Matches the route for the email (and Username)
         * 
-        * @param {Boolean} [bActive] when login is succesfull and the dashboard loads the variable is set to /true/
+        * @param {Object} [oModel] gets the value sent from the login page for Username
+        * @param {Boolean} [bActive] the variable is set to /true/
         * 
-        * IF the oModel is undefined bActive is set to /false/
-        * ELSE IF the /Username is empty (the login part is skipped) bActive is set to /false/
+        * IF the Username is undefined or empty (the login was not done right/nothing is sent from the login page)
+        * [bActive] the variable is set to /false/
         * 
-        * IF bActiv is false -> call _onSignOutPress to exit
-        * ELSE IF bActive is true -> Welcome message shows up on the screen, customized with the username
+        * IF [bActive] is false -> the login was not succesfull so the user can't see the page -> _onSignOutPress
+        * ELSE IF bActive is true -> the login was succesfull
+        *                         -> Welcome message shows up on the screen, customized with the Username (if it's the initial login)
         * 
         */
         _onRouteMatched : function(oEvent) {
@@ -57,6 +65,15 @@ sap.ui.define([
             this.getTileValue();
         },
 
+        /*
+        * Filters the business trips from the data base after status 
+        * 
+        * @param {Array} [oFilterTBA, oFilterA, oFilterD] building a filter for 'equals status'
+        * @param {Object} [oTileValueTBA, oTileValueA, oTileValueD] the value (empty) for the tiles
+        * 
+        * After the binding we count the rows so the manager can see how many BTs he has based on the status
+        * [oTileValueTBA, oTileValueA, oTileValueD] are set to the number of entries
+        */
         getTileValue: function () {
             var oTileValueTBA = this.getView().byId("numericContent_TBA");
             var oTileValueA = this.getView().byId("numericContent_A");
@@ -119,7 +136,7 @@ sap.ui.define([
         },
         
         /*
-        * When you press the Approved Tile -> navTo managerToBeApproved page
+        * When you press the Approved Tile -> navTo managerApproved page
         */
         _onPressApproved : function (oEvent) {
 
