@@ -14,7 +14,7 @@ sap.ui.define([
 
         onInit : function() {
 
-			this._Page = this.byId("TBApage");
+			this._Page = this.byId("page_toBeApproved");
 			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -31,33 +31,23 @@ sap.ui.define([
             });
 		},
 		
-		toggleVisibility: function () {
-            this._Page.setShowFooter(!this._Page.getShowFooter());
-		}, 
-		
-        toggleFooter: function () {
-			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
-		},
-		
 		//Function for the Reject Button in To be approved form
 		_onRejectPress : function (oEvent) {
 			var oView = this.getView();
-			var oView = this.getView();
 
-			// create dialog lazily
-			if (!this.byId("rejectDialog")) {
-				// load asynchronous XML fragment
+			if (!this.byId("dialog_reject")) {
+				
 				Fragment.load({
 					id: oView.getId(),
           			name: "intern2020.view.RejectionDialog",
           			controller: this
 				}).then(function (oDialog) {
-					// connect dialog to the root view of this component (models, lifecycle)
+					
 					oView.addDependent(oDialog);
 					oDialog.open();
 				});
 			} else {
-				this.byId("rejectDialog").open();
+				this.byId("dialog_reject").open();
 			}
 		},
 
@@ -67,12 +57,13 @@ sap.ui.define([
 		*On press: the dialog closes and a rejection message appears on screen.
 		*/
 		_onSubmitReject : function (oEvent) {
+
 			var oView = this.getView();
 			var oModel = oView.getModel();
 			var that = this;
 			 
 			var sId = oEvent.getSource().getBindingContext().getObject().Id;
-			var sReason = oView.byId("motiveReject").mProperties.value;
+			var sReason = oView.byId("textArea_reject").mProperties.value;
 
 			oModel.callFunction("/Deny", {
 										method: "POST",
@@ -81,7 +72,7 @@ sap.ui.define([
 												Observations: sReason
 										},
 				success : function(oData, response) {
-					that.byId("rejectDialog").close();
+					that.byId("dialog_reject").close();
 
 					MessageToast.show("Business trip denied!", {
 						duration: 10000
@@ -90,7 +81,7 @@ sap.ui.define([
 				},
 
 				error : function(oError){
-					that.byId("rejectDialog").close();
+					that.byId("dialog_reject").close();
 
 					MessageToast.show("Something went wrong...", {
 						duration: 10000
@@ -102,26 +93,27 @@ sap.ui.define([
 		},
 
 		_onCancelReject : function(oEvent){
-			this.byId("rejectDialog").close();
+			this.byId("dialog_reject").close();
 		},
 
 		_onApprovedPress : function (oEvent) {
+
 			var oView = this.getView();
 
-			// create dialog lazily
-			if (!this.byId("approveDialog")) {
-				// load asynchronous XML fragment
+			
+			if (!this.byId("dialog_approved")) {
+				
 				Fragment.load({
 					id: oView.getId(),
           			name: "intern2020.view.ApproveDialog",
           			controller: this
 				}).then(function (oDialog) {
-					// connect dialog to the root view of this component (models, lifecycle)
+					
 					oView.addDependent(oDialog);
 					oDialog.open();
 				});
 			} else {
-				this.byId("approveDialog").open();
+				this.byId("dialog_approved").open();
 			}
 		},
 
@@ -131,6 +123,7 @@ sap.ui.define([
 		*On press: the dialog closes and a rejection message appears on screen.
 		*/
 		_onSubmitApprove : function (oEvent){
+
 			var oView = this.getView();
 			var oModel = oView.getModel();
 			var sId = oEvent.getSource().getBindingContext().getObject().Id;
@@ -142,7 +135,7 @@ sap.ui.define([
 												Id: sId
 											},
 				success : function(oData,response){
-					that.byId("approveDialog").close();
+					that.byId("dialog_approved").close();
 
 					MessageToast.show("Business trip approved!", {
 						duration: 10000
@@ -151,7 +144,7 @@ sap.ui.define([
 				},
 
 				error : function(oError){
-					that.byId("approveDialog").close();
+					that.byId("dialog_approved").close();
 					
 					MessageToast.show("Something went wrong...", {
 						duration: 10000
@@ -162,22 +155,7 @@ sap.ui.define([
 		},
 
 		_onCancelApprove : function(oEvent){
-			this.byId("approveDialog").close();
-		},
-
-		/*
-        * When you press the navigation button -> navTo previous page/managerToBeApproved
-        */
-        _onNavBack : function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("managerToBeApproved", {}, true);
-			}
+			this.byId("dialog_approved").close();
 		}
     });
 });

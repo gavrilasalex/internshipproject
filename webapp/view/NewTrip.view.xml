@@ -18,7 +18,7 @@
     
 	<content>
 		<VBox class="sapUiMediumMargin" >
-			<f:Form id="FormToolbar"
+			<f:Form id="form_newTrip"
 					editable="true">
 
 				<f:layout>
@@ -43,17 +43,17 @@
 						<f:formElements>
 							<f:FormElement label="Email Address">
 								<f:fields>
-									<Input type="Email" id="emailInput" required="true"/>
+									<Input type="Email" id="input_email" required="true"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Job Number">
 								<f:fields>
-									<Input type="Number" id="jobInput" required="true"/>
+									<Input type="Number" id="input_jobNumber" required="true"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Requster Name">
 								<f:fields>
-									<Input  id="requesterInput" required="true"/>
+									<Input  id="input_requester" required="true"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -63,18 +63,18 @@
 						<f:formElements>
 							<f:FormElement label="Client name">
 								<f:fields>
-									<Input id="clientInput"/>
+									<Input id="input_client"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Travel reason">
 								<f:fields>
-									<Input id="reasonInput"/>
+									<Input id="input_reason"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Start Trip/End Trip">
 								<f:fields>
 									<DateTimePicker
-										id="startInput"
+										id="input_startDate"
 										placeholder="Start"
 										required="true"
 										valueFormat="yyyy-MM-ddTHH:mm:ss" 
@@ -85,7 +85,7 @@
 										</layoutData>
 									</DateTimePicker>
 									<DateTimePicker
-										id="endInput"
+										id="input_endDate"
 										required="true"
 										placeholder="End"
 										valueFormat="yyyy-MM-ddTHH:mm:ss" 
@@ -98,17 +98,17 @@
 							</f:FormElement>
 							<f:FormElement label="Number of days">
 								<f:fields>
-									<Input type="Number" id="noDaysInput" required="true"/>
+									<Input type="Number" id="input_noDays" required="true"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Country/City">
 								<f:fields>
-									<Input id="countryInput">
+									<Input id="input_country">
 										<layoutData>
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>
 									</Input>
-									<Input id="cityInput">
+									<Input id="input_city">
 										<layoutData>
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>
@@ -127,32 +127,32 @@
 							</f:FormElement>
 							<f:FormElement label="Air fare">
 								<f:fields>
-									<Input type="Number" id="airfareInput"/>
+									<Input type="Number" id="input_airFare"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Train ticket">
 								<f:fields>
-									<Input type="Number" id="trainInput"/>
+									<Input type="Number" id="input_train"/>
 								</f:fields>
 							</f:FormElement>
                             <f:FormElement label="Car rental">
 								<f:fields>
-									<Input type="Number" id="rentalInput"/>
+									<Input type="Number" id="input_car"/>
 								</f:fields>
 							</f:FormElement>
                             <f:FormElement label="Gas">
 								<f:fields>
-									<Input type="Number" id="gasInput"/>
+									<Input type="Number" id="input_gas"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Hotel costs">
 								<f:fields>
-									<Input type="Number" id="hotelInput"/>
+									<Input type="Number" id="input_hotel"/>
 								</f:fields>
 							</f:FormElement>
                             <f:FormElement label="Bank charges">
 								<f:fields>
-									<Input type="Number" id="bankInput"/>
+									<Input type="Number" id="input_bank"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -168,22 +168,22 @@
 							</f:FormElement>
                             <f:FormElement label="Business meals">
 								<f:fields>
-									<Input type="Number" id="mealsInput"/>
+									<Input type="Number" id="input_meals"/>
 								</f:fields>
 							</f:FormElement>
                             <f:FormElement label="Food beverages">
 								<f:fields>
-									<Input type="Number" id="foodInput"/>
+									<Input type="Number" id="input_food"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="IT supplies">
 								<f:fields>
-									<Input type="Number" id="itInput"/>
+									<Input type="Number" id="input_it"/>
 								</f:fields>
 							</f:FormElement>
                             <f:FormElement label="Office supplies">
 								<f:fields>
-									<Input type="Number" id="officeInput"/>
+									<Input type="Number" id="input_office"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -193,17 +193,17 @@
 						<f:formElements>
 							<f:FormElement label="PerDiemRate">
 								<f:fields>
-									<Input type="Number" id="rateInput"/>
+									<Input type="Number" id="input_rate"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="PerDiemAllowance">
 								<f:fields>
-									<Input type="Number" id="allowanceInput"/>
+									<Input type="Number" id="input_allowance"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Advance payment needed">
 								<f:fields>
-									<Select id="apaymentInput">
+									<Select id="input_aPayment">
 											<items>
 												<core:Item text="YES" key="YES"/>
 												<core:Item text="NO" key="NO"/>
@@ -213,12 +213,12 @@
 							</f:FormElement>
 							<f:FormElement label="Advance sum">
 								<f:fields>
-									<Input type="Number" id="asumInput"/>
+									<Input type="Number" id="input_aSum"/>
 								</f:fields>
 							</f:FormElement>
                             <f:FormElement label="Currency/Exchange Rate">
 								<f:fields>
-									<Select id="currencyInput">
+									<Select id="input_currency">
 										<items>
 											<core:Item text="EUR" key="EUR"/>
 											<core:Item text="RON" key="RON"/>
@@ -230,7 +230,7 @@
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>
 									</Select>
-									<Input type="Number" id="exchangeInput">
+									<Input type="Number" id="input_exchange">
 										<layoutData>
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>

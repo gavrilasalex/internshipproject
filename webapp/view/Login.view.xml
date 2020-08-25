@@ -29,8 +29,8 @@ Login Button -> _onLoginPress
 			</VBox>
 
 			<VBox class="inputLogin">
-				<Input placeholder="E-Mail Address" id="emailInput" type="Email" change="_validateEmail"/>
-				<Input placeholder="Password" id="passwordInput" type="Password"/>
+				<Input placeholder="E-Mail Address" id="input_email" type="Email" change="_validateEmail"/>
+				<Input placeholder="Password" id="input_password" type="Password"/>
 				<Button 
 					width="20rem" 
 					text="Login" 

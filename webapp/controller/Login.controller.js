@@ -9,11 +9,6 @@ sap.ui.define([
 
    return BaseController.extend("intern2020.controller.Login", {
 
-      onInit: function(){
-         // var oPage = this.getView().byId("page_login");
-         // oPage.addStyleClass("myBackgroundStyle");
-      },
-
       /*
       * Function for the login button
       *
@@ -34,12 +29,12 @@ sap.ui.define([
          var oModel = oView.getModel();
          var that = this;
 
-         var sEmail = oView.byId("emailInput").getValue();
-         var sPassword = oView.byId("passwordInput").getValue();
+         var sEmail = oView.byId("input_email").getValue();
+         var sPassword = oView.byId("input_password").getValue();
          
-         var sUsername = {"Username" : sEmail};
-         var oModel2 = new sap.ui.model.json.JSONModel(sUsername);
-         this.getOwnerComponent().setModel(oModel2, "sUsername");
+         var oUsername = {"Username" : sEmail};
+         var oModelData = new sap.ui.model.json.JSONModel(oUsername);
+         this.getOwnerComponent().setModel(oModelData, "oUsername");
       
          oModel.callFunction("/Login", {
                                        method: "POST", 
@@ -57,16 +52,18 @@ sap.ui.define([
                var sPosition = myData.Fare.UserPosition;
 
                if(sPosition == "MANAGER"){
-                     var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                     oRouter.navTo("dashboardManager");
+
+                  var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                  oRouter.navTo("dashboardManager");
                }
                else if(sPosition == "USER"){
-                  
+               
                   that.getRouter().navTo("userBT",{
                      employeeEmail : sEmail
                   });
                }
                else if(sPosition == ""){
+
                      MessageToast.show("Email or password is incorrect. Try again.", {
                         duration: 4000,
                         autoClose: false
@@ -77,7 +74,8 @@ sap.ui.define([
             
             error : function(oError){
                alert("An error ocurred. Please refresh.");
-            } 
+            }
+
          }); 
       }, 
 
@@ -95,10 +93,11 @@ sap.ui.define([
             
       _validateEmail : function(){
 
-         var sEmail = this.getView().byId("emailInput").getValue();
+         var sEmail = this.getView().byId("input_email").getValue();
          var mailregex = /^\w+[\w-+\.]*\@\w+([-\.]\w+)*\.[a-zA-Z]{2,}$/;
 
          if(!sEmail){
+
             MessageToast.show("Please enter an email adress.", {
                duration: 4000,
                autoClose: false
@@ -106,6 +105,7 @@ sap.ui.define([
             $( ".sapMMessageToast" ).addClass( "sapMMessageToastWarning " );
          }
          else if (!mailregex.test(sEmail)) {
+            
             MessageToast.show(sEmail + " is not a valid email address!", {
                duration: 4000,
                autoClose: false

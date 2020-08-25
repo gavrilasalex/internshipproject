@@ -19,11 +19,12 @@ Items (type navigation) -> _onPress
 		backgroundDesign="Solid"
         showHeader="true" 
         class="w3-backGround" 
-        enableScrolling="false" 
+        enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
+
     <Table
-        id="approvedManagerTable"
+        id="table_managerA"
 		items="{
             path: '/TripSet',
 			filters: [{path: 'Status', operator: 'EQ', value1: 'APPROVED'}]
@@ -33,7 +34,7 @@ Items (type navigation) -> _onPress
 
 		<headerToolbar>
          <Toolbar>
-		 	<Title id="managerApproved_table" text=""/>
+		 	<Title id="title_managerA"/>
          </Toolbar>
       	</headerToolbar>
 
@@ -58,16 +59,15 @@ Items (type navigation) -> _onPress
 
 		<items>
 			<ColumnListItem
-				id="list"
 				type="Navigation"
 				press="_onPress">
 				<cells>
-					<ObjectIdentifier id="employeeName" title="{FirstName} {LastName}"/>
+					<ObjectIdentifier id="listItem_name" title="{FirstName} {LastName}"/>
 					<Text text="{
    								path: 'StartTrip',
 								type: 'sap.ui.model.type.DateTime',
 								formatOptions: { 
-									style: 'short' 
+									style: 'medium' 
 									} 
 								}"/>
 					<Text text="{TotalSum}"/>

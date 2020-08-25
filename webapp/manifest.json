@@ -134,10 +134,7 @@
               "pattern": "newTrip",
               "name": "newTrip",
               "target": "newTrip"
-            }
-            
-
-            
+            } 
         ],
         "targets": {
             "login": {

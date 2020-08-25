@@ -15,6 +15,7 @@ sap.ui.define([
     return BaseController.extend("intern2020.controller.ManagerDenied", {
 
         onInit : function() {
+			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("managerDenied").attachMatched(this._onRouteMatched, this);
 		},
@@ -26,20 +27,20 @@ sap.ui.define([
 
 		_onFilterUser : function () {
 
-			var aFilter = new Filter({
+			var oFilter = new Filter({
                 path: 'Status',
                 operator: 'EQ',
                 value1: 'DENIED'
 			});
 			
-			var oTileValueTBA = this.getView().byId("managerDenied_table");
+			var oTileValueD = this.getView().byId("title_managerD");
 				
 			this.getView().getModel().read("/TripSet/$count", {
-				filters: [aFilter],
+				filters: [oFilter],
 	
 				success: function(oData, oResponse){
-					var count = Number(oResponse.body);
-					oTileValueTBA.setText("Business Trips (" + count + ")"); 
+					var nCount = Number(oResponse.body);
+					oTileValueD.setText("Business Trips (" + nCount + ")"); 
 				}
 			});
         },
@@ -48,27 +49,14 @@ sap.ui.define([
         * When you press the table tile -> navTo detailDenied page
         */
         _onPress: function (oEvent) {
+
 			var oItem = oEvent.getSource();
 			var oCtx = oItem.getBindingContext();
+
 			this.getRouter().navTo("detailDenied",{
                 employeeId : oCtx.getProperty("Id"),
 				employeeEmail : oCtx.getProperty("EmailAddress")
 			});
-		},
-
-		/*
-        * When you press the navigation button -> navTo previous page/dashboardManager
-        */
-        _onNavBack : function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("dashboardManager", {}, true);
-			}
 		}
     });
 });

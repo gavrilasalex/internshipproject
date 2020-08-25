@@ -17,6 +17,7 @@ Denied Tile: icon, number -> _onPressDenied
 	xmlns:layout="sap.ui.layout">
 
 <Page backgroundDesign="Solid" title="{i18n>managerDashboard}" showHeader="true" class="w3-backGround" enableScrolling="false">
+
 	<headerContent>
 			<Button 
                 press="_onSignOutPress" 
@@ -33,8 +34,7 @@ Denied Tile: icon, number -> _onPressDenied
                     <TileContent>
                         <content>
                             <NumericContent 
-                                        id="numericValueTBA"
-                                        value=""
+                                        id="numericContent_TBA"
 									 	icon="sap-icon://pending" 
                                         indicator="None"
                                         valueColor="Neutral" />
@@ -51,8 +51,7 @@ Denied Tile: icon, number -> _onPressDenied
                     <TileContent>
                         <content>
                             <NumericContent
-                                        id="numericValueA"
-                                        value=""
+                                        id="numericContent_A"
 									 	icon="sap-icon://accept" 
                                         indicator="None"
                                         valueColor="Good" />
@@ -69,8 +68,7 @@ Denied Tile: icon, number -> _onPressDenied
                     <TileContent>
                         <content>
                             <NumericContent
-                                        id="numericValueD"
-                                        value=""
+                                        id="numericContent_D"
 									 	icon="sap-icon://decline" 
                                         indicator="None"
                                         valueColor="Error" />

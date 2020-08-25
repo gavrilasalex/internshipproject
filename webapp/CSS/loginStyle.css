@@ -37,15 +37,6 @@ html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     width: 99.5%;
 }
 
-/* .sapContrast .sapMBtnInner {
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    background-color: #1f415e !important;
-    border: .0625rem solid #a0b2c1;
-    color: #f5f8fa;
-    text-shadow: 0 0 0.125rem #000;
-} */
-
 html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     background-color: #eff4f9;
     border-top: 1px solid #475b6d;
@@ -85,6 +76,18 @@ html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     background-color: #FEEFB3 !important;
     border: 1px solid #9F6000 !important;
     border-left: 7px solid #9F6000 !important;
+}
+
+.yourstyleGreen{
+    color: #4F8A10 !important;
+}
+
+.yourstyleRed{
+    color: #D8000C !important;
+}
+
+.yourstyleBlue{
+    color: #1f415e !important;
 }
 
 .sapMInput {

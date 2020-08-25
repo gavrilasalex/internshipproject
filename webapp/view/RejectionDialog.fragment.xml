@@ -13,15 +13,12 @@ Submit Button -> _onSubmitDialog
    xmlns="sap.m"
    xmlns:core="sap.ui.core" >
    <Dialog
-      id="rejectDialog"
-      title="REJECT">
+      id="dialog_reject"
+      title="Reject">
       <content>
          <VBox>  
             <Text class="dialogText" text="Why are you rejecting this business trip?"/>       
-            <TextArea   
-               rows="4"
-               id="motiveReject"
-			      value=""/>
+            <TextArea rows="4" id="textArea_reject"/>
          </VBox>
       </content>
 

@@ -59,11 +59,37 @@ sap.ui.define([
 
         getModel : function(sText) {
             return this.getView().getModel(sText);
-        }
+        },
 
+        _onNavBack : function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
 
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			}
+        },
 
+        _onSignOutPress : function() {
 
+            var oModel = this.getView().getModel("oUsername");
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+
+            if(!(oModel === undefined)){
+                oModel.setProperty("/Username", "");
+            }
+
+            oRouter.navTo("login");
+            this.bInitialLogin = true;
+        },
+
+        toggleVisibility: function () {
+            this._Page.setShowFooter(!this._Page.getShowFooter());
+		}, 
+		
+        toggleFooter: function () {
+			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
+		}
 
     });
 

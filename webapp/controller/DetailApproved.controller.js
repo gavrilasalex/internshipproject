@@ -24,18 +24,6 @@ sap.ui.define([
             oView.bindElement({
 				path : "/TripDetailsSet(Id='" + oArgs.employeeId + "',EmailAddress='" + oArgs.employeeEmail + "')",
             });
-        },
-        
-        /*
-        * When you press the navigation button -> navTo previous page
-        */
-        _onNavBack : function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			}
-		}
+        }
     });
 });

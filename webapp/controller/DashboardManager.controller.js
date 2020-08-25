@@ -10,7 +10,7 @@ sap.ui.define([
     return BaseController.extend("intern2020.controller.DashboardManager", {
 
         bInitialLogin: true,
-        // Recives the Username from the login page
+        
         onInit : function() {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -32,7 +32,7 @@ sap.ui.define([
         _onRouteMatched : function(oEvent) {
         
             var bActive = true;
-            var oModel = this.getView().getModel("sUsername");
+            var oModel = this.getView().getModel("oUsername");
 
             if(oModel === undefined){
                 bActive = false;
@@ -45,6 +45,7 @@ sap.ui.define([
             }
             else {
                 if(this.bInitialLogin){
+
                     MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
                         duration: 3000
                     });
@@ -57,9 +58,9 @@ sap.ui.define([
         },
 
         getTileValue: function () {
-            var oTileValueTBA = this.getView().byId("numericValueTBA");
-            var oTileValueA = this.getView().byId("numericValueA");
-            var oTileValueD = this.getView().byId("numericValueD");
+            var oTileValueTBA = this.getView().byId("numericContent_TBA");
+            var oTileValueA = this.getView().byId("numericContent_A");
+            var oTileValueD = this.getView().byId("numericContent_D");
             var oFilterTBA,oFilterA,oFilterD;
 
             oFilterTBA = new Filter({
@@ -84,8 +85,8 @@ sap.ui.define([
                 filters: [oFilterTBA],
 
                 success: function(oData, oResponse){
-                    var count = Number(oResponse.body);
-                    oTileValueTBA.setValue(count);   
+                    var nCount = Number(oResponse.body);
+                    oTileValueTBA.setValue(nCount);   
                 }
             });
 
@@ -93,8 +94,8 @@ sap.ui.define([
                 filters: [oFilterA],
 
                 success: function(oData, oResponse){
-                    var count2 = Number(oResponse.body);
-                    oTileValueA.setValue(count2);   
+                    var nCount2 = Number(oResponse.body);
+                    oTileValueA.setValue(nCount2);   
                 }
             });
 
@@ -102,12 +103,10 @@ sap.ui.define([
                 filters: [oFilterD],
 
                 success: function(oData, oResponse){
-                    var count3 = Number(oResponse.body);
-                    oTileValueD.setValue(count3);   
+                    var nCount3 = Number(oResponse.body);
+                    oTileValueD.setValue(nCount3);   
                 }
             });
-
-
         },
 
         /*
@@ -115,7 +114,6 @@ sap.ui.define([
         */
         _onPressToBeApproved : function (oEvent) {
 
-			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("managerToBeApproved");
         },
@@ -125,7 +123,6 @@ sap.ui.define([
         */
         _onPressApproved : function (oEvent) {
 
-			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("managerApproved");
         },
@@ -135,27 +132,9 @@ sap.ui.define([
         */
         _onPressDenied : function (oEvent) {
 
-			var oItem = oEvent.getSource();
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("managerDenied");
 		},
 
-        /*
-        * When you press the sign out button -> navTo login page
-        *
-        * Set /Username to "" -> bActive is set to /false/
-        */
-        _onSignOutPress : function() {
-
-            var oModel = this.getView().getModel("sUsername");
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-
-            if(!(oModel === undefined)){
-                oModel.setProperty("/Username", "");
-            }
-            oRouter.navTo("login");
-
-            this.bInitialLogin = true;
-        }
     });
 });

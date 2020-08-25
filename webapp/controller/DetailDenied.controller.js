@@ -42,16 +42,5 @@ sap.ui.define([
             this.getView().setBusy(false);
         },
 
-        /*
-        * When you press the navigation button -> navTo previous page
-        */
-        _onNavBack : function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			}
-		}
     });
 });

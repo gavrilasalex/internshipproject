@@ -19,11 +19,12 @@ Items (type navigation) -> _onPress
 		backgroundDesign="Solid"
         showHeader="true" 
         class="w3-backGround" 
-        enableScrolling="false" 
+        enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
+
     <Table
-        id="deniedManagerTable"
+        id="table_managerD"
 		items="{
             path: '/TripSet',
 			filters: [{path: 'Status', operator: 'EQ', value1: 'DENIED'}]
@@ -33,7 +34,7 @@ Items (type navigation) -> _onPress
 
 		<headerToolbar>
          <Toolbar>
-		 	<Title id="managerDenied_table" text=""/>
+		 	<Title id="title_managerD"/>
          </Toolbar>
       	</headerToolbar>
 
@@ -66,12 +67,12 @@ Items (type navigation) -> _onPress
 				type="Navigation"
 				press="_onPress">
 				<cells>
-					<ObjectIdentifier id="employeeName" title="{FirstName} {LastName}"/>
+					<ObjectIdentifier id="listItem_name" title="{FirstName} {LastName}"/>
 					<Text text="{
    								path: 'StartTrip',
 								type: 'sap.ui.model.type.Date',
 								formatOptions: { 
-									style: 'short' 
+									style: 'medium' 
 									} 
 								}"/>
 					<Text text="{TotalSum}"/>

@@ -24,7 +24,7 @@ Items (type navigation) -> _onPress
         showHeader="true"
 		backgroundDesign="Solid" 
         class="w3-backGround" 
-        enableScrolling="false">
+        enableScrolling="true">
 	
 	<headerContent>
 			<Button 
@@ -35,14 +35,14 @@ Items (type navigation) -> _onPress
 	</headerContent>
 
     <Table
-        id="userTable"
+        id="table_user"
         class="sapUiResponsiveMargin"
         width="auto" 
 		items="{path: '/TripSet'}">
 
 		<headerToolbar>
          <Toolbar>
-		 	<Title id="titleUser" text=""/>
+		 	<Title id="title_user"/>
 			<ToolbarSpacer/>
 			<Text text="Business Trip Status: "/>
 			<Select autoAdjustWidth="false" width="15em" forceSelection="true" change="_onFilterSelect">
@@ -80,11 +80,13 @@ Items (type navigation) -> _onPress
 
 		<items>
 			<ColumnListItem
-				id="listUser"
+				id="list_user"
 				type="Navigation"
-				press="_onPress">
+				press="_onPress"
+				highlight="{path:'Status', 
+							formatter:'._formatRowHighlight'}">
 				<cells>
-					<ObjectIdentifier id="employeeName" title="{FirstName} {LastName}"/>
+					<ObjectListItem id="listItem_name" title="{FirstName} {LastName}"/>
 					<Text text="{
    								path: 'StartTrip',
 								type: 'sap.ui.model.type.Date',

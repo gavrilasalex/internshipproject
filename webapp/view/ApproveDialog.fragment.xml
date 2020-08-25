@@ -13,8 +13,8 @@ Submit Button -> _onSubmitDialog
    xmlns="sap.m"
    xmlns:core="sap.ui.core" >
    <Dialog
-      id="approveDialog"
-      title="APPROVE">
+      id="dialog_approved"
+      title="Approve">
       <content>
          <VBox>  
             <Text class="dialogText" text="Are you sure you want to approve?"/>       

@@ -16,39 +16,39 @@ sap.ui.define([
 			this._Page = this.byId("page_newTrip");
 			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
 			 
-			this.byId("startInput").setMinDate(new Date());
-			this.byId("endInput").setMinDate(new Date());
+			this.byId("input_startDate").setMinDate(new Date());
+			this.byId("input_endDate").setMinDate(new Date());
 		},
 
 		_onSavePress : function(oEvent){
             var oView = this.getView();
             var oModel = oView.getModel();
-            var sEmail = oView.byId("emailInput").getValue();
-            var sStartDate = oView.byId("startInput").getValue();
-            var sEndDate = oView.byId("endInput").getValue();
-			var sNoDays = oView.byId("noDaysInput").getValue();
-            var sJob = oView.byId("jobInput").getValue();
-			var sClient = oView.byId("clientInput").getValue();
-			var sReason = oView.byId("reasonInput").getValue();
-            var sCountry = oView.byId("countryInput").getValue();
-            var sCity = oView.byId("cityInput").getValue();
-            var sRequester = oView.byId("requesterInput").getValue();
-            var sRate = oView.byId("rateInput").getValue();
-			var sMeals = oView.byId("mealsInput").getValue();
-			var sFood = oView.byId("foodInput").getValue();
-            var sRental = oView.byId("rentalInput").getValue();
-            var sGas = oView.byId("gasInput").getValue();
-            var sAllowance = oView.byId("allowanceInput").getValue();
-            var sTrain = oView.byId("trainInput").getValue();
-			var sBank = oView.byId("bankInput").getValue();
-			var sIt = oView.byId("itInput").getValue();
-            var sAirfare = oView.byId("airfareInput").getValue();
-            var sOffice = oView.byId("officeInput").getValue();
-            var sHotel = oView.byId("hotelInput").getValue();
-			var sApayment = oView.byId("apaymentInput").getSelectedItem().getText();
-			var sAsum = oView.byId("asumInput").getValue();
-			var sCurrency = oView.byId("currencyInput").getSelectedItem().getText();
-			var sExchange = oView.byId("exchangeInput").getValue();
+            var sEmail = oView.byId("input_email").getValue();
+            var sStartDate = oView.byId("input_startDate").getValue();
+            var sEndDate = oView.byId("input_endDate").getValue();
+			var sNoDays = oView.byId("input_noDays").getValue();
+            var sJob = oView.byId("input_jobNumber").getValue();
+			var sClient = oView.byId("input_client").getValue();
+			var sReason = oView.byId("input_reason").getValue();
+            var sCountry = oView.byId("input_country").getValue();
+            var sCity = oView.byId("input_city").getValue();
+            var sRequester = oView.byId("input_requester").getValue();
+            var sRate = oView.byId("input_rate").getValue();
+			var sMeals = oView.byId("input_meals").getValue();
+			var sFood = oView.byId("input_food").getValue();
+            var sRental = oView.byId("input_car").getValue();
+            var sGas = oView.byId("input_gas").getValue();
+            var sAllowance = oView.byId("input_allowance").getValue();
+            var sTrain = oView.byId("input_train").getValue();
+			var sBank = oView.byId("input_bank").getValue();
+			var sIt = oView.byId("input_it").getValue();
+            var sAirfare = oView.byId("input_airFare").getValue();
+            var sOffice = oView.byId("input_office").getValue();
+            var sHotel = oView.byId("input_hotel").getValue();
+			var sApayment = oView.byId("input_aPayment").getSelectedItem().getText();
+			var sAsum = oView.byId("input_aSum").getValue();
+			var sCurrency = oView.byId("input_currency").getSelectedItem().getText();
+			var sExchange = oView.byId("input_exchange").getValue();
 
             oModel.create("/NewTripSet",
             {	
@@ -82,41 +82,19 @@ sap.ui.define([
             },
             {
                 success : function(oData){
+
 					MessageToast.show("Trip for " + oData.EmailAddress + " created.");
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
-            },
-                error : function(oData){
+            	},
+                error : function(){
+
 					MessageToast.show("Failed to add trip.");
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
-            }
+            	}
             });
-		},
-		
-		toggleVisibility: function () {
-            this._Page.setShowFooter(!this._Page.getShowFooter());
-		}, 
-		
-        toggleFooter: function () {
-			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
 		},
 
 		_onCancelPress : function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				var oRouter = UIComponent.getRouterFor(this);
-				oRouter.navTo("userBT", {}, true);
-			}
-		},
-
-		
-		/*
-        * When you press the navigation button -> navTo previous page/managerToBeApproved
-        */
-        _onNavBack : function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 

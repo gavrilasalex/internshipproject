@@ -34,7 +34,7 @@ Footer: Accept Button -> _onApprovedPress
 	xmlns:layout="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form">
 
-<Page   id="TBApage"
+<Page   id="page_toBeApproved"
 		title="{FirstName} {LastName}'s Business Trip ({	path: 'StartTrip',
 															type: 'sap.ui.model.type.Date',
 															formatOptions: { 
@@ -54,13 +54,13 @@ Footer: Accept Button -> _onApprovedPress
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiLargeMargin">
-			<f:Form id="FormToolbar"
+		<VBox class="sapUiSmallMargin">
+			<f:Form id="form_generalInfo"
 					editable="false">
 
 				<f:toolbar>
-					<Toolbar id="TB1">
-						<Title id="Title1" text="{i18n>generalInfo}"/>
+					<Toolbar id="toolbar_generalInfo">
+						<Title id="title_generalInfo" text="{i18n>generalInfo}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
@@ -81,27 +81,28 @@ Footer: Accept Button -> _onApprovedPress
 						columnsM="1"
 						singleContainerFullSize="false"  />
 				</f:layout>
+				
 				<f:formContainers>
 					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formName}">
 								<f:fields>
-									<Text id="nameInput" text="{LastName} {FirstName}"/>
+									<Text id="input_name" text="{LastName} {FirstName}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formEmail}">
 								<f:fields>
-									<Text id="emailInput" text="{EmailAddress}"/>
+									<Text id="input_email" text="{EmailAddress}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formSupervisor}">
 								<f:fields>
-									<Text id="supervisorInput" text="{SupervisorName}"/>
+									<Text id="input_supervisor" text="{SupervisorName}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formPhoneNumber}">
 								<f:fields>
-									<Text id="phoneInput" text="{Phonenumber}"/>
+									<Text id="input_phone" text="{Phonenumber}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -111,12 +112,12 @@ Footer: Accept Button -> _onApprovedPress
 		</VBox>
 
 		<VBox class="sapUiLargeMargin">
-			<f:Form id="FormToolbar2"
+			<f:Form id="form_infoCountry"
 					editable="false">
 
 				<f:toolbar>
-					<Toolbar id="TB2">
-						<Title id="Title2" text="{i18n>infoCountry}"/>
+					<Toolbar id="toolbar_infoCountry">
+						<Title id="title_infoCountry" text="{i18n>infoCountry}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
@@ -137,27 +138,28 @@ Footer: Accept Button -> _onApprovedPress
 						columnsM="1"
 						singleContainerFullSize="false" />
 				</f:layout>
+
 				<f:formContainers>
 					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formReason}">
 								<f:fields>
-									<Text id="reasonInput" text="{Reason}"/>
+									<Text id="input_reason" text="{Reason}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formRequestor}">
 								<f:fields>
-									<Text id="requestorInput" text="{Requester}"/>
+									<Text id="input_requestor" text="{Requester}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formCountry}" >
 								<f:fields>
-									<Text id="countryInput" text="{TravelCountry}"/>
+									<Text id="input_country" text="{TravelCountry}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formCity}">
 								<f:fields>
-									<Text id="cityInput" text="{TravelCity}"/>
+									<Text id="input_city" text="{TravelCity}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -167,12 +169,12 @@ Footer: Accept Button -> _onApprovedPress
 		</VBox>
 
 		<VBox class="sapUiLargeMargin">
-			<f:Form id="FormToolbar3"
+			<f:Form id="form_tripRequest"
 					editable="false">
 
 				<f:toolbar>
-					<Toolbar id="TB3">
-						<Title id="Title3" text="{i18n>tripRequest}"/>
+					<Toolbar id="toolbar_tripRequest">
+						<Title id="title_tripRequest" text="{i18n>tripRequest}"/>
 						<ToolbarSpacer />
 					</Toolbar>
 				</f:toolbar>
@@ -193,39 +195,40 @@ Footer: Accept Button -> _onApprovedPress
 						columnsM="1"
 						singleContainerFullSize="false"  />
 				</f:layout>
+
 				<f:formContainers>
 					<f:FormContainer>
 						<f:formElements>
 							<f:FormElement label="{i18n>formCosts}">
 								<f:fields>
-									<Text id="costsInput" text="{TotalSum} EUR"/>
+									<Text id="input_costs" text="{TotalSum} {Currency}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formStartBT}">
 								<f:fields>
-									<Text id="startInput" text="{
-   																path: 'StartTrip',
-																type: 'sap.ui.model.type.Date',
-																formatOptions: { 
+									<Text id="input_startDate" text="{
+   																	path: 'StartTrip',
+																	type: 'sap.ui.model.type.Date',
+																	formatOptions: { 
 																			style: 'long' 
-																} 
-															}"/>
+																	} 
+																}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formEndBT}">
 								<f:fields>
-									<Text id="endInput" text="{
-   																path: 'EndTrip',
-																type: 'sap.ui.model.type.Date',
-																formatOptions: { 
+									<Text id="input_endDate" text="{
+   																	path: 'EndTrip',
+																	type: 'sap.ui.model.type.Date',
+																	formatOptions: { 
 																			style: 'long' 
-																} 
-															}"/>
+																	} 
+																}"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="{i18n>formAdvancePay}">
 								<f:fields>
-									<Text id="payInput"  text="{AdvancePayment}"/>
+									<Text id="input_aPayment"  text="{AdvancePayment}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
