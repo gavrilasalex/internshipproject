@@ -7,6 +7,12 @@
     position: relative;
 }
 
+.adminLogic{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 .myBackgroundStyle{
     background-image: url('https://www.mhp.com/fileadmin/www.mhp.com/assets/og/mhp_opengraph.jpg') !important;
 }
@@ -33,26 +39,21 @@
 
 html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     background-color: #1f415e !important;
-    border-top: 1px solid #475b6d;
     width: 99.5%;
 }
 
-html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
+/* html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     background-color: #eff4f9;
     border-top: 1px solid #475b6d;
-}
+} */
 
 .sapContrast span.sapMBtnInner.sapMBtnAccept {
-    background-image: none;
     background-color: #359435;
-    border-color: #eff4f9;
     color: #eff4f9;
 }
 
 .sapContrast span.sapMBtnInner.sapMBtnReject {
-    background-image: none;
     background-color: rgb(175, 43, 43);
-    border-color: #eff4f9;
     color: #eff4f9;
 }
 
@@ -76,18 +77,6 @@ html.sap-desktop .sapContrast.sapMIBar.sapMFooter-CTX {
     background-color: #FEEFB3 !important;
     border: 1px solid #9F6000 !important;
     border-left: 7px solid #9F6000 !important;
-}
-
-.yourstyleGreen{
-    color: #4F8A10 !important;
-}
-
-.yourstyleRed{
-    color: #D8000C !important;
-}
-
-.yourstyleBlue{
-    color: #1f415e !important;
 }
 
 .sapMInput {

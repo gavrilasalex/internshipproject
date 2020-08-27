@@ -52,7 +52,7 @@ Content 3: Business Trip Request
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMarginBegin sapUiSmallMargin">
 			<f:Form id="form_generalInfo"
 					editable="false">
 

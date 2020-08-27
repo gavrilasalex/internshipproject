@@ -10,9 +10,9 @@ sap.ui.define([
     "sap/ui/core/routing/History",
 	"sap/ui/core/UIComponent",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/model/FilterType",
-], function (BaseController, MessageToast, History, UIComponent, Filter, FilterOperator, FilterType) {
+    "sap/ui/model/FilterType",
+    "sap/ui/model/FilterOperator",
+], function (BaseController, MessageToast, History, UIComponent, Filter, FilterType, FilterOperator) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerDenied", {
@@ -37,25 +37,47 @@ sap.ui.define([
         * After the binding we count the rows so the manager can see how many BTs appear for the status 
         * [oTileValueD] is set to "Business Trips" and the number of entries
         */
-		_onFilterUser : function () {
+        _onFilterUser : function () {
 
-			var oFilter = new Filter({
-                path: 'Status',
-                operator: 'EQ',
-                value1: 'DENIED'
-			});
-			
-			var oTileValueD = this.getView().byId("title_managerD");
-				
-			this.getView().getModel().read("/TripSet/$count", {
-				filters: [oFilter],
-	
-				success: function(oData, oResponse){
-					var nCount = Number(oResponse.body);
-					oTileValueD.setText("Business Trips (" + nCount + ")"); 
-				}
-			});
+            var aFilter = [];
+            aFilter.push(new Filter("Status", FilterOperator.EQ, "DENIED"));
+
+            var oValue = this.getView().byId("title_managerD");  
+            var oList = this.getView().byId("table_managerD");
+            var oBinding = oList.getBinding("items");
+            
+            oBinding.filter(aFilter);
+        
+            this.getView().getModel().read("/TripSet/$count", {
+                filters: [aFilter],
+
+                success: function(oData, oResponse){
+                    var nCount = Number(oResponse.body);
+                    oValue.setText("Business Trips (" + nCount + ")"); 
+                }
+            });
         },
+    
+        _onSearch : function (oEvent) {
+
+            var sQuery = oEvent.getParameter("query");
+
+            if(sQuery)
+            {
+                // var aFilter = [new Filter("LastName", FilterOperator.Contains, sQuery)];
+                var aFilter = [];
+                aFilter.push(new Filter("LastName", FilterOperator.EQ, sQuery));
+                var oList = this.getView().byId("table_managerD");
+                var oBinding = oList.getBinding("items");
+                oBinding.filter(aFilter, FilterType.Application);
+            }
+            else{
+                var oList = this.getView().byId("table_managerD");
+                var oBinding = oList.getBinding("items");
+                oBinding.filter(aFilter, FilterType.Application);
+            }
+        },
+
 		
 		/*
         * When you press the table row -> navTo detailDenied page

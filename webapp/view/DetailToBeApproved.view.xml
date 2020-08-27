@@ -55,7 +55,7 @@ Footer: Accept Button -> _onApprovedPress (navTo approve dialog to confirm)
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMarginBegin sapUiSmallMargin">
 			<f:Form id="form_generalInfo"
 					editable="false">
 
@@ -80,7 +80,7 @@ Footer: Accept Button -> _onApprovedPress (navTo approve dialog to confirm)
 						columnsXL="1"
 						columnsL="1"
 						columnsM="1"
-						singleContainerFullSize="false"  />
+						singleContainerFullSize="false" />
 				</f:layout>
 				
 				<f:formContainers>

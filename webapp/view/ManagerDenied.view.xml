@@ -31,7 +31,9 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
         id="table_managerD"
 		items="{
             path: '/TripSet',
-			filters: [{path: 'Status', operator: 'EQ', value1: 'DENIED'}]
+			sorter: {
+				path: 'StartTrip'
+			}
         }"
         class="sapUiResponsiveMargin"
         width="auto">
@@ -39,6 +41,8 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 		<headerToolbar>
          <Toolbar>
 		 	<Title id="title_managerD"/>
+			<ToolbarSpacer/>
+			<SearchField width="15em" search="_onSearch"/>
          </Toolbar>
       	</headerToolbar>
 
@@ -53,7 +57,7 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 			</Column>
 			<Column
 				demandPopin="false">
-				<Text text="{i18n>price}"/>
+				<Text text="{i18n>price} (RON)"/>
 			</Column>
 			<Column
 				demandPopin="false">
@@ -69,14 +73,16 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 		<items>
 			<ColumnListItem
 				type="Navigation"
-				press="_onPress">
+				press="_onPress"
+				highlight="{path:'Status', 
+						   formatter:'._formatRowHighlight'}">
 				<cells>
 					<ObjectIdentifier id="listItem_name" title="{FirstName} {LastName}"/>
 					<Text text="{
    								path: 'StartTrip',
 								type: 'sap.ui.model.type.Date',
 								formatOptions: { 
-									style: 'medium' 
+									style: 'short' 
 									} 
 								}"/>
 					<Text text="{TotalSum}"/>

@@ -96,6 +96,11 @@
               "target": "dashboardManager"
             },
             {
+              "pattern": "adminDashboard",
+              "name": "adminDashboard",
+              "target": "adminDashboard"
+            },
+            {
               "pattern": "userBT/{employeeEmail}",
               "name": "userBT",
               "target": "userBT"
@@ -145,6 +150,11 @@
           "dashboardManager": {
             "viewName": "DashboardManager",
             "viewId": "dashboardManager",
+            "viewLevel": 1
+          },
+          "adminDashboard": {
+            "viewName": "AdminDashboard",
+            "viewId": "adminDashboard",
             "viewLevel": 1
           },
           "userBT": {

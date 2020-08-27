@@ -54,7 +54,7 @@ Content 4: Reason For Rejection
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiSmallMargin">
+		<VBox class="sapUiLargeMarginBegin sapUiSmallMargin">
 			<f:Form id="form_generalInfo"
 					editable="false">
 
@@ -79,7 +79,7 @@ Content 4: Reason For Rejection
 						columnsXL="1"
 						columnsL="1"
 						columnsM="1"
-						singleContainerFullSize="false"  />
+						singleContainerFullSize="false" />
 				</f:layout>
 
 				<f:formContainers>

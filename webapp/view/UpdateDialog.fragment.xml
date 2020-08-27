@@ -1,0 +1,33 @@
+<!-- 
+   
+APPROVE DIALOG
+*the manager needs to confirm that he wants to approve a business trip
+
+Submit Button -> _onSubmitDialog (the trip changes it's status to APPROVED)
+Cancel Button -> _onCancelReject (close dialog)
+
+-->
+
+<core:FragmentDefinition
+   controllerName="intern2020.controller.AdminDashboard"
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="dialog_update"
+      title="Update">
+      <content>
+         <VBox>  
+            <Text class="dialogText" text="Are you sure you want to update this user?"/>       
+         </VBox>
+      </content>
+
+      <buttons>
+            <Button
+               text="Cancel"
+               press="_onCancelUpdate"/>
+            <Button
+               text="Approve"
+               press="_onSubmitUpdate"/>
+      </buttons>
+   </Dialog>
+</core:FragmentDefinition>

@@ -92,8 +92,19 @@ sap.ui.define([
 		
         toggleFooter: function () {
 			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
-		}
-
+        },
+        
+        _formatRowHighlight: function (oValue) {
+            // Your logic for rowHighlight goes here
+                if (oValue === "DENIED") {
+                    return "Error";
+                } else if (oValue === "IN PROGRESS") {
+                    return "Information";
+                } else if (oValue === "APPROVED") {
+                    return "Success";
+                }
+                return "None";
+        },
     });
 
     return oBaseController;

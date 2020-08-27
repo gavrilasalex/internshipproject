@@ -48,8 +48,8 @@ sap.ui.define([
         */
 		_onRouteMatched : function(oEvent) {
 
-            var oModel = this.getView().getModel("oUsername");
             var bActive = true;
+            var oModel = this.getView().getModel("oUsername");
 
             if(oModel === undefined){
                 bActive = false;
@@ -76,6 +76,7 @@ sap.ui.define([
             var oArgs = oEvent.getParameter("arguments");
             this._onFilterUser(oArgs.employeeEmail);
         },
+
 
         /*
         * Filters the business trips from the data base after email so the user can see ONLY his BT
@@ -160,24 +161,12 @@ sap.ui.define([
         /*
         * When you press the table row -> navTo newTrip page
         */
-        _onAddTripPress: function () {
-            
+        _onAddTripPress: function (oEvent) {
+            var oModel = this.getView().getModel("oUsername");
+            var oUsername2 = {"Username" : oModel.getProperty("/Username")};
+            var oModelData = new sap.ui.model.json.JSONModel(oUsername2);
+            this.getOwnerComponent().setModel(oModelData, "oUsername2");
             this.getRouter().navTo("newTrip");
-        },
-
-        /*
-        * Formatter with RowHighlight option filtered after status
-        */
-        _formatRowHighlight: function (oValue) {
-        // Your logic for rowHighlight goes here
-            if (oValue === "DENIED") {
-                return "Error";
-            } else if (oValue === "IN PROGRESS") {
-                return "Information";
-            } else if (oValue === "APPROVED") {
-                return "Success";
-            }
-            return "None";
         }
     });
 });

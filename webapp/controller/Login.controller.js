@@ -62,6 +62,11 @@ sap.ui.define([
                      employeeEmail : sEmail
                   });
                }
+               else if(sPosition == "ADMIN"){
+               
+                  var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                  oRouter.navTo("adminDashboard");
+               }
                else if(sPosition == ""){
 
                      MessageToast.show("Email or password is incorrect. Try again.", {
@@ -77,8 +82,7 @@ sap.ui.define([
             }
 
          }); 
-      }, 
-
+      },
 
       /*
       * Function for email validation
@@ -90,7 +94,6 @@ sap.ui.define([
       * ELSE IF the email input value is not valid -> error message
       * 
       */
-            
       _validateEmail : function(){
 
          var sEmail = this.getView().byId("input_email").getValue();
@@ -99,19 +102,20 @@ sap.ui.define([
          if(!sEmail){
 
             MessageToast.show("Please enter an email adress.", {
-               duration: 4000,
-               autoClose: false
+                 duration: 4000,
+                 autoClose: false
             });
             $( ".sapMMessageToast" ).addClass( "sapMMessageToastWarning " );
          }
          else if (!mailregex.test(sEmail)) {
-            
+        
             MessageToast.show(sEmail + " is not a valid email address!", {
-               duration: 4000,
-               autoClose: false
+                 duration: 4000,
+                 autoClose: false
             });
             $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger " );
          }
-      },
+     }
+
    });
 })

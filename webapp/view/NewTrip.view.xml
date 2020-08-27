@@ -27,7 +27,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 		navButtonPress="_onNavBack">
     
 	<content>
-		<VBox class="sapUiMediumMargin" >
+		<VBox class="sapUiTinyMargin" >
 			<f:Form id="form_newTrip"
 					editable="true">
 
@@ -53,7 +53,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 						<f:formElements>
 							<f:FormElement label="Email Address">
 								<f:fields>
-									<Input type="Email" id="input_email" required="true"/>
+									<Input type="Email" id="input_email" enabled="false"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Job Number">
@@ -63,7 +63,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 							</f:FormElement>
 							<f:FormElement label="Requster Name">
 								<f:fields>
-									<Input  id="input_requester" required="true"/>
+									<Input  id="input_requester" enabled="false"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
@@ -99,7 +99,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 										required="true"
 										placeholder="End"
 										valueFormat="yyyy-MM-ddTHH:mm:ss" 
-										change="handleChange">
+										change="handleChange2">
 										<layoutData>
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>
@@ -108,7 +108,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 							</f:FormElement>
 							<f:FormElement label="Number of days">
 								<f:fields>
-									<Input type="Number" id="input_noDays" required="true"/>
+									<Input type="Number" id="input_noDays" enabled="false"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="Country/City">
@@ -201,32 +201,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 
 					<f:FormContainer title="Payment Details">
 						<f:formElements>
-							<f:FormElement label="PerDiemRate">
-								<f:fields>
-									<Input type="Number" id="input_rate"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="PerDiemAllowance">
-								<f:fields>
-									<Input type="Number" id="input_allowance"/>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="Advance payment needed">
-								<f:fields>
-									<Select id="input_aPayment">
-											<items>
-												<core:Item text="YES" key="YES"/>
-												<core:Item text="NO" key="NO"/>
-											</items>
-									</Select>
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="Advance sum">
-								<f:fields>
-									<Input type="Number" id="input_aSum"/>
-								</f:fields>
-							</f:FormElement>
-                            <f:FormElement label="Currency/Exchange Rate">
+							<f:FormElement label="Currency/Exchange Rate">
 								<f:fields>
 									<Select id="input_currency">
 										<items>
@@ -247,6 +222,31 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 									</Input>
 								</f:fields>
 							</f:FormElement>
+							<f:FormElement label="PerDiemRate">
+								<f:fields>
+									<Input type="Number" id="input_rate" change="onChangeRate"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="PerDiemAllowance">
+								<f:fields>
+									<Input type="Number" id="input_allowance" enabled="false"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Advance payment needed">
+								<f:fields>
+									<Select id="input_aPayment">
+											<items>
+												<core:Item text="YES" key="YES"/>
+												<core:Item text="NO" key="NO"/>
+											</items>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Advance sum">
+								<f:fields>
+									<Input type="Number" id="input_aSum"/>
+								</f:fields>
+							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>	
 				</f:formContainers>
@@ -254,10 +254,10 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 		</VBox>
 	</content>
 
-	<footer class="footerNew">
+	<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button type="Reject" text="Cancel" press="_onCancelPress"/>
+				<Button text="Cancel" press="_onCancelPress"/>
 				<Button type="Accept" text="Save" press="_onSavePress"/>
 			</OverflowToolbar>
 	</footer>
