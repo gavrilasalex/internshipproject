@@ -29,11 +29,11 @@ Login Button -> _onLoginPress (navigation to the user/manager dashoard based on 
 			</VBox>
 
 			<VBox class="inputLogin">
-				<Input placeholder="E-Mail Address" id="input_email" type="Email" change="_validateEmail"/>
-				<Input placeholder="Password" id="input_password" type="Password"/>
+				<Input placeholder="{i18n>inputEmail}" id="input_email" type="Email" change="_validateEmail"/>
+				<Input placeholder="{i18n>inputPassword}" id="input_password" type="Password"/>
 				<Button 
 					width="20rem" 
-					text="Login" 
+					text="{i18n>general_login_button}" 
 					type="Emphasized" 
 					press="_onLoginPress">
 				</Button>

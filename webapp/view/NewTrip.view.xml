@@ -21,7 +21,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 		title="Add New Trip"
         showHeader="true" 
         backgroundDesign="Solid"
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact"
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
@@ -89,7 +89,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 										required="true"
 										valueFormat="yyyy-MM-ddTHH:mm:ss" 
 										displayFormat="long"
-										change="handleChange">
+										change="_onChangeStartDate">
 										<layoutData>
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>
@@ -99,7 +99,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 										required="true"
 										placeholder="End"
 										valueFormat="yyyy-MM-ddTHH:mm:ss" 
-										change="handleChange2">
+										change="_onChangeEndDate">
 										<layoutData>
 											<l:GridData span="XL2 L4 M2 S4" />
 										</layoutData>
@@ -224,7 +224,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 							</f:FormElement>
 							<f:FormElement label="PerDiemRate">
 								<f:fields>
-									<Input type="Number" id="input_rate" change="onChangeRate"/>
+									<Input type="Number" id="input_rate" change="_onChangeRate"/>
 								</f:fields>
 							</f:FormElement>
 							<f:FormElement label="PerDiemAllowance">
@@ -234,7 +234,7 @@ Footer Button -> _onCancelPress (navigation to the User Dashboard)
 							</f:FormElement>
 							<f:FormElement label="Advance payment needed">
 								<f:fields>
-									<Select id="input_aPayment">
+									<Select id="input_aPayment" change="_onChangeApayment">
 											<items>
 												<core:Item text="YES" key="YES"/>
 												<core:Item text="NO" key="NO"/>

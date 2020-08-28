@@ -2,9 +2,8 @@
 
 sap.ui.define([
      "intern2020/controller/BaseController",
-     'sap/m/MessageToast',
-     'sap/m/Page'
- ], function (BaseController, MessageToast, Page) {
+     'sap/m/MessageToast'
+], function (BaseController, MessageToast) {
     "use strict";
 
    return BaseController.extend("intern2020.controller.Login", {
@@ -19,7 +18,7 @@ sap.ui.define([
       * 
       * /Login: oData function thet gets the email and password as parameters
       * 
-      * @param {String} [sPosition] the position for the email: MANAGER/USER/""
+      * @param {String} [sPosition] the position for the email: MANAGER/USER/ADMIN/""
       * SUCCES -> validation for sPosition and navigation to the coresponding dashboard
       *        -> for position "", a message of error will appear
       * ERROR -> Alert
@@ -35,8 +34,10 @@ sap.ui.define([
          var oUsername = {"Username" : sEmail};
          var oModelData = new sap.ui.model.json.JSONModel(oUsername);
          this.getOwnerComponent().setModel(oModelData, "oUsername");
-      
-         oModel.callFunction("/Login", {
+
+         if(sEmail != "" && sPassword != ""){
+
+            oModel.callFunction("/Login", {
                                        method: "POST", 
                                        urlParameters: {
                                                       Email : sEmail,
@@ -80,8 +81,8 @@ sap.ui.define([
             error : function(oError){
                alert("An error ocurred. Please refresh.");
             }
-
-         }); 
+            });
+         }  
       },
 
       /*

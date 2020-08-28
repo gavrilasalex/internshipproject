@@ -48,7 +48,7 @@ Content 4: Reason For Rejection
 														})"
         showHeader="true" 
 		backgroundDesign="Solid"
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact" 
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">

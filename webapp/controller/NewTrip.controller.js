@@ -16,8 +16,9 @@ sap.ui.define([
     return BaseController.extend("intern2020.controller.NewTrip", {
 
 		/* 
-        *  Setting the floating footer 
-        *  Setting the startDate and endDate so the user can't select a date earlier than the current day
+		*  Setting the floating footer 
+		*  Setting the minimum date for StartDate as today
+        *  Matching the route from the login page based on email
         */
         onInit : function() {
 
@@ -31,6 +32,20 @@ sap.ui.define([
 
 		},
 
+		/*
+        * Matches the route for the email (and Username)
+        * 
+        * @param {Object} [oModel] gets the value sent from the login page for Username
+        * @param {Boolean} [bActive] the variable is set to /true/
+        * 
+        * IF the Username is undefined or empty (the login was not done right/nothing is sent from the login page)
+        * [bActive] the variable is set to /false/
+        * 
+        * IF [bActive] is false -> the login was not succesfull so the user can't see the page -> _onSignOutPress
+        * ELSE IF bActive is true -> the login was succesfull
+        *                         -> Welcome message shows up on the screen, customized with the Username (if it's the initial login)
+        * 
+        */
 		_onRouteMatched : function(oEvent) {
 
 			var oModel = this.getView().getModel("oUsername2");
@@ -59,12 +74,8 @@ sap.ui.define([
         },
 
 		/*
-		*  Funtion used to create a new entry in the data base from the UI
-		*  All the parameters are taken from input fields entered by the user
-		*  Then we're sending the data to oData to create a new BT
-		*  A message will show based on the succes/error message sent from oData
+		* Open New Trip Dialog
 		*/
-
 		_onSavePress : function (oEvent) {
 			var oView = this.getView();
 	
@@ -84,6 +95,12 @@ sap.ui.define([
 			}
 		},
 
+		/*
+		*  Function used to create a new entry in the data base from the UI
+		*  All the parameters are taken from input fields entered by the user
+		*  Then we're sending the data to oData to create a new BT
+		*  A message will show based on the succes/error message sent from oData
+		*/
 		_onSubmitNewTrip : function(oEvent){
             var oView = this.getView();
             var oModel = oView.getModel();
@@ -183,18 +200,30 @@ sap.ui.define([
 			var sExchange = oView.byId("input_exchange").setValue();
 		},
 
+
+		/*
+		* Close New Trip Dialog
+		*/
 		_onCancelNewTrip : function(oEvent){
 			this.byId("dialog_newTrip").close();
 		},
 
-		handleChange: function(oEvent){
+		/*
+		* Setting the minimum value of EndTrip as StartTrip
+		* (the EndTrip date can't be smaller than the StartTrip date)
+		*/
+		_onChangeStartDate: function(oEvent){
+
 			var sDate = oEvent.getParameter("newValue");
 			var oDate = new Date(sDate);
 			this.byId("input_endDate").setMinDate(oDate);
 			this.byId("input_endDate").setValue();
 		},
 
-		handleChange2: function(oEvent){
+		/*
+		* Calculating the number of days of the trip (StartTrip-EndTrip)
+		*/
+		_onChangeEndDate: function(oEvent){
 
 			var dStart = this.byId("input_startDate").getDateValue();
 			var dEnd = this.byId("input_endDate").getDateValue();
@@ -205,7 +234,11 @@ sap.ui.define([
 			this.getView().byId("input_noDays").setValue(diffD);
 		},
 
-		onChangeRate: function(oEvent){
+		/*
+		* Caluculating the PerDiemAllowance basen on the PerDiemRate and number of days entered
+		*/
+		_onChangeRate: function(oEvent){
+
 			var sNoDays = this.getView().byId("input_noDays").getValue();
 			parseInt(sNoDays);
 			var sRate = oEvent.getParameter("newValue");
@@ -213,6 +246,23 @@ sap.ui.define([
 			var sAllowance = sNoDays * sRate;
 			sAllowance.toString();
 			this.getView().byId("input_allowance").setValue(sAllowance);
+		},
+
+		/*
+		* When the Advance Payment Needed select is set on no, the field for Advanced Sum is set to unenabled
+		* When the Advance Payment Needed select is set on yes, the field for Advanced Sum is set to enabled
+		*/
+		_onChangeApayment: function(){
+
+			var oView = this.getView();
+			var sApayment = oView.byId("input_aPayment").getSelectedItem().getText();
+
+			if(sApayment === "NO"){
+				oView.byId("input_aSum").setEnabled(false);
+			}
+			else {
+				oView.byId("input_aSum").setEnabled(true);
+			}
 		},
 		
 		/*

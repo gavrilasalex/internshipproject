@@ -22,7 +22,7 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 <Page   title="{i18n>userApproved}" 
 		backgroundDesign="Solid"
         showHeader="true" 
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact" 
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
@@ -51,16 +51,13 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 				width="30em">
 				<Text text="{i18n>employee}"/>
 			</Column>
-			<Column
-				demandPopin="false">
+			<Column>
 				<Text text="{i18n>date}"/>
 			</Column>
-			<Column
-				demandPopin="false">
+			<Column>
 				<Text text="{i18n>price} (RON)"/>
 			</Column>
-			<Column
-				demandPopin="false">
+			<Column>
 				<Text text="{i18n>location}"/>
 			</Column>
 		</columns>

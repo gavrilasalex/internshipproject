@@ -161,10 +161,12 @@ sap.ui.define([
         /*
         * When you press the table row -> navTo newTrip page
         */
-        _onAddTripPress: function (oEvent) {
+        _onAddTripPress: function () {
+
             var oModel = this.getView().getModel("oUsername");
             var oUsername2 = {"Username" : oModel.getProperty("/Username")};
             var oModelData = new sap.ui.model.json.JSONModel(oUsername2);
+            
             this.getOwnerComponent().setModel(oModelData, "oUsername2");
             this.getRouter().navTo("newTrip");
         }

@@ -95,7 +95,6 @@ sap.ui.define([
         },
         
         _formatRowHighlight: function (oValue) {
-            // Your logic for rowHighlight goes here
                 if (oValue === "DENIED") {
                     return "Error";
                 } else if (oValue === "IN PROGRESS") {

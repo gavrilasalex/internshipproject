@@ -46,7 +46,7 @@ Content 3: Business Trip Request
 														})" 
         showHeader="true" 
 		backgroundDesign="Solid"
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact" 
         enableScrolling="false" 
         showNavButton="true"
 		navButtonPress="_onNavBack">

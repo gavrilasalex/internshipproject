@@ -17,7 +17,11 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout">
 
-<Page backgroundDesign="Solid" title="{i18n>managerDashboard}" showHeader="true" class="w3-backGround" enableScrolling="false">
+<Page   backgroundDesign="Solid" 
+        title="{i18n>managerDashboard}" 
+        showHeader="true" 
+        class="w3-backGround sapUiSizeCompact" 
+        enableScrolling="false">        
 
 	<headerContent>
 			<Button 
@@ -25,7 +29,8 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
                 icon="sap-icon://log">
             </Button>
 	</headerContent>
-			
+	
+    <layout:VerticalLayout>
 	<layout:HorizontalLayout allowWrapping="true">
 		<GenericTile
                 class="sapUiSmallMarginBegin sapUiSmallMarginTop"
@@ -78,5 +83,15 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
                 </tileContent>
         </GenericTile>
     </layout:HorizontalLayout>
+
+    <layout:HorizontalLayout>
+		<GenericTile
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+                header="{i18n>isNewTrip}"
+                press="_onAddNewTrip">
+        </GenericTile>
+    </layout:HorizontalLayout>
+    
+    </layout:VerticalLayout>
 </Page>
 </mvc:View>

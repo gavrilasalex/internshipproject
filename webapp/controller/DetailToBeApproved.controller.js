@@ -6,11 +6,8 @@
 sap.ui.define([
 	"intern2020/controller/BaseController",
 	"sap/ui/core/Fragment",
-	"sap/m/MessageBox",
-    'sap/m/MessageToast',
-    "sap/ui/core/routing/History",
-	"sap/ui/core/UIComponent"
-], function (BaseController, Fragment, MessageBox, MessageToast, History, UIComponent) {
+    'sap/m/MessageToast'
+], function (BaseController, Fragment, MessageToast) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.DetailToBeApproved", {
@@ -110,6 +107,9 @@ sap.ui.define([
 		*On press: the dialog closes 
 		*/
 		_onCancelReject : function(oEvent){
+			var oView = this.getView();
+			var sReason = oView.byId("textArea_reject").mProperties.value;
+			sReason = oView.byId("textArea_reject").setValue();
 			this.byId("dialog_reject").close();
 		},
 		

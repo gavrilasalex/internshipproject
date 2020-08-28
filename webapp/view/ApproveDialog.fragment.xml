@@ -12,9 +12,11 @@ Cancel Button -> _onCancelReject (close dialog)
    controllerName="intern2020.controller.DetailToBeApproved"
    xmlns="sap.m"
    xmlns:core="sap.ui.core" >
+   
    <Dialog
       id="dialog_approved"
-      title="Approve">
+      title="Approve"
+      class="sapUiSizeCompact">
       <content>
          <VBox>  
             <Text class="dialogText" text="Are you sure you want to approve?"/>       

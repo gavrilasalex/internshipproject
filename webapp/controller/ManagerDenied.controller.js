@@ -6,13 +6,10 @@
 
 sap.ui.define([
     "intern2020/controller/BaseController",
-    'sap/m/MessageToast',
-    "sap/ui/core/routing/History",
-	"sap/ui/core/UIComponent",
 	"sap/ui/model/Filter",
     "sap/ui/model/FilterType",
     "sap/ui/model/FilterOperator",
-], function (BaseController, MessageToast, History, UIComponent, Filter, FilterType, FilterOperator) {
+], function (BaseController, Filter, FilterType, FilterOperator) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerDenied", {
@@ -29,13 +26,15 @@ sap.ui.define([
         },
 
 		/*
-        * Filters the business trips from the data base after status 
+        * Filters the business trips from the data base after status
         * 
-        * @param {Object} [oFilter] building a filter for 'equals status'
-        * @param {Object} [oTileValueD] the value (empty) for the page title
+        * @param {Array} [aFilter] building a filter for 'equals email'
+        * @param {Object} [oValue] the value (empty) for the page title
+        * @param {Object} [oList] the list (empty) of values from the table which needs to be populated
+        * @param {Object} [oBinding] we're binding the BTs from the items path to [oList] and filter them after email
         * 
-        * After the binding we count the rows so the manager can see how many BTs appear for the status 
-        * [oTileValueD] is set to "Business Trips" and the number of entries
+        * After the binding we count the rows so the user can see how many BTs he has
+        * [oValue] is set to "Business Trips" and the number of entries
         */
         _onFilterUser : function () {
 
@@ -57,16 +56,35 @@ sap.ui.define([
                 }
             });
         },
-    
+        
+        /*
+        * Filters the business trips from the data base after lastName or firstName
+        * 
+        * @param {String} [sQuery] the selected name from the search field
+        * 
+        * IF the search field is empty: th table is populated using only the email filter, no lastName/firstName
+        * @param {Object} [oList] the list (empty) of values from the table which needs to be populated
+        * @param {Object} [oBinding] we're binding the BTs from the items path to [oList] and filter them after email
+        * 
+        * IF the search field is has a value:
+        * @param {Array} [aFilter] building a filter for 'Contains name'
+        * @param {Object} [oList] the list of values from the table which needs to be filtered
+        * @param {Object} [oBinding] we're binding the BTs from the items path to [oList] and filter them after name
+        */
         _onSearch : function (oEvent) {
 
             var sQuery = oEvent.getParameter("query");
 
             if(sQuery)
             {
-                // var aFilter = [new Filter("LastName", FilterOperator.Contains, sQuery)];
-                var aFilter = [];
-                aFilter.push(new Filter("LastName", FilterOperator.EQ, sQuery));
+                var aFilter = new Filter({
+					filters: [
+					  new Filter("LastName", FilterOperator.Contains, sQuery),
+					  new Filter("FirstName", FilterOperator.Contains, sQuery),
+					],
+					and: false,
+                });
+                
                 var oList = this.getView().byId("table_managerD");
                 var oBinding = oList.getBinding("items");
                 oBinding.filter(aFilter, FilterType.Application);

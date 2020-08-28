@@ -17,7 +17,8 @@ Cancel Button -> _onCancelReject (close dialog)
 
    <Dialog
       id="dialog_reject"
-      title="Reject">
+      title="{i18n>general_reject_button}"
+      class="sapUiSizeCompact">
       <content>
          <VBox>  
             <Text class="dialogText" text="Why are you rejecting this business trip?"/>       
@@ -27,10 +28,10 @@ Cancel Button -> _onCancelReject (close dialog)
 
       <buttons>
             <Button
-               text="Cancel"
+               text="{i18n>general_cancel_button}"
                press="_onCancelReject"/>
             <Button
-               text="Reject"
+               text="{i18n>general_reject_button}"
                press="_onSubmitReject"/>
       </buttons>
    </Dialog>

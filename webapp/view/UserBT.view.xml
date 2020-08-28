@@ -29,7 +29,7 @@ Footer Button -> _onAddNewTrip (navigation to the New Trip View)
 		title="My {i18n>businessTrips}" 
         showHeader="true"
 		backgroundDesign="Solid" 
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact" 
         enableScrolling="true">
 	
 	<headerContent>
@@ -43,8 +43,13 @@ Footer Button -> _onAddNewTrip (navigation to the New Trip View)
     <Table
         id="table_user"
         class="sapUiResponsiveMargin"
+		responsive="true"
         width="auto" 
-		items="{path: '/TripSet'}">
+		items="{
+				path: '/TripSet',
+				sorter:{
+					path: 'StartTrip'
+				}}">
 
 		<headerToolbar>
          <Toolbar>
@@ -61,24 +66,19 @@ Footer Button -> _onAddNewTrip (navigation to the New Trip View)
       	</headerToolbar>
 
  		<columns>
-			<Column 
-				width="20em">
+			<Column >
 				<Text text="{i18n>employee}"/>
 			</Column>
-			<Column
-				demandPopin="false">
+			<Column>
 				<Text text="{i18n>date}"/>
 			</Column>
-			<Column
-				demandPopin="false">
+			<Column>
 				<Text text="{i18n>price} (RON)"/>
 			</Column>
-			<Column
-				demandPopin="false">
+			<Column>
 				<Text text="{i18n>location}"/>
 			</Column>
 			<Column
-				demandPopin="false"
 				width="20em">
 				<Text text="{i18n>reason}"/>
 			</Column>

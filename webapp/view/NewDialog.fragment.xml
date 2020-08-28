@@ -1,32 +1,35 @@
 <!-- 
    
-APPROVE DIALOG
-*the manager needs to confirm that he wants to approve a business trip
+NEW TRIP DIALOG
+*the user needs to confirm that he wants to create a business trip
 
-Submit Button -> _onSubmitDialog (the trip changes it's status to APPROVED)
-Cancel Button -> _onCancelReject (close dialog)
+Save Button -> _onSubmitNewTrip (creates the trip)
+Cancel Button -> _onCancelNewTrip (close dialog)
 
 -->
 
 <core:FragmentDefinition
    controllerName="intern2020.controller.NewTrip"
    xmlns="sap.m"
-   xmlns:core="sap.ui.core" >
+   xmlns:core="sap.ui.core">
+
    <Dialog
       id="dialog_newTrip"
-      title="Save">
+      title="{i18n>general_save_button}"
+      class="sapUiSizeCompact">
       <content>
          <VBox>  
-            <Text class="dialogText" text="Are you sure you want to create a trip?"/>       
+            <Text class="dialogText" text="Are you sure you want to save this trip?"/>       
          </VBox>
       </content>
 
       <buttons>
             <Button
-               text="Cancel"
+               text="{i18n>general_cancel_button}"
                press="_onCancelNewTrip"/>
             <Button
-               text="Approve"
+               text="{i18n>general_save_button}"
+               type="Accept"
                press="_onSubmitNewTrip"/>
       </buttons>
    </Dialog>

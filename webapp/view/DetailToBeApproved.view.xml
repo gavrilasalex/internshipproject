@@ -49,7 +49,7 @@ Footer: Accept Button -> _onApprovedPress (navTo approve dialog to confirm)
 														})" 
         showHeader="true" 
 		backgroundDesign="Solid"
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact" 
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">

@@ -151,7 +151,17 @@ sap.ui.define([
 
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("managerDenied");
-		},
+        },
+        
+        _onAddNewTrip: function () {
+
+            var oModel = this.getView().getModel("oUsername");
+            var oUsername2 = {"Username" : oModel.getProperty("/Username")};
+            var oModelData = new sap.ui.model.json.JSONModel(oUsername2);
+            
+            this.getOwnerComponent().setModel(oModelData, "oUsername2");
+            this.getRouter().navTo("newTrip");
+        }
 
     });
 });

@@ -1,82 +1,83 @@
-// CONTROLLER FOR LOGIN PAGE
+// CONTROLLER FOR ADMINISTATOR PAGE
 
 sap.ui.define([
     "intern2020/controller/BaseController",
     "sap/ui/core/Fragment",
-    'sap/m/MessageToast',
-    'sap/m/Page'
-], function (BaseController, Fragment, MessageToast, Page) {
+    'sap/m/MessageToast'
+], function (BaseController, Fragment, MessageToast, ) {
    "use strict";
 
   return BaseController.extend("intern2020.controller.AdminDashboard", {
 
     bInitialLogin: true,
 
-        /* 
-        *  Setting the floating footer 
-        *  Matching the route from the login page based on email
-        */
-        onInit : function(oEvent) {
+    /* 
+    *  Matching the route from the login page based on email
+    */
+    onInit : function() {
 
-            this.getView().setBusy(true);
+        this.getView().setBusy(true);
             
-			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.getRoute("adminDashboard").attachMatched(this._onRouteMatched, this)
-		},
+		var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.getRoute("adminDashboard").attachMatched(this._onRouteMatched, this)
+	},
 
-        /*
-        * Matches the route for the email (and Username)
-        * 
-        * @param {Object} [oModel] gets the value sent from the login page for Username
-        * @param {Boolean} [bActive] the variable is set to /true/
-        * 
-        * IF the Username is undefined or empty (the login was not done right/nothing is sent from the login page)
-        * [bActive] the variable is set to /false/
-        * 
-        * IF [bActive] is false -> the login was not succesfull so the user can't see the page -> _onSignOutPress
-        * ELSE IF bActive is true -> the login was succesfull
-        *                         -> Welcome message shows up on the screen, customized with the Username (if it's the initial login)
-        * 
-        */
-		_onRouteMatched : function(oEvent) {
+    /*
+    * Matches the route for the email (and Username)
+    * 
+    * @param {Object} [oModel] gets the value sent from the login page for Username
+    * @param {Boolean} [bActive] the variable is set to /true/
+    * 
+    * IF the Username is undefined or empty (the login was not done right/nothing is sent from the login page)
+    * [bActive] the variable is set to /false/
+    * 
+    * IF [bActive] is false -> the login was not succesfull so the user can't see the page -> _onSignOutPress
+    * ELSE IF bActive is true -> the login was succesfull
+    *                         -> Welcome message shows up on the screen, customized with the Username (if it's the initial login)
+    * 
+    */
+	_onRouteMatched : function() {
 
-            var bActive = true;
-            var oModel = this.getView().getModel("oUsername");
+        var bActive = true;
+        var oModel = this.getView().getModel("oUsername");
 
-            if(oModel === undefined){
-                bActive = false;
-            } 
-            else if(oModel.getProperty("/Username") === ""){
-                bActive = false;
+        if(oModel === undefined){
+            bActive = false;
+        } 
+        else if(oModel.getProperty("/Username") === ""){
+            bActive = false;
+        }
+
+        if(!bActive){
+            this._onSignOutPress();
+        }
+        else {
+            if(this.bInitialLogin){
+
+                MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
+                    duration: 3000
+                });
+                $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+                this.bInitialLogin = false;
             }
-
-            if(!bActive){
-                this._onSignOutPress();
-            }
-            else {
-                if(this.bInitialLogin){
-
-                    MessageToast.show("Welcome " + oModel.getProperty("/Username") + "!", {
-                        duration: 3000
-                    });
-                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
-                    this.bInitialLogin = false;
-                }
-            }
+        }
             
-            this.getView().setBusy(false);
-            var oArgs = oEvent.getParameter("arguments");
-        },
+        this.getView().setBusy(false);
+    },
 
-    _onCreatePress : function (oEvent) {
+    /*
+	* Open Create Dialog 
+	*/
+    _onCreatePress : function () {
         var oView = this.getView();
 
         if (!this.byId("dialog_create")) {
             
             Fragment.load({
+
                 id: oView.getId(),
-                  name: "intern2020.view.CreateDialog",
-                  controller: this
+                name: "intern2020.view.CreateDialog",
+                controller: this
             }).then(function (oDialog) {
                 
                 oView.addDependent(oDialog);
@@ -87,7 +88,13 @@ sap.ui.define([
         }
     },
 
-    _onSubmitCreate : function (oEvent) {
+    /*
+	*  Function used to create a new account in the data base from the UI
+	*  All the parameters are taken from input fields entered by the admin
+	*  Then we're sending the data to oData to create a new employee account
+	*  A message will show based on the succes/error message sent from oData
+	*/
+    _onSubmitCreate : function () {
         var oView = this.getView();
         var oModel = oView.getModel();
 
@@ -96,47 +103,65 @@ sap.ui.define([
         var sConfirm = oView.byId("input_confirm").getValue();
         var sPosition = oView.byId("select_position").getSelectedItem().getText();
 
-        if(sConfirm === sPassword){
 
-            oModel.create("/UserSet",
-            {
-                Email: sEmail,
-                Password: sPassword,
-                UserPosition: sPosition
-            },
-            {
-                success : function(oData){
+        if(sEmail === ""){
+            MessageToast.show("Please enter an email.");
+            $( ".sapMMessageToast" ).addClass( "sapMMessageToastWarning" );
+        }
+        else{
 
-                    MessageToast.show("User created.");
-                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+            if(sConfirm === sPassword && sConfirm != "" && sPassword != ""){
+
+                oModel.create("/UserSet",
+                {
+                    Email: sEmail,
+                    Password: sPassword,
+                    UserPosition: sPosition
                 },
-                error : function(){
-
-                    MessageToast.show("Failed to add user.");
-                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
-                }
-            });
+                {
+                    success : function(){
+    
+                        MessageToast.show("User created.");
+                        $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+    
+                        sEmail = oView.byId("input_email").setValue();
+                        sPassword = oView.byId("input_password").setValue();
+                        sPosition = oView.byId("select_position").getSelectedItem().setText();
+                    },
+                    error : function(){
+    
+                        MessageToast.show("Failed to add user.");
+                        $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+                    }
+                });
+            }
+            else {
+                MessageToast.show("The passwords don't match.");
+                $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+            }
         }
-        else {
-            MessageToast.show("The passwords don't match.");
-            $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
-        }
-
     }, 
 
-    _onCancelCreate : function(oEvent){
+    /*
+    * Close Create Dialog
+    */
+    _onCancelCreate : function(){
         this.byId("dialog_create").close();
     },
 
-    _onUpdatePress : function (oEvent) {
+    /*
+	* Open Update Dialog 
+	*/
+    _onUpdatePress : function () {
         var oView = this.getView();
 
         if (!this.byId("dialog_update")) {
             
             Fragment.load({
+
                 id: oView.getId(),
-                  name: "intern2020.view.UpdateDialog",
-                  controller: this
+                name: "intern2020.view.UpdateDialog",
+                controller: this
             }).then(function (oDialog) {
                 
                 oView.addDependent(oDialog);
@@ -147,7 +172,13 @@ sap.ui.define([
         }
     },
 
-    _onSubmitUpdate : function(oEvent){
+    /*
+	*  Function used to update an existing account from the data base 
+	*  All the parameters are taken from input fields entered by the admin
+	*  Then we're sending the data to oData to update the account
+	*  A message will show based on the succes/error message sent from oData
+	*/
+    _onSubmitUpdate : function(){
         var oView = this.getView();
         var oModel = oView.getModel();
 
@@ -156,36 +187,47 @@ sap.ui.define([
         var sConfirm = oView.byId("input_confirm").getValue();
         var sPosition = oView.byId("select_position").getSelectedItem().getText();
 
-        if(sConfirm === sPassword){
-            oModel.update("/UserSet(Email='" + sEmail + "')",
-            {
-                Email: sEmail,
-                Password: sPassword,
-                UserPosition: sPosition
-            },
-            {
-                success : function(oData){
-
-                    MessageToast.show("User updated.");
-                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
-
-                    var sEmail = oView.byId("input_email").setValue();
-                    var sPassword = oView.byId("input_password").setValue();
-                    var sPosition = oView.byId("select_position").getSelectedItem().setText();
-                },
-                error : function(){
-
-                    MessageToast.show("Failed to update user.");
-                    $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
-                }   
-            });
+        if(sEmail === ""){
+            MessageToast.show("Please enter an email.");
+            $( ".sapMMessageToast" ).addClass( "sapMMessageToastWarning" );
         }
-        else {
-            MessageToast.show("The passwords don't match.");
-            $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+        else{
+
+            if(sConfirm === sPassword){
+                oModel.update("/UserSet(Email='" + sEmail + "')",
+                {
+                    Email: sEmail,
+                    Password: sPassword,
+                    UserPosition: sPosition
+                },
+                {
+                    success : function(oData){
+    
+                        MessageToast.show("User updated.");
+                        $( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+    
+                        sEmail = oView.byId("input_email").setValue();
+                        sPassword = oView.byId("input_password").setValue();
+                        sPosition = oView.byId("select_position").getSelectedItem().setText();
+                    },
+                    error : function(){
+    
+                        MessageToast.show("Failed to update user.");
+                        $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+                    }   
+                });
+            }
+            else {
+                MessageToast.show("The passwords don't match.");
+                $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+            }
+
         }
     },
 
+    /*
+    * Close Update Dialog
+    */
     _onCancelUpdate : function(oEvent){
         this.byId("dialog_update").close();
     },

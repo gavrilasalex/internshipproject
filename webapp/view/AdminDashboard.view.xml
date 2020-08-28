@@ -1,11 +1,15 @@
 <!-- 
 
-LOGIN VIEW 
-*the user or manager can login using an email and a password
+ADMINISTRATOR DASHBOARD
+*the admin can update an existing account or create a new one for an employee
 
+Sign out Button -> _onSignOutPress (navigation to the Login View, kills this session)
 E-mail Input -> _validateEmail (the email will be validated to respect the 'name@email.com' format)
 Password Input 
-Login Button -> _onLoginPress (navigation to the user/manager dashoard based on the position from the data base)
+Confirm Password Input -> should be the same as the password
+Position Select -> the admin can choose a position which will give specific rights to the employee
+Create Button -> _onCreatePress (a dialog for confirmation will apear)
+Update Button -> _onCreatePress (a dialog for confirmation will apear)
 
 -->
 
@@ -16,10 +20,10 @@ Login Button -> _onLoginPress (navigation to the user/manager dashoard based on 
 	xmlns:l="sap.ui.layout"
 	xmlns="sap.m">
 
-<Page 	title="Admin Page" 
+<Page 	title="{i18n>adminPage}" 
         showHeader="true"
 		backgroundDesign="Solid" 
-        class="w3-backGround" 
+        class="w3-backGround sapUiSizeCompact" 
         enableScrolling="true">
 
 	<headerContent>
@@ -35,29 +39,27 @@ Login Button -> _onLoginPress (navigation to the user/manager dashoard based on 
 
 			<VBox class="inputLogin">
                 <Label text="Create or Update an employee: " />
-				<Input placeholder="E-Mail Address" id="input_email" type="Email" change="_validateEmail"/>
-				<Input placeholder="Password" id="input_password" type="Password"/>
-				<Input placeholder="Confirm Password" id="input_confirm" type="Password"/>
+				<Input placeholder="{i18n>inputEmail}" id="input_email" type="Email" change="_validateEmail"/>
+				<Input placeholder="{i18n>inputPassword}" id="input_password" type="Password"/>
+				<Input placeholder="{i18n>inputConfirmPassword}" id="input_confirm" type="Password"/>
                 <Select id="select_position" autoAdjustWidth="false" width="20em" forceSelection="true">
 				    <core:Item key="MANAGER" text="MANAGER" />
 				    <core:Item key="USER" text="USER" />
 				    <core:Item key="ADMIN" text="ADMIN" />
 			    </Select>
 
-					<Button 
-					    width="20rem" 
-					    text="Create" 
-					    type="Emphasized" 
-					    press="_onCreatePress">
-				    </Button>
-                    <Button 
-					    width="20rem" 
-					    text="Update" 
-					    type="Emphasized" 
-					    press="_onUpdatePress">
-				    </Button>
-
-
+				<Button 
+					width="20rem" 
+					text="{i18n>general_create_button}" 
+					type="Emphasized" 
+					press="_onCreatePress">
+				</Button>
+                <Button 
+					width="20rem" 
+					text="{i18n>general_update_button}" 
+					type="Emphasized" 
+					press="_onUpdatePress">
+				</Button>
 			</VBox>
 		</VBox>
 	</content>
