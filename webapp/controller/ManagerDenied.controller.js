@@ -77,13 +77,13 @@ sap.ui.define([
 
             if(sQuery)
             {
+                sQuery = sQuery.substring(0,1).toUpperCase()+ sQuery.substring(1,sQuery.length);
+                
                 var aFilter = new Filter({
 					filters: [
 					  new Filter("LastName", FilterOperator.Contains, sQuery),
-					  new Filter("FirstName", FilterOperator.Contains, sQuery),
-					],
-					and: false,
-                });
+					]
+				});
                 
                 var oList = this.getView().byId("table_managerD");
                 var oBinding = oList.getBinding("items");

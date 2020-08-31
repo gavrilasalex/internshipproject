@@ -22,7 +22,7 @@ Cancel Button -> _onCancelReject (close dialog)
       <content>
          <VBox>  
             <Text class="dialogText" text="Why are you rejecting this business trip?"/>       
-            <TextArea rows="4" id="textArea_reject"/>
+            <TextArea rows="4" id="textArea_reject" change="_onChangeReason"/>
          </VBox>
       </content>
 
@@ -31,6 +31,8 @@ Cancel Button -> _onCancelReject (close dialog)
                text="{i18n>general_cancel_button}"
                press="_onCancelReject"/>
             <Button
+               id="button_reject"
+               type="Reject"
                text="{i18n>general_reject_button}"
                press="_onSubmitReject"/>
       </buttons>

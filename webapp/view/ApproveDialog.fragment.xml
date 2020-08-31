@@ -29,6 +29,7 @@ Cancel Button -> _onCancelReject (close dialog)
                press="_onCancelApprove"/>
             <Button
                text="Approve"
+               type="Accept"
                press="_onSubmitApprove"/>
       </buttons>
    </Dialog>

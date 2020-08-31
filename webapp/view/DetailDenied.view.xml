@@ -271,7 +271,7 @@ Content 4: Reason For Rejection
 						<f:formElements>
 							<f:FormElement label="{i18n>formReasonRejection}">
 								<f:fields>
-									<Text id="inputReason" text="{Observations}"/>
+									<Text text="{Observations}"/>
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>

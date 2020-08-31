@@ -5,5 +5,9 @@ sap.ui.define([
 
    return BaseController.extend("intern2020.controller.App", {
       
+      onInit: function () {
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+		},
+
    });
 });

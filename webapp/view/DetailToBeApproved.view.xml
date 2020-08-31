@@ -242,8 +242,8 @@ Footer: Accept Button -> _onApprovedPress (navTo approve dialog to confirm)
 	<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button type="Accept" text="Approve" press="_onApprovedPress"/>
-				<Button type="Reject" text="Reject" press="_onRejectPress"/>
+				<Button type="Accept" text="{i18n>general_approve_button}" press="_onApprovedPress"/>
+				<Button type="Reject" text="{i18n>general_reject_button}" press="_onRejectPress"/>
 			</OverflowToolbar>
 	</footer>
 

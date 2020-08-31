@@ -97,6 +97,7 @@ sap.ui.define([
     _onSubmitCreate : function () {
         var oView = this.getView();
         var oModel = oView.getModel();
+        var that = this;
 
         var sEmail = oView.byId("input_email").getValue();
         var sPassword = oView.byId("input_password").getValue();
@@ -126,12 +127,16 @@ sap.ui.define([
     
                         sEmail = oView.byId("input_email").setValue();
                         sPassword = oView.byId("input_password").setValue();
-                        sPosition = oView.byId("select_position").getSelectedItem().setText();
+                        sConfirm = oView.byId("input_confirm").setValue();
+
+                        that._onCancelCreate();
                     },
                     error : function(){
     
                         MessageToast.show("Failed to add user.");
                         $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+
+                        that._onCancelCreate();
                     }
                 });
             }
@@ -181,6 +186,7 @@ sap.ui.define([
     _onSubmitUpdate : function(){
         var oView = this.getView();
         var oModel = oView.getModel();
+        var that=this;
 
         var sEmail = oView.byId("input_email").getValue();
         var sPassword = oView.byId("input_password").getValue();
@@ -208,12 +214,18 @@ sap.ui.define([
     
                         sEmail = oView.byId("input_email").setValue();
                         sPassword = oView.byId("input_password").setValue();
-                        sPosition = oView.byId("select_position").getSelectedItem().setText();
+                        sConfirm = oView.byId("input_confirm").setValue();
+
+                        that._onCancelUpdate();
+
                     },
                     error : function(){
     
                         MessageToast.show("Failed to update user.");
                         $( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+
+                        that._onCancelUpdate();
+
                     }   
                 });
             }

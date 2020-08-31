@@ -43,7 +43,6 @@ Footer Button -> _onAddNewTrip (navigation to the New Trip View)
     <Table
         id="table_user"
         class="sapUiResponsiveMargin"
-		responsive="true"
         width="auto" 
 		items="{
 				path: '/TripSet',
@@ -66,19 +65,21 @@ Footer Button -> _onAddNewTrip (navigation to the New Trip View)
       	</headerToolbar>
 
  		<columns>
-			<Column >
+			<Column>
 				<Text text="{i18n>employee}"/>
 			</Column>
 			<Column>
 				<Text text="{i18n>date}"/>
 			</Column>
-			<Column>
+			<Column minScreenWidth="Small">
 				<Text text="{i18n>price} (RON)"/>
 			</Column>
-			<Column>
+			<Column minScreenWidth="Small">
 				<Text text="{i18n>location}"/>
 			</Column>
 			<Column
+				minScreenWidth="Tablet"
+				demandPopin="false"
 				width="20em">
 				<Text text="{i18n>reason}"/>
 			</Column>

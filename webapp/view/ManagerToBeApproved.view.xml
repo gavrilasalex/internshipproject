@@ -16,6 +16,7 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
     controllerName="intern2020.controller.ManagerToBeApproved"
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
+	xmlns:unified="sap.ui.unified"
 	xmlns="sap.m"
 	xmlns:layout="sap.ui.layout">
 
@@ -26,6 +27,42 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
         enableScrolling="true" 
         showNavButton="true"
 		navButtonPress="_onNavBack">
+	
+	<Panel expandable="true" headerText="See calendar" width="auto" class="sapUiResponsiveMargin">
+		<content>
+			<PlanningCalendar 
+						id="planning_calendar2"
+						showRowHeaders="false"
+						appointmentsVisualization="Filled"
+						startDate="{path: 'StartTrip'}"
+						viewKey="Day"
+						intervalSelect="_handleIntervalSelect"
+						showEmptyIntervalHeaders="false">
+			
+				<toolbarContent>
+					<Title text="To Be Approved Business Trips" titleStyle="H4"/>
+				</toolbarContent>
+				
+				<rows>
+					<PlanningCalendarRow
+								appointments="{path: '/TripSet',
+											   templateShareable: true}">
+						<appointments>
+							<unified:CalendarAppointment
+								startDate="{StartTrip}"
+								endDate="{EndTrip}"
+								title="{FirstName} {LastName}"
+								text="{TravelCountry}, {TotalSum} RON"
+								type="Type06">
+							</unified:CalendarAppointment>
+						</appointments>
+
+					</PlanningCalendarRow>
+				</rows>
+
+			</PlanningCalendar>
+		</content>
+	</Panel>
 		
     <Table
         id="table_managerTBA"
@@ -47,18 +84,17 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
       	</headerToolbar>
 
  		<columns>
-			<Column 
-				width="30em">
+			<Column>
 				<Text text="{i18n>employee}"/>
 			</Column>
 			<Column
 				id="column_date">
 				<Text text="{i18n>date}" wrapping="false"/>
 			</Column>
-			<Column>
+			<Column minScreenWidth="Small">
 				<Text text="{i18n>price} (RON)"/>
 			</Column>
-			<Column>
+			<Column minScreenWidth="Small">
 				<Text text="{i18n>location}"/>
 			</Column>
 		</columns>

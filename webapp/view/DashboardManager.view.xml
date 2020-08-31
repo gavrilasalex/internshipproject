@@ -21,7 +21,7 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
         title="{i18n>managerDashboard}" 
         showHeader="true" 
         class="w3-backGround sapUiSizeCompact" 
-        enableScrolling="false">        
+        enableScrolling="true">        
 
 	<headerContent>
 			<Button 

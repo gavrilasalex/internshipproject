@@ -46,6 +46,11 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 
 			oBinding.filter(aFilter);
+
+			// var oList2 = this.getView().byId("planning_calendar2");
+			// var oBinding2 = oList2.getBinding("rows");
+
+			// oBinding2.filter(aFilter);
             
             this.getView().getModel().read("/TripSet/$count", {
 				filters: [aFilter],
@@ -76,13 +81,13 @@ sap.ui.define([
 			var sQuery = oEvent.getParameter("query");
 
             if(sQuery)
-            {
+            {	
+				sQuery = sQuery.substring(0,1).toUpperCase()+ sQuery.substring(1,sQuery.length);
+
 				var aFilter = new Filter({
 					filters: [
 					  new Filter("LastName", FilterOperator.Contains, sQuery),
-					  new Filter("FirstName", FilterOperator.Contains, sQuery),
-					],
-					and: false,
+					]
 				});
 
                 var oList = this.getView().byId("table_managerTBA");

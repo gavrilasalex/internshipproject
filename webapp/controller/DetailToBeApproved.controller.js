@@ -54,10 +54,22 @@ sap.ui.define([
 					
 					oView.addDependent(oDialog);
 					oDialog.open();
+
+					var sReason = oView.byId("textArea_reject").mProperties.value;
+					oView.byId("button_reject").setEnabled(sReason.length > 0);
 				});
 			} else {
 				this.byId("dialog_reject").open();
+
+				var sReason = oView.byId("textArea_reject").mProperties.value;
+				this.byId("button_reject").setEnabled(sReason.length > 0);
 			}
+		},
+
+		_onChangeReason : function(){
+			var oView = this.getView();
+			var sReason = oView.byId("textArea_reject").mProperties.value;
+			this.byId("button_reject").setEnabled(sReason.length > 0);
 		},
 
 		/*
@@ -74,6 +86,8 @@ sap.ui.define([
 			 
 			var sId = oEvent.getSource().getBindingContext().getObject().Id;
 			var sReason = oView.byId("textArea_reject").mProperties.value;
+			this.byId("button_reject").setEnabled(sReason.length > 0);
+
 
 			oModel.callFunction("/Deny", {
 										method: "POST",
@@ -88,6 +102,8 @@ sap.ui.define([
 						duration: 10000
 					});
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
+
+					that._onNavBack();
 				},
 
 				error : function(oError){
@@ -162,6 +178,8 @@ sap.ui.define([
 						duration: 10000
 					});
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+
+					that._onNavBack();
 				},
 
 				error : function(oError){
