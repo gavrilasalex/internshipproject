@@ -102,7 +102,7 @@ sap.ui.define([
 
          if(!sEmail){
 
-            MessageToast.show("Please enter an email adress.", {
+            MessageToast.show("Please enter an email address.", {
                  duration: 4000,
                  autoClose: false
             });

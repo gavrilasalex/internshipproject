@@ -9,7 +9,9 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterType",
 	"sap/ui/model/FilterOperator",
-], function (BaseController, Filter, FilterType, FilterOperator) {
+	"sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+], function (BaseController, Filter, FilterType, FilterOperator, History, UIComponent) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerToBeApproved", {
@@ -46,11 +48,6 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 
 			oBinding.filter(aFilter);
-
-			// var oList2 = this.getView().byId("planning_calendar2");
-			// var oBinding2 = oList2.getBinding("rows");
-
-			// oBinding2.filter(aFilter);
             
             this.getView().getModel().read("/TripSet/$count", {
 				filters: [aFilter],
@@ -101,7 +98,36 @@ sap.ui.define([
 				
                 oBinding.filter(aFilter, FilterType.Application);
 			}
-        },
+		},
+		
+		_handleAppointmentSelect: function(oEvent){
+
+			var oItem = oEvent.getParameter("appointment")
+			var oCtx = oItem.getBindingContext();
+
+			if(oCtx.getProperty("Status") === "APPROVED"){
+
+				this.getRouter().navTo("detailApproved",{
+					employeeId : oCtx.getProperty("Id"),
+					employeeEmail : oCtx.getProperty("EmailAddress")
+				});
+			}
+			else{
+				this.getRouter().navTo("detailToBeApproved",{
+					employeeId : oCtx.getProperty("Id"),
+					employeeEmail : oCtx.getProperty("EmailAddress")
+				});
+			}
+		},
+
+		_formatCalendarHighlight: function (oValue) {
+			if (oValue === "IN PROGRESS") {
+				return "Type06";
+			} else if (oValue === "APPROVED") {
+				return "Type08";
+			}
+			return "None";
+		},
 
 		/*
         * When you press the table row -> navTo detailToBeApproved page
@@ -116,6 +142,18 @@ sap.ui.define([
                 employeeId : oCtx.getProperty("Id"),
 				employeeEmail : oCtx.getProperty("EmailAddress")
 			});
+		},
+
+		_onNavBack: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = UIComponent.getRouterFor(this);
+				oRouter.navTo("dashboardManager", {}, true);
+			}
 		}
     });
 });

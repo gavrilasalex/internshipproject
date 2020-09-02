@@ -4,8 +4,10 @@
 */
 
 sap.ui.define([
-    "intern2020/controller/BaseController"
-], function (BaseController) {
+    "intern2020/controller/BaseController",
+    "sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+], function (BaseController, History, UIComponent) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.DetailDenied", {
@@ -35,6 +37,11 @@ sap.ui.define([
 
             this.getView().setBusy(false);
         },
+
+        _onNavBack: function () {
+
+			window.history.go(-1);
+		}
 
     });
 });

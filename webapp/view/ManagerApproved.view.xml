@@ -34,7 +34,7 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 						id="planning_calendar"
 						showRowHeaders="false"
 						appointmentsVisualization="Filled"
-						startDate="{path: 'StartTrip'}"
+						appointmentSelect="_handleAppointmentSelect"
 						viewKey="Day"
 						intervalSelect="_handleIntervalSelect"
 						showEmptyIntervalHeaders="false">

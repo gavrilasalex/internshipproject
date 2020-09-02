@@ -9,7 +9,9 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/FilterType",
-], function (BaseController, Filter, FilterOperator, FilterType) {
+	"sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+], function (BaseController, Filter, FilterOperator, FilterType, History, UIComponent) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerApproved", {
@@ -99,6 +101,17 @@ sap.ui.define([
 		}
 	},
 
+	_handleAppointmentSelect: function(oEvent){
+
+		var oItem = oEvent.getParameter("appointment")
+		var oCtx = oItem.getBindingContext();
+
+		this.getRouter().navTo("detailToBeApproved",{
+			employeeId : oCtx.getProperty("Id"),
+			employeeEmail : oCtx.getProperty("EmailAddress")
+		});
+	},
+
 	/*
     * When you press the table row -> navTo detailApproved page
     * The navigation is made based on the email (from login) and id of the user
@@ -112,6 +125,20 @@ sap.ui.define([
             employeeId : oCtx.getProperty("Id"),
 			employeeEmail : oCtx.getProperty("EmailAddress")
 		});
+	},
+
+	_onNavBack: function (oEvent) {
+		var oHistory = History.getInstance();
+		var sPreviousHash = oHistory.getPreviousHash();
+
+		if (sPreviousHash !== undefined) {
+			window.history.go(-1);
+		} else {
+			var oRouter = UIComponent.getRouterFor(this);
+			oRouter.navTo("dashboardManager", {
+
+			}, true);
+		}
 	}
     });
 });

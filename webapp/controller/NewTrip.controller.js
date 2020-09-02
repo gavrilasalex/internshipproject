@@ -278,6 +278,11 @@ sap.ui.define([
 				var oRouter = UIComponent.getRouterFor(this);
 				oRouter.navTo("userBT", {}, true);
 			}
+		},
+
+		_onNavBack : function () {
+
+			window.history.go(-1);
 		}
     });
 });

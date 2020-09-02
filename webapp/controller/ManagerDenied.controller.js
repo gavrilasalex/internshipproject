@@ -9,7 +9,9 @@ sap.ui.define([
 	"sap/ui/model/Filter",
     "sap/ui/model/FilterType",
     "sap/ui/model/FilterOperator",
-], function (BaseController, Filter, FilterType, FilterOperator) {
+    "sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+], function (BaseController, Filter, FilterType, FilterOperator, History, UIComponent) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.ManagerDenied", {
@@ -110,6 +112,18 @@ sap.ui.define([
                 employeeId : oCtx.getProperty("Id"),
 				employeeEmail : oCtx.getProperty("EmailAddress")
 			});
+        },
+
+        _onNavBack: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = UIComponent.getRouterFor(this);
+				oRouter.navTo("dashboardManager", {}, true);
+			}
 		}
     });
 });

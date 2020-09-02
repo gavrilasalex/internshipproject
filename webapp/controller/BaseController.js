@@ -61,16 +61,6 @@ sap.ui.define([
             return this.getView().getModel(sText);
         },
 
-        //Function for navigation to the previous page
-        _onNavBack : function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			}
-        },
-
         //Function for navigation to the login page, killing the current session
         _onSignOutPress : function() {
 

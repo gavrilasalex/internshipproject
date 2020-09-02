@@ -4,8 +4,10 @@
 */
 
 sap.ui.define([
-    "intern2020/controller/BaseController"
-], function (BaseController) {
+    "intern2020/controller/BaseController",
+    "sap/ui/core/routing/History",
+	"sap/ui/core/UIComponent",
+], function (BaseController, History, UIComponent) {
    "use strict";
 
     return BaseController.extend("intern2020.controller.DetailApproved", {
@@ -30,6 +32,18 @@ sap.ui.define([
             oView.bindElement({
 				path : "/TripDetailsSet(Id='" + oArgs.employeeId + "',EmailAddress='" + oArgs.employeeEmail + "')",
             });
-        }
+        },
+
+        _onNavBack: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = UIComponent.getRouterFor(this);
+				oRouter.navTo("managerApproved", {}, true);
+			}
+		}
     });
 });

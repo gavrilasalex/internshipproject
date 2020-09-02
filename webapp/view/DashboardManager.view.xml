@@ -33,7 +33,7 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
     <layout:VerticalLayout>
 	<layout:HorizontalLayout allowWrapping="true">
 		<GenericTile
-                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop sapUiSmallMarginEnd"
                 header="{i18n>toBeApproved}"
                 press="_onPressToBeApproved">
                 <tileContent>
@@ -50,7 +50,7 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
         </GenericTile>
 
         <GenericTile
-                class="sapUiLargeMarginBegin sapUiSmallMarginTop"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop sapUiSmallMarginEnd"
                 header="{i18n>isApproved}"
                 press="_onPressApproved">
                 <tileContent>
@@ -67,7 +67,7 @@ Denied Tile -> _onPressDenied (navigation to Detail denied View)
         </GenericTile>
 
 		<GenericTile
-                class="sapUiLargeMarginBegin sapUiSmallMarginTop"
+                class="sapUiSmallMarginBegin sapUiSmallMarginTop"
                 header="{i18n>isDenied}"
                 press="_onPressDenied">
                 <tileContent>

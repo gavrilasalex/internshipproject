@@ -34,7 +34,7 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 						id="planning_calendar2"
 						showRowHeaders="false"
 						appointmentsVisualization="Filled"
-						startDate="{path: 'StartTrip'}"
+						appointmentSelect="_handleAppointmentSelect"
 						viewKey="Day"
 						intervalSelect="_handleIntervalSelect"
 						showEmptyIntervalHeaders="false">
@@ -46,6 +46,7 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 				<rows>
 					<PlanningCalendarRow
 								appointments="{path: '/TripSet',
+											   filters : [{ path : 'Status', operator : 'NE', value1 : 'DENIED' }],
 											   templateShareable: true}">
 						<appointments>
 							<unified:CalendarAppointment
@@ -53,7 +54,8 @@ Items (type navigation) -> _onPress (selecting a business trip will show you the
 								endDate="{EndTrip}"
 								title="{FirstName} {LastName}"
 								text="{TravelCountry}, {TotalSum} RON"
-								type="Type06">
+								type="{path:'Status', 
+						   			   formatter:'._formatCalendarHighlight'}">
 							</unified:CalendarAppointment>
 						</appointments>
 

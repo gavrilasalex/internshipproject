@@ -21,23 +21,19 @@ Login Button -> _onLoginPress (navigation to the user/manager dashoard based on 
 		<HBox>
 		<VBox class="containerLogin" justifyContent="Center" alignItems="Center" alignContent="Center">
 			
-			<VBox>
 				<core:Icon
 					src="sap-icon://customer"
 					size="10rem"
 					class="sapUiLargeMargin"/>
-			</VBox>
-
-			<VBox class="inputLogin">
-				<Input width="20rem" placeholder="{i18n>inputEmail}" id="input_email" type="Email" change="_validateEmail"/>
-				<Input width="20rem" placeholder="{i18n>inputPassword}" id="input_password" type="Password"/>
+			
+				<Input width="17rem" placeholder="{i18n>inputEmail}" id="input_email" type="Email" change="_validateEmail"/>
+				<Input width="17rem" placeholder="{i18n>inputPassword}" id="input_password" type="Password"/>
 				<Button 
-					width="20rem" 
+					width="17rem" 
 					text="{i18n>general_login_button}" 
 					type="Emphasized" 
 					press="_onLoginPress">
 				</Button>
-			</VBox>
 		</VBox>
 		
 		<Image src="MHP19_00012.png"/>
