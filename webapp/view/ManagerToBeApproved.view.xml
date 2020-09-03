@@ -6,6 +6,7 @@ MANAGER TO BE APPROVED VIEW
 
 
 Navigation Button -> _onNavBack (navigation to the Manager Dashboard)
+Panel -> Planning Calendar with all the approved trips
 Table: Employee, Date, Price, Location  
 	*the business trips are filtered after status == "IN PROGRESS"
 Items (type navigation) -> _onPress (selecting a business trip will show you the details about said BT)

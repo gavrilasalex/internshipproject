@@ -7,6 +7,7 @@ Sign out Button -> _onSignOutPress (navigation to the Login View, kills this ses
 To Be Approved Tile -> _onPressToBeApproved (navigation to Detail to be approved View)
 Approved Tile -> _onPressApproved (navigation to Detail approved View)
 Denied Tile -> _onPressDenied (navigation to Detail denied View)
+Add new trip Tile -> _onAddNewTrip (navigation to New Trip View)
 
 -->
 

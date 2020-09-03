@@ -84,6 +84,7 @@ sap.ui.define([
 			this._Page.setFloatingFooter(!this._Page.getFloatingFooter());
         },
         
+        //Formatter for row highlight
         _formatRowHighlight: function (oValue) {
                 if (oValue === "DENIED") {
                     return "Error";

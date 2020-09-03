@@ -38,6 +38,7 @@ sap.ui.define([
             this.getView().setBusy(false);
         },
 
+        //Navigation back
         _onNavBack: function () {
 
 			window.history.go(-1);

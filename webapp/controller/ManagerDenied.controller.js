@@ -114,6 +114,7 @@ sap.ui.define([
 			});
         },
 
+        //Navigation back
         _onNavBack: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

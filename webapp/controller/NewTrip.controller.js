@@ -166,38 +166,40 @@ sap.ui.define([
 
 					MessageToast.show("Trip for " + oData.EmailAddress + " created.");
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastSuccess" );
+
             	},
                 error : function(){
 
 					MessageToast.show("Failed to add trip.");
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
-            	}
+				}
+				
 			});
+
+			this._onCancelNewTrip();
 			
-			var sEmail = oView.byId("input_email").setValue();
-            var sStartDate = oView.byId("input_startDate").setValue();
-            var sEndDate = oView.byId("input_endDate").setValue();
-			var sNoDays = oView.byId("input_noDays").setValue();
-            var sJob = oView.byId("input_jobNumber").setValue();
-			var sClient = oView.byId("input_client").setValue();
-			var sReason = oView.byId("input_reason").setValue();
-            var sCountry = oView.byId("input_country").setValue();
-            var sCity = oView.byId("input_city").setValue();
-            var sRequester = oView.byId("input_requester").setValue();
-            var sRate = oView.byId("input_rate").setValue();
-			var sMeals = oView.byId("input_meals").setValue();
-			var sFood = oView.byId("input_food").setValue();
-            var sRental = oView.byId("input_car").setValue();
-            var sGas = oView.byId("input_gas").setValue();
-            var sAllowance = oView.byId("input_allowance").setValue();
-            var sTrain = oView.byId("input_train").setValue();
-			var sBank = oView.byId("input_bank").setValue();
-			var sIt = oView.byId("input_it").setValue();
-            var sAirfare = oView.byId("input_airFare").setValue();
-            var sOffice = oView.byId("input_office").setValue();
-            var sHotel = oView.byId("input_hotel").setValue();
-			var sAsum = oView.byId("input_aSum").getValue();
-			var sExchange = oView.byId("input_exchange").setValue();
+            sStartDate = oView.byId("input_startDate").setValue();
+            sEndDate = oView.byId("input_endDate").setValue();
+			sNoDays = oView.byId("input_noDays").setValue();
+            sJob = oView.byId("input_jobNumber").setValue();
+			sClient = oView.byId("input_client").setValue();
+			sReason = oView.byId("input_reason").setValue();
+            sCountry = oView.byId("input_country").setValue();
+            sCity = oView.byId("input_city").setValue();
+            sRate = oView.byId("input_rate").setValue();
+			sMeals = oView.byId("input_meals").setValue();
+			sFood = oView.byId("input_food").setValue();
+            sRental = oView.byId("input_car").setValue();
+            sGas = oView.byId("input_gas").setValue();
+            sAllowance = oView.byId("input_allowance").setValue();
+            sTrain = oView.byId("input_train").setValue();
+			sBank = oView.byId("input_bank").setValue();
+			sIt = oView.byId("input_it").setValue();
+            sAirfare = oView.byId("input_airFare").setValue();
+            sOffice = oView.byId("input_office").setValue();
+            sHotel = oView.byId("input_hotel").setValue();
+			sAsum = oView.byId("input_aSum").setValue();
+			sExchange = oView.byId("input_exchange").setValue();
 		},
 
 
@@ -280,6 +282,7 @@ sap.ui.define([
 			}
 		},
 
+		//Navigation back
 		_onNavBack : function () {
 
 			window.history.go(-1);

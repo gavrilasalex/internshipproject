@@ -100,6 +100,10 @@ sap.ui.define([
 			}
 		},
 		
+		/* 
+		* When you press the calendar appointment -> navTo detailToBeApproved/detailApproved page
+        * The navigation is made based on the email (from login) and id of the user
+		*/
 		_handleAppointmentSelect: function(oEvent){
 
 			var oItem = oEvent.getParameter("appointment")
@@ -120,6 +124,7 @@ sap.ui.define([
 			}
 		},
 
+		//Formater for appointment colors
 		_formatCalendarHighlight: function (oValue) {
 			if (oValue === "IN PROGRESS") {
 				return "Type06";
@@ -144,6 +149,7 @@ sap.ui.define([
 			});
 		},
 
+		//Navigation back
 		_onNavBack: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();

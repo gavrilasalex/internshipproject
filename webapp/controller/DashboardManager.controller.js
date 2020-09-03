@@ -153,6 +153,9 @@ sap.ui.define([
 			oRouter.navTo("managerDenied");
         },
         
+        /*
+        * When you press the Add New Trip Tile -> navTo newTrip page
+        */
         _onAddNewTrip: function () {
 
             var oModel = this.getView().getModel("oUsername");

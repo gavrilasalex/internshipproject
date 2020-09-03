@@ -68,6 +68,10 @@ sap.ui.define([
 			}
 		},
 
+		/*
+		* The reject button from the dialog is disabled 
+		* If the manager entered a reason in the text area, the button becomes enabled
+		*/
 		_onChangeReason : function(){
 			var oView = this.getView();
 			var sReason = oView.byId("textArea_reject").mProperties.value;
@@ -104,7 +108,8 @@ sap.ui.define([
 						duration: 10000
 					});
 					$( ".sapMMessageToast" ).addClass( "sapMMessageToastDanger" );
-
+					
+					sReason = oView.byId("textArea_reject").setValue();
 					that._onNavBack();
 				},
 
